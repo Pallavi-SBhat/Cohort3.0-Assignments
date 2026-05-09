@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxury Drinks Menu</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+        height: 100%;
+        width:100%;
+      background:#050505;
+      font-family:'Poppins', sans-serif;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    .container{
+      width:100%;
+      min-height:100vh;
+      padding:30px 50px;
+      background:
+      radial-gradient(circle at top, rgba(255,140,0,0.12), transparent 40%),
+      #050505;
+    }
+
+    /* Header */
+
+    .title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .title h1{
+      font-size:65px;
+      font-family:'Cinzel', serif;
+      font-weight:600;
+      color:#f5f5f5;
+    }
+
+    .line{
+      width:180px;
+      height:2px;
+      background:#ff8c00;
+      margin:18px auto;
+      position:relative;
+    }
+
+    .line::after{
+      content:"❦";
+      position:absolute;
+      top:-15px;
+      left:50%;
+      transform:translateX(-50%);
+      color:#ff8c00;
+      background:#050505;
+      padding:0 12px;
+      font-size:20px;
+    }
+
+    /* Cards */
+
+    .cards{
+      display:flex;
+      gap:25px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:50px;
+    }
+
+    .card{
+      width:280px;
+      background:#0d0d0d;
+      border-radius:25px;
+      padding:25px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,140,0,0.15);
+      transition:0.4s;
+      box-shadow:0 0 20px rgba(255,140,0,0.05);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(255,140,0,0.3);
+    }
+
+    .badge{
+      position:absolute;
+      top:18px;
+      left:18px;
+      padding:6px 14px;
+      border:1px solid #ff8c00;
+      border-radius:30px;
+      font-size:13px;
+      color:#ff8c00;
+      background:rgba(255,140,0,0.08);
+    }
+
+    .card img{
+      width:180px;
+      height:280px;
+      object-fit:cover;
+      margin-top:20px;
+    }
+
+    .card h2{
+      font-size:32px;
+      margin-top:10px;
+      font-family:'Cinzel', serif;
+      color:#ffffff;
+    }
+
+    .card p{
+      color:#a8a8a8;
+      margin:8px 0;
+      font-size:15px;
+    }
+
+    .price{
+      margin-top:15px;
+      color:#ff8c00;
+      font-size:30px;
+      font-weight:600;
+    }
+
+    /* Special Section */
+
+    .special{
+      background:#0b0b0b;
+      border-radius:30px;
+      padding:40px;
+      margin-left:22%;
+      margin-right:22%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+      border:1px solid rgba(255,140,0,0.15);
+      box-shadow:0 0 25px rgba(255,140,0,0.05);
+      flex-wrap:wrap;
+    }
+
+    .special img{
+      width:320px;
+      object-fit:cover;
+    }
+
+    .special-content{
+      flex:1;
+    }
+
+    .special-content span{
+      color:#ff8c00;
+      letter-spacing:4px;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    .special-content h2{
+      font-size:52px;
+      margin:18px 0;
+      font-family:'Cinzel', serif;
+      line-height:1.2;
+    }
+
+    .special-content p{
+      color:#9b9b9b;
+      line-height:1.9;
+      max-width:650px;
+      margin-bottom:25px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 32px;
+      border:1px solid #ff8c00;
+      border-radius:40px;
+      color:#ff8c00;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .btn:hover{
+      background:#ff8c00;
+      color:black;
+    }
+
+    /* Footer */
+
+    footer{
+      margin-top:50px;
+      border-top:1px solid rgba(255,140,0,0.2);
+      padding-top:25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+      color:#9b9b9b;
+    }
+
+    footer ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+
+    footer ul li{
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    footer ul li:hover{
+      color:#ff8c00;
+    }
+
+    .socials{
+      display:flex;
+      gap:15px;
+      font-size:20px;
+    }
+
+    .socials span{
+      width:40px;
+      height:40px;
+      border:1px solid #ff8c00;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:0.3s;
+      color:#ff8c00;
+    }
+
+    .socials span:hover{
+      background:#ff8c00;
+      color:black;
+    }
+
+    /* Responsive */
+
+    @media(max-width:900px){
+
+      .title h1{
+        font-size:45px;
+      }
+
+      .special{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .special img{
+        width:240px;
+      }
+
+      .special-content h2{
+        font-size:36px;
+      }
+
+      footer{
+        flex-direction:column;
+        text-align:center;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .container{
+        padding:20px;
+      }
+
+      .title h1{
+        font-size:36px;
+      }
+
+      .card{
+        width:100%;
+      }
+
+      .special-content h2{
+        font-size:28px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+
+    <div class="title">
+      <h1>Gunaforycter</h1>
+      <div class="line"></div>
+    </div>
+
+    <!-- Drink Cards -->
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="badge">★ Signature</div>
+
+        <img src="https://imgs.search.brave.com/hUKdioXgQZyY_66BPI9Xg9p9N3nng3PEarL7Q55tDPU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzI3/NTE3MzQvcGV4ZWxz/LXBob3RvLTMyNzUx/NzM0L2ZyZWUtcGhv/dG8tb2YtcmVmcmVz/aGluZy1vcmFuZ2Ut/anVpY2Utd2l0aC1p/Y2Utb24tdGFibGUu/anBlZz9hdXRvPWNv/bXByZXNzJmNzPXRp/bnlzcmdiJmRwcj0x/Jnc9NTAw" alt="drink">
+
+        <h2>Sunset Flame</h2>
+
+        <p>Tropical & Refreshing</p>
+
+        <div class="price">$12.94</div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://imgs.search.brave.com/RIpS8Ny7HDoZ3P09ndSJlmaMEZbjvvFJF-cp34OT_0w/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE2/MDAyNzE4ODY3NDIt/ZjA0OWNkNDUxYmJh/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1ueDhabkpsYzJn/bE1qQnFkV2xqWlh4/bGJud3dmSHd3Zkh4/OE1BPT0" alt="drink">
+
+        <h2>Tropical Passion</h2>
+
+        <p>Fruity & Exotic</p>
+
+        <div class="price">$11.04</div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://imgs.search.brave.com/yDs07UiLlJ-GzlG7tdi018cCNHqItoie9fmOz32MU3U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvOTQ0/MjI4NzAyL3Bob3Rv/L3NpbmdsZS1nbGFz/cy1vZi1mcmVzaC1v/cmFuZ2UtanVpY2Uu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUNMRUFDQVhXalg4/d0VZM3l2bk5kalph/V3dQRUVFaXhqY2N0/aTZUQTZkN3M9" alt="drink">
+
+        <h2>Citrus Dawn</h2>
+
+        <p>Citrusy & Energizing</p>
+
+        <div class="price">$10.13</div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="badge">● New</div>
+
+        <img src="https://imgs.search.brave.com/o9l6Q4lLS3uRt7zLIaVQTMC5Ws0fpoqRRuZnb1D5_KQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvOTE4/NTMwNS9wZXhlbHMt/cGhvdG8tOTE4NTMw/NS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA" alt="drink">
+
+        <h2>Berry Breeze</h2>
+
+        <p>Sweet & Cool</p>
+
+        <div class="price">$9.48</div>
+
+      </div>
+
+    </div>
+
+    <!-- Special Section -->
+
+    <div class="special">
+
+      <img src="https://imgs.search.brave.com/3zwR2L9Sl7QvdjaLUVn8ClpmVcER6jMv6U_LStq7lVs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9mcnVp/dC1qdWljZS0yNjU3/Njg5Mi5qcGc" alt="food">
+
+      <div class="special-content">
+
+        <span>CHEF'S SPECIAL</span>
+
+        <h2>Bouliauts for laguancns</h2>
+
+        <p>
+          Experience our signature culinary creations crafted with premium ingredients.
+          Enjoy unforgettable dining with rich flavors and elegant presentation perfect
+          for sharing or savoring solo.
+        </p>
+
+        <a href="#" class="btn">Explore Menu →</a>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+      <div>© Gunaforycter 2025</div>
+
+      <ul>
+        <li>Explore</li>
+        <li>Food Menu</li>
+        <li>Drinks</li>
+        <li>Reservations</li>
+      </ul>
+
+      <div class="socials">
+        <span>◎</span>
+        <span>f</span>
+        <span>✦</span>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>

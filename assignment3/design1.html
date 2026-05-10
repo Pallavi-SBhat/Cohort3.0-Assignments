@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html,
+    body{
+        height: 100%;
+        width: 100%;
+    }
+    .main{
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to left,rgb(99, 5, 99),rgb(9, 9, 112),rgb(91, 7, 91));
+    }
+    .heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+    .heading h3{
+        color: white;
+        font-size: 20px;
+    }
+    .heading button{
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: 2px solid rgb(81, 14, 93);
+        cursor: pointer;
+    }
+    .heading button:hover{
+        background-color: white;
+        color: black;
+        transition: all 0.3s ease;
+    }
+    .grid-top{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 20px;
+        padding: 3px;
+    }
+    .prduct-card{
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .prduct-card img{
+        width: 250px;
+        height: 250px;
+        border: 0.1cm solid black;
+        border-radius: 10cm;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .prduct-card h4{
+        margin: 10px 0;
+    }
+    .prduct-card button{
+        background-color: transparent;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: 2px solid rgb(81, 14, 93);
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="main">
+<div class="heading">
+    <h3 >Explore Art Work</h3>
+    <button>See All</button>
+</div>
+<div class="grid-top">
+    <div class="prduct-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlErv6G0dJGrUggGR_3I9aRSbHBV3GeZyBiA&s" alt="">
+        <h4>Monocular</h4>
+        <button>Place Bid</button>
+    </div>
+    <div class="prduct-card">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlErv6G0dJGrUggGR_3I9aRSbHBV3GeZyBiA&s" alt="">
+        <h4>Monocular</h4>
+        <button>Place Bid</button>
+    </div>
+    <div class="prduct-card">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlErv6G0dJGrUggGR_3I9aRSbHBV3GeZyBiA&s" alt="">
+        <h4>Monocular</h4>
+        <button>Place Bid</button>
+    </div>
+    <div class="prduct-card">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlErv6G0dJGrUggGR_3I9aRSbHBV3GeZyBiA&s" alt="">
+        <h4>Monocular</h4>
+        <button>Place Bid</button>
+    </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Squid Game Landing Page</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#0b0711;
+      overflow-x:hidden;
+      color:white;
+    }
+
+    .main{
+      width:100%;
+      min-height:100vh;
+      background:
+      linear-gradient(to right, rgba(255,0,90,0.2), rgba(98,0,255,0.2)),
+      #0b0711;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav{
+      width:100%;
+      padding:25px 50px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:relative;
+      z-index:10;
+    }
+
+    .logo img{
+      width:90px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+      list-style:none;
+    }
+
+    .nav-links li{
+      cursor:pointer;
+      color:#d8d8d8;
+      transition:0.3s;
+    }
+
+    .nav-links li:hover,
+    .active{
+      color:white;
+      border-bottom:2px solid #ff2c7d;
+      padding-bottom:5px;
+    }
+
+    .menu{
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      width:100%;
+      min-height:85vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px 50px 0;
+      position:relative;
+    }
+
+    /* LEFT CONTENT */
+
+    .left{
+      width:45%;
+      position:relative;
+      z-index:5;
+    }
+
+    .title-img{
+      width:320px;
+      margin-bottom:25px;
+    }
+
+    .left p{
+      color:#c9c9c9;
+      line-height:1.7;
+      margin-bottom:35px;
+      font-size:18px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+    }
+
+    .btn{
+      padding:16px 32px;
+      border-radius:12px;
+      border:none;
+      cursor:pointer;
+      font-size:17px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .play{
+      background:linear-gradient(to right,#ff0f7b,#f89b29);
+      color:white;
+    }
+
+    .watch{
+      background:transparent;
+      border:2px solid #ff2c7d;
+      color:white;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* RIGHT IMAGE */
+
+    .right{
+      width:50%;
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .right img{
+      width:520px;
+      object-fit:contain;
+      filter:drop-shadow(0 0 30px rgba(255,0,120,0.4));
+    }
+
+    /* SOCIAL ICONS */
+
+    .socials{
+      position:absolute;
+      right:40px;
+      top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      z-index:10;
+    }
+
+    .socials i{
+      font-size:22px;
+      color:#ff2c7d;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .socials i:hover{
+      transform:scale(1.2);
+    }
+
+    /* SCROLL TEXT */
+
+    .scroll{
+      position:absolute;
+      left:50%;
+      top:45%;
+      transform:translateX(-50%) rotate(90deg);
+      color:#d7d7d7;
+      letter-spacing:3px;
+      font-size:14px;
+    }
+
+    .scroll::after{
+      content:"";
+      width:80px;
+      height:2px;
+      background:#ff2c7d;
+      position:absolute;
+      top:50%;
+      left:110%;
+    }
+
+    /* BACKGROUND TEXT */
+
+    .bg-text-left{
+      position:absolute;
+      left:20px;
+      bottom:170px;
+      font-size:160px;
+      font-weight:700;
+      color:rgba(255,255,255,0.04);
+      z-index:1;
+    }
+
+    .bg-text-right{
+      position:absolute;
+      right:-120px;
+      top:180px;
+      transform:rotate(90deg);
+      font-size:140px;
+      font-weight:700;
+      color:rgba(255,255,255,0.04);
+    }
+
+    /* ================= CARDS ================= */
+
+    .cards{
+      width:88%;
+      margin:0 auto 40px;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      padding:25px;
+      border-radius:25px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      position:relative;
+      z-index:5;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      cursor:pointer;
+    }
+
+    .card img{
+      width:100%;
+      height:400px;
+      object-fit:cover;
+      transition:0.4s;
+    }
+
+    .card:hover img{
+      transform:scale(1.08);
+    }
+
+    .play-icon{
+      position:absolute;
+      right:15px;
+      bottom:15px;
+      width:45px;
+      height:45px;
+      border-radius:50%;
+      background:rgba(0,0,0,0.6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:18px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:1000px){
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:30px;
+      }
+
+      .left,
+      .right{
+        width:100%;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .right img{
+        width:420px;
+        margin-top:40px;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .socials{
+        display:none;
+      }
+
+      .scroll{
+        display:none;
+      }
+
+    }
+
+    @media(max-width:650px){
+
+      nav{
+        padding:20px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero{
+        padding:20px;
+      }
+
+      .title-img{
+        width:250px;
+      }
+
+      .left p{
+        font-size:15px;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+      .right img{
+        width:320px;
+      }
+
+      .bg-text-left,
+      .bg-text-right{
+        display:none;
+      }
+
+      .cards{
+        width:95%;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="main">
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+      <div class="logo">
+
+        <img           src="https://imgs.search.brave.com/n0p7MqkJugPXVOfiVdueudAsncvPJ70zqA_w88gvhk8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jcnlz/dGFscG5nLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNS8w/MS9zcXVpZC1nYW1l/LWxvZ28ucG5n"
+ alt="logo">
+
+      </div>
+
+      <ul class="nav-links">
+        <li>About</li>
+        <li class="active">Watch now</li>
+        <li>Actors</li>
+        <li>Contact</li>
+      </ul>
+
+      <div class="menu">
+        <i class="ri-menu-3-line"></i>
+      </div>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+      <!-- LEFT -->
+
+      <div class="left">
+
+        <img
+          src="https://imgs.search.brave.com/n0p7MqkJugPXVOfiVdueudAsncvPJ70zqA_w88gvhk8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jcnlz/dGFscG5nLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNS8w/MS9zcXVpZC1nYW1l/LWxvZ28ucG5n"
+          class="title-img"
+          alt="Squid Game"
+        >
+
+        <p>
+          Action / Thriller / Drama Series directed by Dong-hyuk Hwang
+          <br>
+          Season 1: 9 Episodes
+        </p>
+
+        <div class="buttons">
+
+          <button class="btn play">
+            <i class="ri-play-circle-fill"></i>
+            Play Now
+          </button>
+
+          <button class="btn watch">
+            <i class="ri-play-mini-line"></i>
+            Watch Trailer
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="right">
+
+        <img
+          src="https://imgs.search.brave.com/0onpq3G1B-5gTBDfUDf1GpxCfRVLSQAyj_h_ZaEK8Yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/ZGlzcGxhdGUuY29t/L2FydHdvcmsvMjcw/eDM4MC8yMDI0LTEy/LTE2LzZjNWU5ZDky/NTNlZDI5OTRjYTQ0/MmZhZGI3M2MyYWQ4/XzA5ZDVjODFiNDFh/NGQ2MmFhODNjZjll/YjY3MGYwNGFiLmpw/Zw"
+          alt="Squid Game Guard"
+        >
+
+      </div>
+
+      <!-- SOCIALS -->
+
+      <div class="socials">
+        <i class="ri-twitter-x-line"></i>
+        <i class="ri-instagram-line"></i>
+        <i class="ri-facebook-circle-line"></i>
+      </div>
+
+      <!-- SCROLL -->
+
+      <div class="scroll">SCROLL</div>
+
+      <!-- BACKGROUND TEXT -->
+
+      <div class="bg-text-left">GAME</div>
+
+      <div class="bg-text-right">SQUID</div>
+
+    </section>
+
+    <!-- CARDS -->
+
+    <div class="cards">
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <img
+          src="https://imgs.search.brave.com/k7ifIorcW_2yn7LUMStQ1QRoCGYBnOIEBfOymR6vRsY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvb21p/bm91cy1zcXVpZC1n/YW1lLXBmcC1nNDY4/ZGo5Mm9qcmt6NTJo/LmpwZw"
+          alt=""
+        >
+
+        <div class="play-icon">
+          <i class="ri-play-fill"></i>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <img
+          src="https://imgs.search.brave.com/ykP0-AvhjirXhQnJI4oahZAyzFQlWxszgwhEYU-i9-c/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zcXVp/ZGdhbWVleHBlcmll/bmNlLmNvbS9fYXN0/cm8vY2FkZjBmMTM4/NTY1NmRkNzU3OGU0/N2M3M2RjYjdkMDFf/dXVzZ3pyX3RCc0hi/LndlYnA"
+          alt=""
+        >
+
+        <div class="play-icon">
+          <i class="ri-play-fill"></i>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <img
+          src="https://imgs.search.brave.com/dQl4HNqzza1DhtWedPJZeUiYEwl3hhZznfOXd2CRFD4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvc3F1aWRfZ2Ft/ZS9zbWFsbC9zcXVp/ZF9nYW1lX1BORzY3/LnBuZw"
+          alt=""
+        >
+
+        <div class="play-icon">
+          <i class="ri-play-fill"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

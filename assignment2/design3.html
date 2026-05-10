@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURORA™ Winter Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a1016;
+            --card-bg: #1c2a38;
+            --text-main: #ffffff;
+            --text-muted: #8b9cb0;
+            --accent-blue: #a3c2e0;
+            --border-color: #2a3a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* --- Header Styles --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .header-left .sub-title {
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .header-left h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .header-middle {
+            display: flex;
+            gap: 4rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-middle .nav-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .header-middle .nav-group span {
+            cursor: pointer;
+        }
+
+        .header-middle .nav-group span:hover {
+            color: var(--text-main);
+        }
+
+        .header-right .btn-filter {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .header-right .btn-filter:hover {
+            background: var(--card-bg);
+        }
+
+        /* --- Grid Layouts --- */
+        .grid-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: stretch;
+}
+.hero-card{
+    min-height: 520px;
+}
+
+.grid-top .card{
+    height: 520px;
+}
+
+.grid-top .card img{
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+        .grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Card Styles --- */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* NEW IMAGE STYLES */
+        .card-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover; /* Ensures images fill the box without squishing */
+            display: block;
+        }
+
+        .card-info {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .card-colors {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            align-items: center;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .color-label {
+            margin-right: 0.5rem;
+        }
+
+        .card-price {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* --- Hero Card Specifics --- */
+        .hero-card {
+            grid-column: span 2; /* Made the hero card span exactly 2 columns */
+        }
+
+        /* NEW HERO IMAGE STYLES */
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            text-align: left;
+        }
+
+        .hero-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .add-to-cart {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .add-to-cart .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 16, 22, 0.5); /* slight dark background for text readability */
+        }
+
+        .add-to-cart .text-group {
+            display: flex;
+            flex-direction: column;
+            background: rgba(10, 16, 22, 0.5); /* slight dark background for text readability */
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .add-to-cart .label {
+            font-size: 0.65rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .hero-graffiti {
+            position: absolute;
+            bottom: -20px;
+            right: 2rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.4);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--text-muted);
+        }
+
+        .feature-text h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Footer --- */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-icons span {
+            cursor: pointer;
+        }
+
+        .social-icons span:hover {
+            color: var(--text-main);
+        }
+
+        /* Specific Colors for dots */
+        .bg-white { background-color: #ffffff; }
+        .bg-blue { background-color: #4a8cdb; }
+        .bg-silver { background-color: #c0c0c0; }
+        .bg-black { background-color: #000000; }
+        .bg-grey { background-color: #808080; }
+        .bg-navy { background-color: #1a2a40; }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .grid-top { grid-template-columns: 1fr 1fr; }
+            .hero-card { grid-column: 1 / 3; }
+            .grid-bottom { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            .header-middle { display: none; }
+            .grid-top, .grid-bottom { grid-template-columns: 1fr; }
+            .hero-card { grid-column: 1; }
+            .features { grid-template-columns: 1fr 1fr; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="sub-title">2025 / Winter Drop</div>
+            <h1>New Collection</h1>
+        </div>
+        <div class="header-middle">
+            <div class="nav-group">
+                <span>[ NEW COLLECTION ]</span>
+                <span>[ LIMITED DROP ]</span>
+                <span>[ WINTER 25 ]</span>
+            </div>
+            <div class="nav-group">
+                <span>PUFFER JACKETS</span>
+                <span>TECH WEAR</span>
+                <span>GLOSSY SILVER</span>
+                <span>STEALTH BLACK</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-filter">
+                FILTERS 
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="grid-top">
+            
+            <div class="card hero-card">
+                <img src="https://imgs.search.brave.com/n1R_2MMy0mWqt7kLeFw7I7ekS92I_qJLT-ieCLSNVrY/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzU1OTAzMjg1L3Iv/aWwvMmNmMmY4LzY0/MTc1MTQ0NTgvaWxf/ZnVsbHhmdWxsLjY0/MTc1MTQ0NThfYnVt/ei5qcGc" alt="Aurora Hero Puffer" class="hero-img">
+                
+                <div class="hero-content">
+                    <h2>AURORA™</h2>
+                    <div class="add-to-cart">
+                        <div class="icon-circle">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+                        <div class="text-group">
+                            <span class="label">ADD TO CART</span>
+                            <span class="price">$1,999</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-graffiti">HZD</div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/hMJ4dYRa2cq7Km5JpL4JlKdPaRrrI5x3SjdsYSJEWKc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jYXNw/YXJhc3BvcnRzLmNv/bS9jZG4vc2hvcC9m/aWxlcy8xMTFfODYz/ZmMxZjktZDYwYy00/MjEwLTg2MzMtZDBl/M2Y0YTNmMDExLmpw/Zz92PTE3NjcyMTQy/NjAmd2lkdGg9MzIw" alt="Orbit Silver Holographic" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">ORBIT SILVER</div>
+                    <div class="card-desc">HOLOGRAPHIC PUFFER</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-silver"></span> <span>SILVER</span>
+                    </div>
+                    <div class="card-price">$1,999.99</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/DyAX0YzpKOGhDB-5W0MBBfTaEnUapoE-KPFllIEhevE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ncmVh/dC5zdG9yZS9jZG4v/c2hvcC9maWxlcy9s/ZW9kZnJlaXRhc19D/cmVhdGVfYV92aXN1/YWxseV9ib2xkX2Fu/ZF93aW50ZXItcmVh/ZHlfcHJvZHVjdF9i/dW5fNGUwZTJjNzkt/NjkzZC00OTA0LThk/MWEtY2RjNzllZWUx/OTYxLnBuZz92PTE3/MzQ1NTQxNjAmd2lk/dGg9MTQ0NQ" alt="Stealth Black Heavy Down" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">STEALTH BLACK</div>
+                    <div class="card-desc">HEAVY DOWN PUFFER</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-black"></span> <span class="color-label">BLACK</span>
+                        <span class="color-dot bg-white"></span> <span>WHITE</span>
+                    </div>
+                    <div class="card-price">$1,199.99</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-bottom">
+            <div class="card">
+                <img src="https://imgs.search.brave.com/5INBrh3GF-cZG8iYkfEXuverPKMmWDQRVC7XhrecB4o/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jYXNw/YXJhc3BvcnRzLmNv/bS9jZG4vc2hvcC9m/aWxlcy8yNV9hMjg5/OGQ5Yy1jYjU1LTQ5/ZWQtYTYyZi03NDI1/ZTkzZjY0YjUuanBn/P3Y9MTc2NzIxNDI2/MCZ3aWR0aD0zMjA" alt="Glacier White Insulated" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">GLACIER WHITE</div>
+                    <div class="card-desc">INSULATED PUFFER JACKET</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-grey"></span> <span>GREY</span>
+                    </div>
+                    <div class="card-price">$1,299.99</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/ngJEYUTdOcYu9CuQaoo5NlbhNtB__6Q9JYUTpg7zH6w/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9ibGFj/a291dC10ZWNod2Vh/ci5jby51ay9jZG4v/c2hvcC9maWxlcy90/ZWNod2Vhci1wdWZm/ZXItamFja2V0LWZy/b250LXZpZXctdWtf/ZjRmMjhjMjMtZDdi/NC00YzEyLTliMjUt/OTQwODYxNGIzYjI5/LmpwZz92PTE3NDEx/MDI3OTAmd2lkdGg9/MTkyMA" alt="Polar Gloss Blue" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">POLAR GLOSS</div>
+                    <div class="card-desc">BLUE PUFFER JACKET</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-blue"></span> <span>BLUE GLOSS</span>
+                    </div>
+                    <div class="card-price">$1,299.99</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/n1R_2MMy0mWqt7kLeFw7I7ekS92I_qJLT-ieCLSNVrY/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzU1OTAzMjg1L3Iv/aWwvMmNmMmY4LzY0/MTc1MTQ0NTgvaWxf/ZnVsbHhmdWxsLjY0/MTc1MTQ0NThfYnVt/ei5qcGc" alt="Stealth Black Heavy Puffer" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">STEALTH BLACK</div>
+                    <div class="card-desc">HEAVY PUFFER JACKET</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-navy"></span> <span class="color-label">NAVY BLUE</span>
+                        <span class="color-dot bg-black"></span> <span>BLACK</span>
+                    </div>
+                    <div class="card-price">$1,199.99</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/DIB_LiPF2oyVSvBcfYNKyjNkYvnOg8EdtQyfl69utLw/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly93d3cu/b2Zmd3JsZC10ZWNo/d2Vhci5jb20vY2Ru/L3Nob3AvcHJvZHVj/dHMvdGVjaHdlYXIt/cHVmZmVyLWphY2tl/dC0xLmpwZz92PTE2/ODAxNjM0NTQmd2lk/dGg9NjUw" alt="Deepfield Blue Tech" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">DEEPFIELD BLUE</div>
+                    <div class="card-desc">TECH PUFFER JACKET</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-blue"></span> <span>BLUE</span>
+                    </div>
+                    <div class="card-price">$1,299.99</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://imgs.search.brave.com/n1R_2MMy0mWqt7kLeFw7I7ekS92I_qJLT-ieCLSNVrY/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzU1OTAzMjg1L3Iv/aWwvMmNmMmY4LzY0/MTc1MTQ0NTgvaWxf/ZnVsbHhmdWxsLjY0/MTc1MTQ0NThfYnVt/ei5qcGc" alt="Polar Mist White" class="card-img">
+                
+                <div class="card-info">
+                    <div class="card-title">POLAR MIST</div>
+                    <div class="card-desc">WHITE PUFFER JACKET</div>
+                    <div class="card-colors">
+                        <span class="color-dot bg-white"></span> <span>WHITE</span>
+                    </div>
+                    <div class="card-price">$1,299.99</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12,2L12,22 M12,2L16,6 M12,2L8,6 M2,12L22,12 M2,12L6,16 M2,12L6,8 M5,5L19,19 M5,5L9,5 M5,5L5,9 M19,5L5,19 M19,5L19,9 M19,5L15,5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <div class="feature-text">
+                    <h4>PREMIUM INSULATION</h4>
+                    <p>Built for extreme winter conditions.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <div class="feature-text">
+                    <h4>WATER RESISTANT</h4>
+                    <p>Advanced fabric technology.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20.2 3.8C18.8 2.4 16.5 2 14.6 2.8c-2 .8-5.8 3.5-9.2 6.9-3.4 3.4-6.1 7.2-6.9 9.2-.8 1.9-.4 4.2 1 5.6s3.7 1.8 5.6 1c2-.8 5.8-3.5 9.2-6.9 3.4-3.4 6.1-7.2 6.9-9.2.8-1.9.4-4.2-1-5.6zm-5 8.4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <div class="feature-text">
+                    <h4>ULTRA LIGHTWEIGHT</h4>
+                    <p>Maximum warmth, minimal weight.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 2 17 12 22 22 17 22 7 12 2" stroke="currentColor" stroke-width="1.5" fill="none"/><polyline points="2 7 12 12 22 7" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="12" y1="22" x2="12" y2="12" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <div class="feature-text">
+                    <h4>LIMITED EDITION</h4>
+                    <p>Exclusive designs. Limited quantities.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M2 22l10-20 10 20H2z"/><path d="M12 12l5 10H7l5-10z"/></svg>
+            © 2025 AURORA™ <br>
+            ALL RIGHTS RESERVED
+        </div>
+        <div class="footer-links">
+            <a href="#">SHOP</a>
+            <a href="#">COLLECTIONS</a>
+            <a href="#">ABOUT</a>
+            <a href="#">LOOKBOOK</a>
+            <a href="#">CONTACT</a>
+        </div>
+        <div class="social-icons">
+            FOLLOW US
+            <span>📷</span>
+            <span>🐦</span>
+            <span>🎵</span>
+        </div>
+    </footer>
+
+</body>
+</html>

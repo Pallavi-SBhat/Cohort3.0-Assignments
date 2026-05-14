@@ -311,17 +311,28 @@ body{
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  padding: 20px;
+  overflow: hidden;
+}
+.hero-top-content{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+ 
 }
 
 .hero-content-card p{
-  font-size:11px;
+  font-size:10px;
   font-weight:600;
 }
 
 .hero-content-card h1{
-  font-size:4rem;
-  line-height:0.95;
-  font-weight:900;
+  font-size:45px;
+  line-height:0.92;
+  font-weight:600;
+  display: flex;
+align-items: center;
+justify-content: center;
 }
 
 /* MOTIVATION CARD */
@@ -396,6 +407,11 @@ body{
 
 .address-info-card{
   background:#f2cfc4;
+    border-radius:26px;
+
+  padding:22px;
+
+  min-height:120px;
 
   display:flex;
   flex-direction:column;
@@ -404,6 +420,7 @@ body{
 
 .address-content{
   display:flex;
+  align-items: flex-start;
   gap:14px;
 }
 
@@ -419,6 +436,17 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  flex-shrink: 0;
+}
+.address-info-card h4{
+  font-size:1.2rem;
+  line-height:1.2;
+}
+
+.address-info-card p{
+  margin-top:18px;
+  font-size:14px;
+  font-weight:600;
 }
 .training{
   background-color: pink;

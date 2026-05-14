@@ -1,645 +1,688 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-html,
-body{
-  width:100%;
-  height:100%;
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
-body{
-  background:#d8d8d8;
-  padding:16px;
-  overflow:hidden;
-}
-
-/* MAIN GRID */
-
-.main-layout{
-  width:100%;
-  height:100%;
-
-  display:grid;
-  gap:14px;
-
-  grid-template-columns:20vw 20vw 20vw 20vw;
-  grid-template-rows:35vh 22vh 22vh 22vh ;
-
-  grid-template-areas:
-  "athlete app typography hero"
-  "athlete logo logo hero"
-  "motivation logo logo social"
-  "training training female social";
-}
-
-/* GRID AREAS */
-
-.athlete-card{
-  grid-area:athlete;
-}
-
-.app-download-card{
-  grid-area:app;
-}
-
-.typography-card{
-  grid-area:typography;
-}
-
-.hero-content-card{
-  grid-area:hero;
-}
-
-.motivation-card{
-  grid-area:motivation;
-}
-
-.logo-showcase-card{
-  grid-area:logo;
-}
-
-.address-info-card{
-  grid-area:hero;
-}
-
-.female-athlete-card{
-  grid-area:female;
-}
-
-.social-media-card{
-  grid-area:social;
-}
-
-
-/* COMMON CARD STYLE */
-
-.fitness-card{
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-  padding:24px;
-}
-
-.fitness-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ATHLETE CARD */
-
-.athlete-card img{
-  position:absolute;
-  inset:0;
-}
-
-.top-icon{
-  position:absolute;
-  top:16px;
-  left:16px;
-
-  width:42px;
-  height:42px;
-
-  background:black;
-  color:white;
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:20px;
-}
-
-.workout-stats{
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  right:20px;
-
-  display:flex;
-  gap:10px;
-}
-
-.single-stat-box{
-  flex:1;
-
-  background:rgba(0,0,0,0.72);
-  color:white;
-
-  border-radius:16px;
-  padding:10px;
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.single-stat-box i{
-  color:#facc15;
-}
-
-.single-stat-box h4{
-  font-size:15px;
-}
-
-.single-stat-box p{
-  font-size:10px;
-  color:#bdbdbd;
-}
-
-/* APP CARD */
-
-.app-download-card{
-  background:#facc15;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.yellow-overlay-shape{
-  position:absolute;
-  top:0;
-  right:-40px;
-
-  width:220px;
-  height:130px;
-
-  background:rgba(255,255,255,0.16);
-
-  border-radius:20px;
-
-  clip-path:polygon(
-    20% 0%,
-    100% 0%,
-    80% 100%,
-    0% 100%
-  );
-}
-
-.sound-bars{
-  display:flex;
-  align-items:flex-end;
-  gap:5px;
-
-  margin-bottom:22px;
-
-  position:relative;
-  z-index:2;
-}
-
-.sound-bars span{
-  width:5px;
-  background:black;
-  border-radius:20px;
-}
-
-.sound-bars span:nth-child(1){height:16px;}
-.sound-bars span:nth-child(2){height:26px;}
-.sound-bars span:nth-child(3){height:36px;}
-.sound-bars span:nth-child(4){height:46px;}
-.sound-bars span:nth-child(5){height:36px;}
-.sound-bars span:nth-child(6){height:26px;}
-
-.app-download-card h2{
-  font-size:2rem;
-  line-height:1.1;
-  font-weight:900;
-
-  position:relative;
-  z-index:2;
-}
-
-.store-download-buttons{
-  display:flex;
-  gap:10px;
-
-  position:relative;
-  z-index:2;
-}
-
-.store-download-buttons button{
-  border:none;
-  background:black;
-  color:white;
-
-  padding:10px 14px;
-  border-radius:12px;
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  cursor:pointer;
-}
-
-.store-download-buttons button i{
-  font-size:22px;
-}
-
-.store-download-buttons button small{
-  font-size:8px;
-  color:#cfcfcf;
-}
-
-.store-download-buttons button h5{
-  font-size:14px;
-  font-weight:500;
-}
-
-/* TYPOGRAPHY CARD */
-
-.typography-card{
-  background:white;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.typography-card small{
-  color:#777;
-  font-size:10px;
-  letter-spacing:1px;
-}
-
-.typography-card h2{
-  font-size:34px;
-  margin-top:8px;
-}
-
-.typography-card h3{
-  font-size:30px;
-  margin-top:8px;
-  font-weight:500;
-}
-
-.progress-bar-wrapper{
-  width:100%;
-  height:12px;
-
-  background:#ececec;
-
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress-bar-fill{
-  width:78%;
-  height:100%;
-
-  background:linear-gradient(
-    to right,
-    #d69d85,
-    #facc15 55%,
-    black 55%
-  );
-}
-
-/* HERO CARD */
-
-.hero-content-card{
-  background:white;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding: 20px;
+body {
+  background: #d0d0d0;
+  padding: 14px;
   overflow: hidden;
 }
-.hero-top-content{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
- 
+
+/* =====================
+   MAIN GRID LAYOUT
+   4 columns x 4 rows
+   ===================== */
+
+.main-layout {
+  width: 100%;
+  height: calc(100vh - 28px);
+
+  display: grid;
+  gap: 12px;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 2fr 1.4fr 1.4fr 1.4fr;
+
+  grid-template-areas:
+    "athlete  app       typography  hero"
+    "athlete  logo      logo        hero"
+    "motivate logo      logo        social"
+    "visit    trainers  female      social";
 }
 
-.hero-content-card p{
-  font-size:10px;
-  font-weight:600;
+/* =====================
+   GRID AREA ASSIGNMENTS
+   ===================== */
+
+.athlete-card       { grid-area: athlete; }
+.app-download-card  { grid-area: app; }
+.typography-card    { grid-area: typography; }
+.hero-content-card  { grid-area: hero; }
+.motivation-card    { grid-area: motivate; }
+.logo-showcase-card { grid-area: logo; }
+.visit-site-card    { grid-area: visit; }
+.trainers-card      { grid-area: trainers; }
+.female-athlete-card{ grid-area: female; }
+.social-media-card  { grid-area: social; }
+
+/* =====================
+   COMMON CARD STYLE
+   ===================== */
+
+.fitness-card {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  padding: 22px;
 }
 
-.hero-content-card h1{
-  font-size:45px;
-  line-height:0.92;
-  font-weight:600;
+/* =====================
+   ATHLETE CARD
+   ===================== */
+
+.athlete-card {
+  padding: 0;
+}
+
+.athlete-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.top-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 42px;
+  height: 42px;
+  background: black;
+  color: white;
+  border-radius: 50%;
   display: flex;
-align-items: center;
-justify-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  z-index: 2;
 }
 
-/* MOTIVATION CARD */
-
-.motivation-card{
-  background:white;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.workout-stats {
+  position: absolute;
+  bottom: 18px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
 }
 
-.motivation-card h2{
-  font-size:2.2rem;
-  line-height:1.05;
+.single-stat-box {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  border-radius: 14px;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.luxury-section{
-  display:flex;
-  align-items:center;
-  gap:14px;
+.single-stat-box i {
+  color: #facc15;
+  font-size: 18px;
 }
 
-.luxury-icon{
-  width:50px;
-  height:50px;
-
-  border-radius:50%;
-
-  background:black;
-  color:#facc15;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.single-stat-box h4 {
+  font-size: 14px;
+  font-weight: 700;
 }
 
-/* LOGO CARD */
-
-.logo-showcase-card{
-  background:#f7f2e4;
+.single-stat-box p {
+  font-size: 9px;
+  color: #bdbdbd;
 }
 
-.logo-background-shape{
-  position:absolute;
-  bottom:40px;
-  right:20px;
+/* =====================
+   APP DOWNLOAD CARD
+   ===================== */
 
-  width:300px;
-  height:140px;
-
-  border:1px solid rgba(250,204,21,0.25);
-
-  transform:skew(-30deg);
+.app-download-card {
+  background: #facc15;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.main-logo-content{
-  width:100%;
-  height:100%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.yellow-overlay-shape {
+  position: absolute;
+  top: -10px;
+  right: -30px;
+  width: 180px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
 }
 
-.main-logo-content h1{
-  font-size:6rem;
-  font-weight:900;
+.sound-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
 }
 
-/* ADDRESS CARD */
-
-.address-info-card{
-  background:#f2cfc4;
-    border-radius:26px;
-
-  padding:22px;
-
-  min-height:120px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.sound-bars span {
+  width: 4px;
+  background: black;
+  border-radius: 20px;
 }
 
-.address-content{
-  display:flex;
-  align-items: flex-start;
-  gap:14px;
+.sound-bars span:nth-child(1) { height: 10px; }
+.sound-bars span:nth-child(2) { height: 18px; }
+.sound-bars span:nth-child(3) { height: 28px; }
+.sound-bars span:nth-child(4) { height: 38px; }
+.sound-bars span:nth-child(5) { height: 46px; }
+.sound-bars span:nth-child(6) { height: 38px; }
+.sound-bars span:nth-child(7) { height: 28px; }
+.sound-bars span:nth-child(8) { height: 18px; }
+.sound-bars span:nth-child(9) { height: 10px; }
+
+.app-download-card h2 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: 900;
+  position: relative;
+  z-index: 2;
 }
 
-.location-icon-circle{
-  width:46px;
-  height:46px;
+.store-download-buttons {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
 
-  border-radius:50%;
+.store-download-buttons button {
+  border: none;
+  background: black;
+  color: white;
+  padding: 9px 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+}
 
-  background:black;
-  color:#facc15;
+.store-download-buttons button i {
+  font-size: 20px;
+}
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.store-download-buttons button small {
+  font-size: 7px;
+  color: #cfcfcf;
+  display: block;
+}
+
+.store-download-buttons button h5 {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* =====================
+   TYPOGRAPHY CARD
+   ===================== */
+
+.typography-card {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.typography-card small {
+  color: #888;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.typography-card h2 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-top: 4px;
+  letter-spacing: -0.5px;
+}
+
+.typography-card h3 {
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.progress-bar-wrapper {
+  width: 100%;
+  height: 11px;
+  background: #ececec;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    #d69d85 0%,
+    #e8b89a 25%,
+    #facc15 50%,
+    #facc15 54%,
+    black 54%,
+    black 100%
+  );
+}
+
+/* =====================
+   HERO CARD
+   ===================== */
+
+.hero-content-card {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 20px 20px;
+}
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.hero-tag-dot {
+  width: 10px;
+  height: 10px;
+  background: #facc15;
+  border-radius: 2px;
+  border: 2px solid black;
   flex-shrink: 0;
 }
-.address-info-card h4{
-  font-size:1.2rem;
-  line-height:1.2;
+
+.hero-tag p {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #444;
 }
 
-.address-info-card p{
-  margin-top:18px;
-  font-size:14px;
-  font-weight:600;
-}
-.training{
-  background-color: pink;
+.hero-top-content {
   display: flex;
- grid-area: training;
-
+  flex-direction: column;
 }
 
-/* VISIT CARD */
-
-.visit-site-card img{
-  position:absolute;
-  inset:0;
+.hero-content-card h1 {
+  font-size: 2.6rem;
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -1px;
 }
 
-.visit-site-card button{
-  position:absolute;
-  left:20px;
-  bottom:20px;
-
-  border:none;
-
-  background:rgba(0,0,0,0.6);
-  color:white;
-
-  padding:16px 24px;
-
-  border-radius:18px;
-
-  font-size:1.7rem;
-
-  backdrop-filter:blur(5px);
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  cursor:pointer;
+/* ADDRESS (inside hero) */
+.address-info-card {
+  background: #f2cfc4;
+  border-radius: 18px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* TRAINERS CARD */
+.address-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-.trainers-card{
+.location-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.address-info-card h4 {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.address-info-card p {
+  font-size: 11px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* =====================
+   MOTIVATION CARD
+   ===================== */
+
+.motivation-card {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.motivation-card h2 {
+  font-size: 1.1rem;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.luxury-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luxury-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: black;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.luxury-section h4 {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.luxury-section p {
+  font-size: 9px;
+  color: #777;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* =====================
+   LOGO CARD
+   ===================== */
+
+.logo-showcase-card {
+  background: #f7f2e4;
+}
+
+.logo-background-shape {
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  width: 280px;
+  height: 130px;
+  border: 1.5px solid rgba(250, 204, 21, 0.3);
+  transform: skew(-30deg);
+  pointer-events: none;
+}
+
+.main-logo-content {
   width: 100%;
-  background:#f2cfc4;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.trainers-card h2{
-  font-size:2rem;
-  line-height:1;
+.logo-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.trainer-bottom-content{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
+.logo-icon {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
 }
 
-.trainers-card h1{
-  font-size:5rem;
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
-.trainer-profile-images{
-  display:flex;
+.main-logo-content h1 {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
 }
 
-.trainer-profile-images img{
-  width:48px;
-  height:48px;
+/* =====================
+   VISIT SITE CARD
+   ===================== */
 
-  border-radius:50%;
-  border:3px solid #f2cfc4;
-
-  margin-left:-10px;
+.visit-site-card {
+  padding: 0;
 }
 
-/* FEMALE CARD */
-
-.female-athlete-card{
-  background:#facc15;
+.visit-site-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.female-athlete-card img{
-  position:absolute;
-  inset:0;
+.visit-site-card button {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 2;
 }
 
-/* SOCIAL CARD */
+/* =====================
+   TRAINERS CARD
+   ===================== */
 
-.social-media-card{
-  background:black;
-  color:white;
-
-  display:flex;
-  flex-direction:column;
+.trainers-card {
+  background: #f2cfc4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.social-top-bar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:12px;
+.trainers-card h2 {
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 900;
 }
 
-.social-brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.trainer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.brand-circle{
-  width:28px;
-  height:28px;
-
-  border-radius:50%;
-
-  background:#facc15;
+.trainers-card h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
-.social-image-container{
-  flex:1;
-  position:relative;
+.trainers-card > div:last-child p {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #555;
 }
 
-.social-image-container img{
-  position:absolute;
-  inset:0;
+.trainer-profile-images {
+  display: flex;
 }
 
-.social-overlay-content{
-  position:absolute;
-  inset:0;
+.trainer-profile-images img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #f2cfc4;
+  margin-left: -12px;
+  object-fit: cover;
+}
 
-  padding:20px;
+.trainer-profile-images img:first-child {
+  margin-left: 0;
+}
 
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+/* =====================
+   FEMALE ATHLETE CARD
+   ===================== */
 
-  background:linear-gradient(
+.female-athlete-card {
+  background: #facc15;
+  padding: 0;
+  overflow: hidden;
+}
+
+.female-athlete-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* =====================
+   SOCIAL MEDIA CARD
+   ===================== */
+
+.social-media-card {
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.social-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.social-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.social-top-bar span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.social-top-bar small {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.social-image-container {
+  flex: 1;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.social-image-container img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-overlay-content {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
     to top,
-    rgba(0,0,0,0.9),
-    rgba(0,0,0,0.2),
+    rgba(0, 0, 0, 0.88),
+    rgba(0, 0, 0, 0.2),
     transparent
   );
 }
 
-.social-overlay-content h2{
-  font-size:2.2rem;
-  line-height:1;
+.social-overlay-content h2 {
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: 900;
 }
 
-.social-overlay-content button{
-  width:max-content;
-
-  margin-top:14px;
-
-  border:none;
-
-  background:#facc15;
-
-  padding:12px 22px;
-
-  border-radius:30px;
-
-  font-weight:bold;
-
-  cursor:pointer;
+.social-overlay-content button {
+  width: max-content;
+  margin-top: 12px;
+  border: none;
+  background: #facc15;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
 }
 
-/* RESPONSIVE */
+/* =====================
+   RESPONSIVE
+   ===================== */
 
-@media(max-width:1400px){
+@media (max-width: 1400px) {
+  .hero-content-card h1 { font-size: 2rem; }
+  .main-logo-content h1 { font-size: 3.5rem; }
+  .logo-icon { width: 50px; height: 50px; }
+  .motivation-card h2 { font-size: 0.95rem; }
+  .trainers-card h2 { font-size: 0.9rem; }
+  .app-download-card h2 { font-size: 1rem; }
+  .trainers-card h1 { font-size: 2.2rem; }
+}
 
-  .hero-content-card h1{
-    font-size:3rem;
-  }
-
-  .main-logo-content h1{
-    font-size:5rem;
-  }
-
-  .motivation-card h2{
-    font-size:1.7rem;
-  }
-
-  .trainers-card h2{
-    font-size:1.5rem;
-  }
-
+@media (max-width: 1100px) {
+  .hero-content-card h1 { font-size: 1.6rem; }
+  .main-logo-content h1 { font-size: 2.8rem; }
 }

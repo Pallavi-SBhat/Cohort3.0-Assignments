@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,
+html{
+    height: 100%;
+    width:100%;
+    font-family: 'Inter', sans-serif;
+    background: #efe6e6;
+}
+main{
+    min-width: 0%;
+    height: 100%;
+}
+.container{
+    width: 90%;
+    background-color: white;
+    margin: 45px auto;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    background-color: rgb(255, 255, 255);
+}
+.hiring{
+   display: flex;
+  gap:28px;
+   align-items: center;
+}
+.hiring img{
+   object-fit: contain;
+}
+.hiring button{
+    padding: 12px 22px;
+    background-color: #EDDED5;
+    border: #e8ba9d;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: serif;
+    cursor: pointer;
+}
+
+.nav-links{
+display: flex;
+gap: 62px;
+align-items: center;
+}
+.nav-links a{
+    text-decoration: none;
+    color: black;
+    font-size: 23px;
+    font-weight: 400;
+    font-family: serif;
+}
+.nav-links a:hover{
+    color: #e8ba9d;
+}
+.contact-btn{
+    padding: 12px 22px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: serif;
+    cursor: pointer;
+}
+.contact-btn:hover{
+    background-color: black;
+    color: white;
+}

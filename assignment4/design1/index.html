@@ -1,42 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cubo Digital Studio – Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <main>
-<div class="left-top"></div>
-<div class="left-bottom"></div>
 
-<div class="top-center1"></div>
-<div class="top-center2"></div>
 
-<div class="center">
-    <div class="circle">
-        <img src="./wimg-removebg.png" alt="">
+
+<div class="dashboard">
+
+  <div class="card card-brand">
+    <span class="label">Brand of</span>
+    <span class="sub-label">Designing</span>
+    <span class="dots">···</span>
+
+    <div class="donut-wrap">
+      <svg width="110" height="110" viewBox="0 0 110 110">
+        <circle cx="55" cy="55" r="44" fill="none" stroke="#fde8ef" stroke-width="11"/>
+        <circle cx="55" cy="55" r="44" fill="none" stroke="#f43f72" stroke-width="11"
+                stroke-dasharray="207.4 276.5" stroke-linecap="round"/>
+      </svg>
+      <div class="donut-center">
+        <span class="pct">75%</span>
+        <span class="pct-label">Progress</span>
+      </div>
     </div>
-</div>
 
-<div class="bottom-center1"></div>
-<div class="bottom-center2">
-    <div class="bottom-center2-div1">
-        <h2>We build Future of<br> Design Industry</h2>
-        <p>Crafting Lorem,ipsum dolar.</p>
-        <button>Explore More</button>
+    <span class="stat-big">2.5K</span>
+    <span class="stat-desc">263 contributions in<br>the last year</span>
+    <button class="view-report">View report <span class="arrow-right">›</span></button>
+  </div>
+
+  <!-- ② PROJECT VIEWS — col2, row1 -->
+  <div class="card card-views">
+    <div class="big-num">
+      4.875
+      <span class="heart-badge">❤️</span>
     </div>
-    <div class="bottom-center2-div2">
-        <img src="./spiral-removebg-preview.png" alt="">
-</div>
-</div>
+    <div class="sub">Project Views<br>last year</div>
+    <div style="display:flex; align-items:center; gap:6px; margin-top:10px; flex-wrap:wrap;">
+      <span class="trend">↗ +15%</span>
+      <span class="trend-vs">vs last year</span>
+    </div>
+  </div>
 
+  <div class="card card-users">
+    <div class="users-header">
+      <div class="section-label">New Users</div>
+      <div class="users-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+             stroke="#f43f72" stroke-width="1.8" stroke-linecap="round">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+    </div>
+    <div class="big-num" style="margin-top:6px;">57K</div>
+    <div style="display:flex; align-items:center; gap:6px; margin-top:10px; flex-wrap:wrap;">
+      <span class="trend green">↗ +10%</span>
+      <span class="trend-vs">vs last month</span>
+    </div>
+  </div>
 
-<div class="right-top"></div>
-<div class="right-bottom"></div>
+  <div class="card card-right-combined">
 
-    </main>
-    
+    <div class="right-team">
+      <p class="title">Team of passionate<br>designers and<br>developers</p>
+      <div class="team-avatars">
+        <div class="av" style="background:none;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+               width="34" height="34" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+        </div>
+        <div class="av" style="background:none;">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face"
+               width="34" height="34" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+        </div>
+        <div class="av" style="background:none;">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face"
+               width="34" height="34" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+        </div>
+        <div class="av" style="background:none;">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face"
+               width="34" height="34" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+        </div>
+        <div class="av av-more">+2</div>
+      </div>
+    </div>
+
+    <!-- Bottom half: Daily New Clients -->
+    <div class="right-clients">
+      <div class="client-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="#f43f72" stroke-width="1.8" stroke-linecap="round">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+          <line x1="19" y1="8" x2="19" y2="14"/>
+          <line x1="22" y1="11" x2="16" y2="11"/>
+        </svg>
+      </div>
+      <div class="clients-daily-label">Daily<br>New clients</div>
+      <div class="clients-num">54</div>
+      <span class="clients-trend">↗ +40%</span>
+      <div class="clients-vs">vs yesterday</div>
+    </div>
+
+  </div>
+
+  <!-- ⑤ AGENCY — col1, row3 (dark card) -->
+  <div class="card dark card-agency">
+    <div style="display:flex; justify-content:flex-end;">
+      <span class="agency-tag">↗</span>
+    </div>
+    <p class="agency-title">Smart Digital<br>Agency For Your<br><span>Business</span></p>
+    <div class="agency-photos">
+      <div class="agency-photo">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=140&fit=crop&crop=face" alt=""/>
+      </div>
+      <div class="agency-photo">
+        <img src="data:image/jpeg;base64,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" alt=""/>
+      </div>
+    </div>
+    <div class="agency-avatars">
+      <div class="av" style="background:none; border-color:#212121;">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+             width="26" height="26" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+      </div>
+      <div class="av" style="background:none; border-color:#212121;">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face"
+             width="26" height="26" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+      </div>
+      <div class="av" style="background:none; border-color:#212121;">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face"
+             width="26" height="26" style="border-radius:50%;object-fit:cover;display:block;" alt=""/>
+      </div>
+      <div class="av av-pink" style="border-color:#212121;">+</div>
+    </div>
+  </div>
+
+  <!-- ⑥ HERO — col2-3, row2 -->
+  <div class="card-hero card">
+
+    <!-- floating: Project Growth -->
+    <div class="mini-card project-growth">
+      <div class="mini-title">
+        Project Growth <span class="mini-three-dots">⋮</span>
+      </div>
+      <svg width="112" height="38" viewBox="0 0 112 38">
+        <polyline points="0,32 20,24 40,28 60,14 80,18 100,8 112,12"
+                  fill="none" stroke="#fde8ef" stroke-width="2"/>
+        <polyline points="0,32 20,24 40,28 60,14 80,18 100,8 112,12"
+                  fill="none" stroke="#f43f72" stroke-width="2.2"/>
+        <circle cx="100" cy="8" r="4" fill="#f43f72"/>
+      </svg>
+    </div>
+
+    <!-- floating: Conversion Age -->
+    <div class="mini-card conversion">
+      <div class="mini-title">
+        Conversion Age <span class="mini-three-dots">⋮</span>
+      </div>
+      <div class="bar-chart-mini">
+        <div class="bcm-col">
+          <div class="bcm-bar" style="height:20px;background:#fde8ef;"></div>
+          <div class="bcm-label">18-24</div>
+        </div>
+        <div class="bcm-col">
+          <div class="bcm-bar" style="height:30px;background:#f9b8cb;"></div>
+          <div class="bcm-label">25-34</div>
+        </div>
+        <div class="bcm-col">
+          <div class="bcm-bar" style="height:36px;background:#f43f72;"></div>
+          <div class="bcm-label">35-44</div>
+        </div>
+        <div class="bcm-col">
+          <div class="bcm-bar" style="height:22px;background:#f9b8cb;"></div>
+          <div class="bcm-label">45+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- floating: Total Plays -->
+    <div class="mini-card plays">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="play-btn">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="white"><path d="M0 0l10 6-10 6z"/></svg>
+        </div>
+        <div>
+          <div class="plays-num">26.807</div>
+          <div class="plays-sub">Total Plays</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- floating: Engagement Rate -->
+    <div class="mini-card engagement">
+      <div class="mini-title">&nbsp;<span class="mini-three-dots">⋮</span></div>
+      <div class="engagement-pct">19,46%</div>
+      <div class="plays-sub">Engagement Rate</div>
+      <div class="engagement-trend">↗ +102,48%</div>
+    </div>
+
+    <!-- Real woman photo -->
+    <div class="hero-person">
+      <img src="./wimg-removebg.png" width="240" height="900"
+      alt="Woman smiling with phone"/>
+    </div>
+  </div>
+
+  <!-- ⑦ FONT — col2, row3 -->
+  <div class="card card-font">
+    <div class="section-label">Font</div>
+    <div class="font-name">Sk-Modernist</div>
+    <div class="font-display">Aa</div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#1a1a1a;"></div>
+      <div class="swatch" style="background:#9ca3af;"></div>
+      <div class="swatch" style="background:#f43f72;"></div>
+      <div class="swatch" style="background:#f9b8cb;"></div>
+    </div>
+    <div class="view-fonts">View all fonts <span class="arrow-right">›</span></div>
+  </div>
+
+  <!-- ⑧ BUILD FUTURE — col3, row3 -->
+  <div class="card card-future">
+    <p class="future-title">We Build Future of Design Industry</p>
+    <p class="future-sub">Crafting Meaningful UX/UI Design</p>
+    <button class="explore-btn">Explore more <span class="arrow-right">›</span></button>
+    <img class="future-deco"
+         src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=200&h=200&fit=crop"
+         alt="3D decorative"/>
+  </div>
+
+  <!-- ⑨ CUBO — col4, row3 -->
+  <div class="card card-cubo">
+    <svg class="cubo-logo" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <circle cx="24" cy="26" r="16" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
+      <circle cx="36" cy="26" r="16" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
+      <circle cx="30" cy="36" r="16" stroke="#1a1a1a" stroke-width="1.8" fill="none"/>
+    </svg>
+    <div class="cubo-name">CUBO</div>
+    <div class="cubo-sub">Digital Studio</div>
+    <button class="discover-btn">Discover more <span class="arrow-right">›</span></button>
+  </div>
+
+</div><!-- /.dashboard -->
 </body>
 </html>

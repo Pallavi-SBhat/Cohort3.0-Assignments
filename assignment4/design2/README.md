@@ -1,3 +1,3 @@
 Output
 
-![Preview](./output.png.png)
+![Preview](./output.png)

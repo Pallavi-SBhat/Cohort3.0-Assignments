@@ -1,31 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dribbble – Discover the world's top designers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <main>
-        <div class="container">
-            <nav>
-                <div class="hiring">
-                    <img src="./logo-wrap.png" alt="Hiring Icon">
-                    <button>We are hiring!</button>
-                </div>
-                <div class="nav-links">
-                    <a href="#">Work</a>
-                    <a href="#">Services</a>
-                    <a href="#">About</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Pages</a>
-                    <a href="#">cart<span>0</span></a>
-                    <button class="contact-btn">Get in Touch</button>
-                    </div>
-            </nav>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="./logo-removebg-preview.png" alt="Dribbble Logo" class="logo" />
+      <ul class="nav-links">
+        <li><a href="#">Explore <span class="chevron">&#8964;</span></a></li>
+        <li><a href="#">Hire a Designer <span class="chevron">&#8964;</span></a></li>
+        <li><a href="#">Find Jobs</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="btn-signup">Sign up</a>
+      <a href="#" class="btn-login">Log in</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Discover the world's<br />top designers</h1>
+    <p class="hero-subtitle">
+      Explore work from the most talented and accomplished designers<br />
+      ready to take on your next project
+    </p>
+
+    <!-- SEARCH BAR -->
+    <div class="search-wrapper">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="What are you looking for?"
+      />
+      <div class="search-filter">
+        Shots <span class="chevron">&#8964;</span>
+      </div>
+      <button class="search-btn" aria-label="Search">
+        <span class="search-icon">&#128269;</span>
+      </button>
+    </div>
+
+    <!-- TRENDING TAGS -->
+    <div class="trending">
+      <span class="trending-label">Trending searches</span>
+      <div class="tags">
+        <a href="#" class="tag">landing page</a>
+        <a href="#" class="tag">e-commerce</a>
+        <a href="#" class="tag">mobile app</a>
+        <a href="#" class="tag">logo design</a>
+        <a href="#" class="tag">dashboard</a>
+        <a href="#" class="tag">icons</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY BAR -->
+  <div class="category-bar">
+    <div class="category-left">
+      <button class="sort-btn">Popular <span class="chevron">&#8964;</span></button>
+    </div>
+    <nav class="category-nav">
+      <a href="#" class="cat-link active">Discover</a>
+      <a href="#" class="cat-link">Animation</a>
+      <a href="#" class="cat-link">Branding</a>
+      <a href="#" class="cat-link">Illustration</a>
+      <a href="#" class="cat-link">Mobile</a>
+      <a href="#" class="cat-link">Print</a>
+      <a href="#" class="cat-link">Product Design</a>
+      <a href="#" class="cat-link">Typography</a>
+      <a href="#" class="cat-link">Web Design</a>
+    </nav>
+    <div class="category-right">
+      <button class="filters-btn">&#9776; Filters</button>
+    </div>
+  </div>
+
+  <!-- SHOTS GRID -->
+  <section class="shots-grid">
+    <div class="shot-card">
+      <div class="shot-thumb bg1"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av1"></div>
+          <span>Sarah K.</span>
         </div>
-    </main>
-    
+        <div class="shot-likes">&#9829; 248</div>
+      </div>
+    </div>
+    <div class="shot-card">
+      <div class="shot-thumb bg2"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av2"></div>
+          <span>Marco R.</span>
+        </div>
+        <div class="shot-likes">&#9829; 512</div>
+      </div>
+    </div>
+    <div class="shot-card">
+      <div class="shot-thumb bg3"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av3"></div>
+          <span>Lena P.</span>
+        </div>
+        <div class="shot-likes">&#9829; 197</div>
+      </div>
+    </div>
+    <div class="shot-card">
+      <div class="shot-thumb bg4"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av4"></div>
+          <span>James T.</span>
+        </div>
+        <div class="shot-likes">&#9829; 384</div>
+      </div>
+    </div>
+    <div class="shot-card">
+      <div class="shot-thumb bg5"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av5"></div>
+          <span>Yuna M.</span>
+        </div>
+        <div class="shot-likes">&#9829; 621</div>
+      </div>
+    </div>
+    <div class="shot-card">
+      <div class="shot-thumb bg6"></div>
+      <div class="shot-info">
+        <div class="shot-author">
+          <div class="avatar av6"></div>
+          <span>Carlos D.</span>
+        </div>
+        <div class="shot-likes">&#9829; 455</div>
+      </div>
+    </div>
+  </section>
+  </main>
+
 </body>
 </html>

@@ -62,27 +62,19 @@ main{
    NAVBAR
    =========================== */
 .navbar {
-  /* position: sticky; */
   top: 10px;
-  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: var(--nav-height);
-  padding: 73px 32px;
+  padding: 0 32px;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
 }
 
 /* Logo */
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--pink);
-  margin-right: 32px;
-  white-space: nowrap;
+ height: 50px;
+  width: 130px;
 }
 
 .logo:hover {
@@ -109,7 +101,7 @@ main{
 .nav-links li a {
   display: inline-flex;
   align-items: center;
-  gap: 1px;
+  gap: 4px;
   padding: 10px 14px;
   font-family: system-ui;
   line-height: 20px;
@@ -138,12 +130,12 @@ main{
 .btn-signup {
   font-size: 14px;
   font-weight: 700;
-  height: 70px;
-  width: 120px;
+  height: auto;
+  width: auto;
   font-family: system-ui;
   line-height: 20px;
   color: var(--dark);
-  padding: 20px 23px;
+  padding: 10px 16px;
   border-radius: var(--radius-pill);
   transition: background var(--transition);
 }
@@ -153,15 +145,15 @@ main{
 }
 
 .btn-login {
-  font-size: 20px;
-  height: 70px;
-  width: 120px;
+  font-size: 14px;
+  height: auto;
+  width: auto;
   font-family: system-ui;
   line-height: 20px;
   font-weight: 700;
   color: var(--white);
   background: var(--black);
-  padding: 20px 25px;
+  padding: 10px 20px;
   border-radius: var(--radius-pill);
   transition: background var(--transition), transform var(--transition);
 }
@@ -185,24 +177,24 @@ main{
 
 .hero-title {
   font-family: Georgia;
-  font-size: 109px;
+  font-size: 64px;
   font-weight: 400;
-  line-height: 127px;
+  line-height: 1.15;
   letter-spacing: -2px;
   color: var(--black);
   max-width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   animation: fadeUp 0.6s ease both;
 }
 
 .hero-subtitle {
   font-family: system-ui;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 45px;
+  line-height: 1.6;
   color: black;
   max-width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   animation: fadeUp 0.6s 0.1s ease both;
 }
 
@@ -210,12 +202,12 @@ main{
 .search-wrapper {
   display: flex;
   align-items: center;
-  height: 90px;
+  height: 56px;
   width: 100%;
-  max-width: 1080px;
+  max-width: 700px;
   background: var(--light-gray);
   border-radius: var(--radius-pill);
-  padding: 8px 8px 8px 28px;
+  padding: 6px 6px 6px 6px;
   gap: 0;
   animation: fadeUp 0.6s 0.2s ease both;
   border: 2px solid transparent;
@@ -233,7 +225,7 @@ main{
   border: none;
   background: transparent;
   font-family: system-ui;
-  font-size: 25px;
+  font-size: 15px;
   color: var(--black);
   outline: none;
   min-width: 0;

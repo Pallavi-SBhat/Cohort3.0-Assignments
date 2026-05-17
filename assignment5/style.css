@@ -425,14 +425,14 @@ main{
 }
 
 /* ===========================
-   SHOTS GRID
+   SHOTS GRID — 4 columns
    =========================== */
 .shots-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  padding: 40px;
-  max-width: 1280px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 32px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -450,59 +450,128 @@ main{
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
 }
 
-/* Shot thumbnails — colored placeholders */
+/* Thumbnail with overlay */
 .shot-thumb {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
+  position: relative;
+  overflow: hidden;
   transition: filter var(--transition);
 }
 
-.shot-card:hover .shot-thumb {
-  filter: brightness(0.96);
+.shot-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 
-.bg1 { background: linear-gradient(135deg, #fde8f4 0%, #f7b8dc 50%, #e87fc1 100%); }
-.bg2 { background: linear-gradient(135deg, #e8f0fe 0%, #a8c5fc 50%, #6699f5 100%); }
-.bg3 { background: linear-gradient(135deg, #fef9e8 0%, #fde68a 50%, #f59e0b 100%); }
-.bg4 { background: linear-gradient(135deg, #edf9f0 0%, #a7f3c0 50%, #34d399 100%); }
-.bg5 { background: linear-gradient(135deg, #fdf2f8 0%, #f5a8d4 50%, #d946a8 100%); }
-.bg6 { background: linear-gradient(135deg, #f0f0fe 0%, #c4b5fd 50%, #7c3aed 100%); }
+.shot-card:hover .shot-overlay {
+  opacity: 1;
+}
 
-/* Shot meta row */
+.like-btn,
+.save-btn {
+  background: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.like-btn:hover {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.save-btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Gradient backgrounds */
+.bg1 { background: linear-gradient(135deg, #e8e8f8 0%, #c4b5fd 50%, #8b5cf6 100%); }
+.bg2 { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #3d3d5c 100%); }
+.bg3 { background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 60%, #12344d 100%); }
+.bg4 { background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 50%, #f5c518 100%); }
+.bg5 { background: linear-gradient(135deg, #f0faf5 0%, #a7f3d0 50%, #059669 100%); }
+.bg6 { background: linear-gradient(135deg, #fffbf0 0%, #fde68a 50%, #f59e0b 100%); }
+.bg7 { background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%); }
+.bg8 { background: linear-gradient(135deg, #fff0f8 0%, #ffc8e8 50%, #ff69b4 100%); }
+
+/* Shot info row */
 .shot-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 10px 14px;
 }
 
 .shot-author {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  gap: 7px;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--dark);
+  min-width: 0;
 }
 
-.avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+.shot-author span:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 90px;
+}
+
+/* PRO / TEAM badges */
+.badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
   flex-shrink: 0;
 }
 
-.av1 { background: linear-gradient(135deg, #f472b6, #ec4899); }
-.av2 { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
-.av3 { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
-.av4 { background: linear-gradient(135deg, #4ade80, #22c55e); }
-.av5 { background: linear-gradient(135deg, #f472b6, #c026d3); }
-.av6 { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+.badge.pro {
+  background: #ffe4ec;
+  color: var(--pink);
+}
 
-.shot-likes {
-  font-size: 0.82rem;
+.badge.team {
+  background: #e8f0fe;
+  color: #3b6cf6;
+}
+
+/* Likes + Views */
+.shot-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.shot-likes,
+.shot-views {
+  font-size: 0.78rem;
   color: var(--mid-gray);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
   transition: color var(--transition);
 }
 
@@ -510,23 +579,37 @@ main{
   color: var(--pink);
 }
 
-/* ===========================
-   ANIMATIONS
-   =========================== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Avatar */
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 /* ===========================
    RESPONSIVE
    =========================== */
+@media (max-width: 1200px) {
+  .shots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .shots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .shots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 @media (max-width: 1100px) {
   .shots-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -109,11 +109,11 @@ main{
 .nav-links li a {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 1px;
   padding: 10px 14px;
   font-family: system-ui;
   line-height: 20px;
-  font-size:20px;
+  font-size:14px;
   font-weight: 600;
   color: var(--dark);
   border-radius: var(--radius-pill);
@@ -132,11 +132,11 @@ main{
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
 }
 
 .btn-signup {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   height: 70px;
   width: 120px;
@@ -344,7 +344,6 @@ main{
   border-bottom: 1.5px solid var(--border);
   gap: 16px;
   background: var(--white);
-  position: sticky;
   top: var(--nav-height);
   z-index: 90;
 }
@@ -586,10 +585,255 @@ main{
   border-radius: 50%;
   flex-shrink: 0;
 }
+/* ===========================
+   SIGN UP CTA
+   =========================== */
+.signup-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  position: relative;
+}
+
+.signup-cta-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 16px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.signup-cta-btn:hover {
+  background: #222;
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ccc;
+  color: var(--white);
+  border: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+  z-index: 999;
+}
+
+.scroll-top-btn:hover {
+  background: #999;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   SPONSORS BAR
+   =========================== */
+.sponsors-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 48px;
+  overflow: hidden;
+}
+
+.sponsors-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sponsor-logo {
+  font-weight: 700;
+  color: var(--black);
+  white-space: nowrap;
+  opacity: 0.75;
+  transition: opacity var(--transition);
+  cursor: pointer;
+}
+
+.sponsor-logo:hover {
+  opacity: 1;
+}
+
+.logo-style1 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.logo-style2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo-style3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.logo-style4 {
+  font-size: 2rem;
+  letter-spacing: -4px;
+}
+
+.logo-style5 {
+  font-size: 1.8rem;
+  letter-spacing: -4px;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 40px 48px 32px;
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.footer-brand-name {
+  
+height: 80px;
+width:100px;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+  flex: 1;
+  justify-content: center;
+}
+
+.footer-nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--dark);
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--pink);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-socials a {
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.footer-socials a:hover {
+  color: var(--pink);
+  transform: translateY(-2px);
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.82rem;
+  color: var(--mid-gray);
+}
+
+.footer-bottom-left a {
+  color: var(--mid-gray);
+  transition: color var(--transition);
+}
+
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.82rem;
+}
+
+.footer-bottom-right a {
+  color: var(--mid-gray);
+  transition: color var(--transition);
+}
+
+
+
 
 /* ===========================
    RESPONSIVE
    =========================== */
+@media (max-width: 900px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .footer-nav {
+    justify-content: flex-start;
+  }
+  .sponsors-track {
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 540px) {
+  .footer {
+    padding: 32px 20px 24px;
+  }
+  .sponsors-bar {
+    padding: 32px 20px;
+  }
+}
+
+
 @media (max-width: 1200px) {
   .shots-grid {
     grid-template-columns: repeat(3, 1fr);

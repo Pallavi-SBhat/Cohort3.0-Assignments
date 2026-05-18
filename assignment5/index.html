@@ -1,394 +1,538 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dribbble – Discover the world's top designers</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dribble</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main>
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <img src="./logo-removebg-preview.png" alt="Dribbble Logo" class="logo" />
-      <ul class="nav-links">
-        <li><a href="#">Explore <span class="chevron">&#8964;</span></a></li>
-        <li><a href="#">Hire a Designer <span class="chevron">&#8964;</span></a></li>
-        <li><a href="#">Find Jobs</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="btn-signup">Sign up</a>
-      <a href="#" class="btn-login">Log in</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1 class="hero-title">Discover the world's<br />top designers</h1>
-    <p class="hero-subtitle">
-      Explore work from the most talented and accomplished designers<br />
-      ready to take on your next project
-    </p>
-
-    <!-- SEARCH BAR -->
-    <div class="search-wrapper">
-      <input
-        class="search-input"
-        type="text"
-        placeholder="What are you looking for?"
-      />
-      <div class="search-filter">
-        Shots <span class="chevron">&#8964;</span>
-      </div>
-      <button class="search-btn" aria-label="Search">
-        <span class="search-icon">&#128269;</span>
-      </button>
-    </div>
-
-    <!-- TRENDING TAGS -->
-    <div class="trending">
-      <span class="trending-label">Trending searches</span>
-      <div class="tags">
-        <a href="#" class="tag">landing page</a>
-        <a href="#" class="tag">e-commerce</a>
-        <a href="#" class="tag">mobile app</a>
-        <a href="#" class="tag">logo design</a>
-        <a href="#" class="tag">dashboard</a>
-        <a href="#" class="tag">icons</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORY BAR -->
-  <div class="category-bar">
-    <div class="category-left">
-      <button class="sort-btn">Popular <span class="chevron">&#8964;</span></button>
-    </div>
-    <nav class="category-nav">
-      <a href="#" class="cat-link active">Discover</a>
-      <a href="#" class="cat-link">Animation</a>
-      <a href="#" class="cat-link">Branding</a>
-      <a href="#" class="cat-link">Illustration</a>
-      <a href="#" class="cat-link">Mobile</a>
-      <a href="#" class="cat-link">Print</a>
-      <a href="#" class="cat-link">Product Design</a>
-      <a href="#" class="cat-link">Typography</a>
-      <a href="#" class="cat-link">Web Design</a>
-    </nav>
-    <div class="category-right">
-      <button class="filters-btn">&#9776; Filters</button>
-    </div>
-  </div>
-
-  <!-- SHOTS GRID -->
- <!-- SHOTS GRID -->
-<section class="shots-grid">
-
-  <div class="shot-card">
-    <div class="shot-thumb bg1">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av1"></div>
-        <span>Upnow Studio</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 31</span>
-        <span class="shot-views">&#128065; 6.6k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg2">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av2"></div>
-        <span>FANCY</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 31</span>
-        <span class="shot-views">&#128065; 6.6k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg3">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av3"></div>
-        <span>Extej UI UX Design</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 31</span>
-        <span class="shot-views">&#128065; 6.6k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg4">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av4"></div>
-        <span>Emote</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 31</span>
-        <span class="shot-views">&#128065; 6.6k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg5">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av5"></div>
-        <span>Altecho Studio</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 44</span>
-        <span class="shot-views">&#128065; 5.2k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg6">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av6"></div>
-        <span>Agency Pro</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 58</span>
-        <span class="shot-views">&#128065; 7.1k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg7">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av1"></div>
-        <span>Nimbus Design</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 92</span>
-        <span class="shot-views">&#128065; 8.4k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg8">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av3"></div>
-        <span>Pixel & Co.</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 76</span>
-        <span class="shot-views">&#128065; 4.9k</span>
-      </div>
-    </div>
-  </div>
-  <div class="shot-card">
-    <div class="shot-thumb bg3">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av2"></div>
-        <span>Nova Creative</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 113</span>
-        <span class="shot-views">&#128065; 9.2k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg6">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av4"></div>
-        <span>Stark Labs</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 87</span>
-        <span class="shot-views">&#128065; 6.0k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg1">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av6"></div>
-        <span>Bloom Studio</span>
-        <span class="badge pro">PRO</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 204</span>
-        <span class="shot-views">&#128065; 11.3k</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="shot-card">
-    <div class="shot-thumb bg5">
-      <div class="shot-overlay">
-        <button class="like-btn">&#9829;</button>
-        <button class="save-btn">&#43;</button>
-      </div>
-    </div>
-    <div class="shot-info">
-      <div class="shot-author">
-        <div class="avatar av5"></div>
-        <span>Grid & Form</span>
-        <span class="badge team">TEAM</span>
-      </div>
-      <div class="shot-meta">
-        <span class="shot-likes">&#9829; 65</span>
-        <span class="shot-views">&#128065; 3.8k</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-<!-- SIGN UP CTA -->
-  <div class="signup-cta">
-    <button class="signup-cta-btn">Sign up to continue</button>
-    <button class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
-  </div>
-
-  <!-- SPONSOR LOGOS -->
-  <div class="sponsors-bar">
-    <div class="sponsors-track">
-      <span class="sponsor-logo logo-style1">&#9612;&#9612; LOGOIPSUM</span>
-      <span class="sponsor-logo logo-style2">&#9632;OGO</span>
-      <span class="sponsor-logo logo-style3">&#10022; logoipsum·</span>
-      <span class="sponsor-logo logo-style4">&#9900;&#9900;&#9900;</span>
-      <span class="sponsor-logo logo-style5">&#8734;&#8734;&#8734;</span>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-main">      
-      <nav class="footer-nav">
-        <img src="./logo-removebg-preview.png" alt="Dribbble Logo" class="footer-brand-name" />
-        <a href="#">For designers</a>
-        <a href="#">Hire talent</a>
-        <a href="#">Inspiration</a>
-        <a href="#">Advertising</a>
-        <a href="#">Blog</a>
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Support</a>
-      </nav>
-      <div class="footer-socials">
-  <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-  <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-  <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-</div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        <span>&copy;2025 Dribbble</span>
-        <a href="#">Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Cookies</a>
-      </div>
-      <div class="footer-bottom-right">
-        <a href="#">Jobs</a>
-        <a href="#">Designers</a>
-        <a href="#">Freelancers</a>
-        <a href="#">Tags</a>
-        <a href="#">Places</a>
-        <a href="#">Resources</a>
-      </div>
-    </div>
-  </footer>
-  </main>
-
-</body>
+      <section id="home" class="section1">
+        <div class="nav">
+          <div class="nav-left">
+            <div class="logo"><img src="./logo-removebg-preview.png" alt="" /></div>
+            <div class="links">
+              <a href="">Explore <i class="ri-arrow-down-s-line"></i></a>
+              <a href=""
+                >Hire a Designer <i class="ri-arrow-down-s-line"></i
+              ></a>
+              <a href="">Find Jobs</a>
+              <a href="">Blog</a>
+            </div>
+          </div>
+          <div class="nav-right">
+            <button>Signup</button>
+            <button>Login</button>
+          </div>
+        </div>
+        <div class="hero">
+          <h1>Discover the world's top designers</h1>
+          <p>
+            Explore work from the most talented and accomplished designers ready
+            to take on your next project
+          </p>
+          <div class="input-container">
+            <input type="text" placeholder="What are you looking for? " />
+            <p>shorts <i class="ri-arrow-down-s-line"></i></p>
+            <i class="ri-search-line"></i>
+          </div>
+          <div class="trending-searches">
+            <p class="val">Trending searches</p>
+            <p>landing page</p>
+            <p>e-commerce</p>
+            <p>mobile app</p>
+            <p>logo design</p>
+            <p>dashboard</p>
+            <p>icons</p>
+          </div>
+        </div>
+      </section>
+      <section class="section2">
+        <div class="popular-section">
+          <p>Popular <i class="ri-arrow-down-s-line"></i></p>
+          <div class="options">
+            <p>Discover</p>
+            <p>Animation</p>
+            <p>Branding</p>
+            <p>Illustration</p>
+            <p>Mobile</p>
+            <p>Print</p>
+            <p>Product design</p>
+            <p>Typography</p>
+            <p>Web design</p>
+          </div>
+          <p><i class="ri-filter-3-line"></i> Filters</p>
+        </div>
+        <div class="section2-hero">
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Fitness and step coun..</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                    alt=""
+                  />
+                </div>
+                <p>Upnow Studio</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <video
+                autoplay
+                muted
+                loop
+                src="https://cdn.dribbble.com/userupload/18911729/file/original-31b3d222d1c9ab101d5d197eb36b672a.mp4"
+              ></video>
+              <div class="hover-content">
+                <h1>Hero 3D and Anima...</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/14228077/avatars/small/0ddad37879c5ad169f685c663beba922.png?1693571474"
+                    alt=""
+                  />
+                </div>
+                <p>FANCY</p>
+                <p>TEAM</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18901622/file/original-3ea38dfb1ce6061d88bea856bc45c1c9.jpg?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Liverage Crypto trading...</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/1043230/avatars/small/092502a9a3cea1c44dd5e5f9939430b4.png?1540212885"
+                    alt=""
+                  />
+                </div>
+                <p>Extej UI UX Design...</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18916825/file/still-56dc65e9d214a0ab95778b11745b4a77.png?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Plexo</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/11502486/avatars/small/a8456497e26e27118763af6fc5b5fbcc.png?1650726363"
+                    alt=""
+                  />
+                </div>
+                <p>Emote</p>
+                <p>TEAM</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18860878/file/original-bb09066c4b66752294e2c8d69ee7eab7.png?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Altecho-Webdesign</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/1211065/avatars/small/b81496bc4bb212547959f523d2146f27.png?1718745884"
+                    alt=""
+                  />
+                </div>
+                <p>Victa Ville</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/15858473/file/original-4b3c43159ee3f725177f53d844da029e.png?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Fitness and step coun..</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/1210294/avatars/small/bd55d9caacc12da3b44d12363637c097.png?1716388700"
+                    alt=""
+                  />
+                </div>
+                <p>Bonsai</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                style="object-position: center"
+                src="https://cdn.dribbble.com/userupload/18865610/file/original-12d4aa04f52edb097fb1c7c7afd299be.jpg?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Doverange</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/22136/avatars/small/9ab8f67def79c1b8c442ee1874999148.jpg?1411082459"
+                    alt=""
+                  />
+                </div>
+                <p>Type08(alen pavlovic)</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18745258/file/original-d639b12b53f0aaff20ebde03f9e8f566.png?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Financial Mobile App</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/4949363/avatars/small/606bb85ee728fd3d78bbddf7e70b3901.jpg?1676454777"
+                    alt=""
+                  />
+                </div>
+                <p>Ronus IT|UI UX Tec..</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18827550/file/still-de60b218b87ac00cf7cfe46096701d1e.png?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Animated Landing Page....</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/14095940/avatars/small/e584c0a059b6c7c4f4c23852153e5521.png?1669730203"
+                    alt=""
+                  />
+                </div>
+                <p>Bato</p>
+                <p>TEAM</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18911411/file/original-d7cfc941b6d908e23895ee6fb3e9864f.jpg?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Finanace Logo</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/4438388/avatars/small/ac894a88fa8acddc8b563c266c78df08.jpg?1708976300"
+                    alt=""
+                  />
+                </div>
+                <p>Jovel Ahmed</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18851563/file/original-3f5d517b52e3e5c9918aa6f29414e487.jpg?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Rapid Rabbit Logo</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/46501/avatars/small/4d393ff0e50f52d72be6a37eeaaefcf6.jpg?1464102214"
+                    alt=""
+                  />
+                </div>
+                <p>Levi Lowell</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img
+                src="https://cdn.dribbble.com/userupload/18869949/file/original-9407889cf2190177eafb7b2469647b8f.jpg?format=webp&resize=400x300&vertical=center"
+                alt=""
+              />
+              <div class="hover-content">
+                <h1>Free Sample Pack|u......</h1>
+                <div class="hover-content-right">
+                  <i class="ri-heart-line"></i><i class="ri-bookmark-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="details">
+              <div class="detail-left">
+                <div class="logo">
+                  <img
+                    src="https://cdn.dribbble.com/users/3954689/avatars/small/502c7cc4f5b1f6878438c9461aa1bcaa.jpg?1705035698"
+                    alt=""
+                  />
+                </div>
+                <p>Ulysses Design Co. .</p>
+                <p>PRO</p>
+              </div>
+              <div class="detail-right">
+                <p><i class="ri-heart-fill"></i>31</p>
+                <p><i class="ri-eye-fill"></i>6.6k</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section3">
+        <div class="signup-section">
+          <div class="left">
+            <p>sign up to continue</p>
+          </div>
+          <div class="right">
+            <a href="#home"> <i class="ri-arrow-up-line"></i></a>
+          </div>
+        </div>
+        <div class="animation-section">
+          <div class="container">
+            <img
+              src="./logos/63c418af3b2b766cebaba02d_client-logo-01.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce2c404b364300ba31_client-logo-04.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce6a0062cf2d279e35_client-logo-02.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce9f1b45e141bf28b5_client-logo-03.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418cea9dabe252e43b0c0_client-logo-07.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418cea9dabef95143b0c1_client-logo-06.svg"
+              alt=""
+            />
+          </div>
+          <div class="container">
+            <img
+              src="./logos/63c418af3b2b766cebaba02d_client-logo-01.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce2c404b364300ba31_client-logo-04.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce6a0062cf2d279e35_client-logo-02.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418ce9f1b45e141bf28b5_client-logo-03.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418cea9dabe252e43b0c0_client-logo-07.svg"
+              alt=""
+            />
+            <img
+              src="./logos/63c418cea9dabef95143b0c1_client-logo-06.svg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="section3-nav">
+          <img src="./logo-removebg-preview.png" alt="" />
+          <div class="list">
+            <a href=""> For designers </a>
+            <a href=""> Hire talent </a>
+            <a href=""> Inspiration </a>
+            <a href="">Advertising</a>
+            <a href="">Blog</a>
+            <a href="">About</a>
+            <a href="">Careers</a>
+            <a href="">Support</a>
+          </div>
+          <div class="social">
+            <i class="ri-twitter-fill"></i>
+            <i class="ri-facebook-box-fill"></i>
+            <i class="ri-instagram-line"></i>
+            <i class="ri-pinterest-fill"></i>
+          </div>
+        </div>
+      </section>
+      <section class="footer">
+        <div class="footer-left">
+          <p><i class="ri-copyright-line"></i>2025 Dribble</p>
+          <p>Terms</p>
+          <p>Privacy</p>
+          <p>Cookies</p>
+        </div>
+        <div class="footer-right">
+          <p>Jobs</p>
+          <p>Designers</p>
+          <p>Freelancers</p>
+          <p>Tags</p>
+          <p>Places</p>
+          <p>Resources</p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

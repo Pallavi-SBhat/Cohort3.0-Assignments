@@ -6,6 +6,6 @@ A modern Dribble landing page built using only HTML and CSS as part of my Cohort
  - CSS
 
 # Output:
-![Preview](outputPreview\ouput1.png)
-![Preview](outputPreview\ouput2.png)
-![Preview](outputPreview\ouput3.png)
+![Preview](outputPreview/output1.png)
+![Preview](outputPreview/output2.png)
+![Preview](outputPreview/output3.png)

@@ -1,0 +1,1 @@
+console.table(["Navi","aryan","bhoomi","avni","zyan"])

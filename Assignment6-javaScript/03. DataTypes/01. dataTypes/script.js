@@ -1,0 +1,10 @@
+let name="Pallavi";
+let age=22;
+let bool=true;
+let nValue=null;
+let undefine;
+console.log("Name:"+name);
+console.log("age:"+age);
+console.log("Boolean:"+bool);
+console.log("Null Value:"+nValue);
+console.log("Undefined:"+undefine);

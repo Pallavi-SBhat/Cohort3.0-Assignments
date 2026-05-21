@@ -1,0 +1,10 @@
+let name="Pallavi";
+let age=22;
+let bool=true;
+let nValue=null;
+let undefine;
+console.log("Name:"+name+" Type of the Variable:"+typeof(name));
+console.log("Age:"+age+" Type of the Variable:"+typeof(age));
+console.log("Boolean:"+bool+" Type of the Variable:"+typeof(bool));
+console.log("Null Value:"+nValue+" Type of the Variable:"+typeof(nValue));
+console.log("undefined:"+undefine+" Type of the Variable:"+typeof(undefine));

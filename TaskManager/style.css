@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  padding: 30px;
+  transition: 0.3s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.create-btn {
+  background: #0f766e;
+  color: white;
+}
+
+.create-btn:hover {
+  background: #115e59;
+}
+
+.theme-btn {
+  background: #334155;
+  color: white;
+}
+
+.theme-btn:hover {
+  background: #1e293b;
+}
+
+/* Stats */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0f766e;
+}
+
+/* Task Grid */
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 20px;
+}
+
+/* Task Card */
+
+.task-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-header h3 {
+  font-size: 18px;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: white;
+  font-size: 13px;
+}
+
+.pending {
+  background: #f59e0b;
+}
+
+.completed {
+  background: #16a34a;
+}
+
+.task-category {
+  margin: 15px 0;
+  color: #475569;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  flex: 1;
+  background: #14b8a6;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #0f766e;
+}
+
+.delete-btn {
+  flex: 1;
+  background: #dc2626;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* Popup */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-card {
+  background: white;
+  width: 420px;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+#closeBtn {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#taskForm input,
+#taskForm select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+/* Demo Sections */
+
+.demo-section {
+  margin-top: 50px;
+}
+
+.demo-section h2 {
+  margin-bottom: 15px;
+}
+
+#demoInput {
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#checkAttribute {
+  background: #0f766e;
+  color: white;
+  margin-left: 10px;
+}
+
+/* Event Demo */
+
+.grandparent {
+  background: #fb7185;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.parent {
+  background: #60a5fa;
+  padding: 30px;
+  margin-top: 15px;
+  border-radius: 12px;
+}
+
+#childBtn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Pipeline */
+
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pipeline-box {
+  width: 250px;
+  padding: 15px;
+  background: white;
+  text-align: center;
+  border-radius: 10px;
+  margin: 5px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.arrow {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Dark Theme */
+
+body[data-theme="dark"] {
+  background: #0f172a;
+  color: white;
+}
+
+body[data-theme="dark"] .stat-card,
+body[data-theme="dark"] .task-card,
+body[data-theme="dark"] .popup-card,
+body[data-theme="dark"] .pipeline-box {
+  background: #1e293b;
+  color: white;
+}
+
+body[data-theme="dark"] .subtitle,
+body[data-theme="dark"] .task-category {
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] select {
+  background: #334155;
+  color: white;
+  border: 1px solid #475569;
+}
+
+body[data-theme="dark"] #demoInput {
+  background: #334155;
+  color: white;
+}
+
+body[data-theme="dark"] #childBtn {
+  background: #475569;
+  color: white;
+}

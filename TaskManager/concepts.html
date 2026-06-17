@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Concepts</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light">
+
+    <header>
+
+        <div>
+            <h1>DOM Concepts Demonstration</h1>
+            <p class="subtitle">
+                Browser Rendering, Events and DOM Manipulation Concepts
+            </p>
+        </div>
+
+        <div class="header-buttons">
+
+            <button id="themeBtn"
+                    class="btn theme-btn">
+                🌙 Dark Mode
+            </button>
+
+            <a href="index.html">
+                <button class="btn create-btn">
+                    ← Back to Tasks
+                </button>
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- Attributes vs Properties -->
+
+    <section class="demo-section">
+
+        <h2>Attributes vs Properties</h2>
+
+        <p>
+            Change the value in the input box and click
+            "Check Console". Open browser console (F12)
+            to see the difference.
+        </p>
+
+        <br>
+
+        <input
+            type="text"
+            id="demoInput"
+            value="Original Value">
+
+        <button
+            id="checkAttribute"
+            class="btn create-btn">
+
+            Check Console
+
+        </button>
+
+    </section>
+
+    <!-- Event Bubbling and Capturing -->
+
+    <section class="demo-section">
+
+        <h2>Event Bubbling & Event Capturing</h2>
+
+        <p>
+            Click the Child Button and check the
+            console to observe the event flow.
+        </p>
+
+        <br>
+
+        <div id="grandparent"
+             class="grandparent">
+
+            Grandparent
+
+            <div id="parent"
+                 class="parent">
+
+                Parent
+
+                <button id="childBtn">
+                    Child Button
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Browser Rendering Pipeline -->
+
+    <section class="demo-section">
+
+        <h2>Browser Rendering Pipeline</h2>
+
+        <div class="pipeline">
+
+            <div class="pipeline-box">
+                HTML
+            </div>
+
+            <div class="arrow">
+                ↓
+            </div>
+
+            <div class="pipeline-box">
+                Parsing
+            </div>
+
+            <div class="arrow">
+                ↓
+            </div>
+
+            <div class="pipeline-box">
+                Tokenization
+            </div>
+
+            <div class="arrow">
+                ↓
+            </div>
+
+            <div class="pipeline-box">
+                DOM Tree
+            </div>
+
+            <div class="arrow">
+                ↓
+            </div>
+
+            <div class="pipeline-box">
+                CSSOM Tree
+            </div>
+
+            <div class="arrow">
+                ↓
+            </div>
+
+            <div class="pipeline-box">
+                Render Tree
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DOM Methods -->
+
+    <section class="demo-section">
+
+        <h2>DOM Methods Used in This Project</h2>
+
+        <div class="method-grid">
+
+            <div class="method-card">
+                createElement()
+            </div>
+
+            <div class="method-card">
+                createTextNode()
+            </div>
+
+            <div class="method-card">
+                append()
+            </div>
+
+            <div class="method-card">
+                appendChild()
+            </div>
+
+            <div class="method-card">
+                prepend()
+            </div>
+
+            <div class="method-card">
+                before()
+            </div>
+
+            <div class="method-card">
+                after()
+            </div>
+
+            <div class="method-card">
+                replaceWith()
+            </div>
+
+            <div class="method-card">
+                remove()
+            </div>
+
+            <div class="method-card">
+                setAttribute()
+            </div>
+
+            <div class="method-card">
+                getAttribute()
+            </div>
+
+            <div class="method-card">
+                hasAttribute()
+            </div>
+
+            <div class="method-card">
+                removeAttribute()
+            </div>
+
+            <div class="method-card">
+                dataset
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Explanation Section -->
+
+    <section class="demo-section">
+
+        <h2>Concept Summary</h2>
+
+        <div class="summary-card">
+
+            <p>
+                <strong>Parsing:</strong>
+                Converting HTML source code into a
+                structured format.
+            </p>
+
+            <p>
+                <strong>Tokenization:</strong>
+                Breaking HTML into smaller tokens
+                such as tags and text.
+            </p>
+
+            <p>
+                <strong>DOM Tree:</strong>
+                Tree representation of HTML elements.
+            </p>
+
+            <p>
+                <strong>CSSOM Tree:</strong>
+                Tree representation of CSS rules.
+            </p>
+
+            <p>
+                <strong>Render Tree:</strong>
+                Combination of DOM and CSSOM used
+                to render the webpage.
+            </p>
+
+            <p>
+                <strong>Event Bubbling:</strong>
+                Event travels from child to parent.
+            </p>
+
+            <p>
+                <strong>Event Capturing:</strong>
+                Event travels from parent to child.
+            </p>
+
+            <p>
+                <strong>Event Delegation:</strong>
+                Parent element handles events for
+                its child elements.
+            </p>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

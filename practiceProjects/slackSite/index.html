@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slack Clone</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-left">
+          <div class="logo">
+            <img
+              src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-black.png"
+              alt=""
+            />
+          </div>
+
+          <ul class="nav-links">
+            <li>Features <i class="ri-arrow-down-s-line"></i></li>
+            <li>Solutions <i class="ri-arrow-down-s-line"></i></li>
+            <li>Enterprise</li>
+            <li>Resources <i class="ri-arrow-down-s-line"></i></li>
+            <li>Pricing</li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="search"><i class="ri-search-line"></i></span>
+          <a href="#">Sign in</a>
+
+          <button class="outline-btn">REQUEST A DEMO</button>
+
+          <button class="purple-btn">GET STARTED</button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>
+        All your people and AI agents
+        <br />
+        working together.
+      </h1>
+
+      <p>Slack connects your team. Slackbot multiplies what they can do.</p>
+
+      <div class="hero-buttons">
+        <button class="purple-btn hero-btn">GET STARTED</button>
+
+        <button class="outline-btn hero-btn">FIND YOUR SUBSCRIPTION →</button>
+      </div>
+
+      <div class="companies">
+        <span>Trusted by top teams</span>
+
+        <div class="logos">
+          <img
+            src="https://a.slack-edge.com/84f9021/marketing/img/homepage/true-prospects/hero-revamp/logos/logo-gm-small.png"
+          />
+          <img
+            src="https://a.slack-edge.com/84f9021/marketing/img/homepage/true-prospects/hero-revamp/logos/logo-openai-small.png"
+          />
+          <img
+            src="https://a.slack-edge.com/a4c4a15/marketing/img/homepage/true-prospects/revamp-exp/logos/logo-target-small.png"
+          />
+          <img
+            src="https://a.slack-edge.com/84f9021/marketing/img/homepage/true-prospects/hero-revamp/logos/logo-paramount-small.png"
+          />
+          <img
+            src="https://a.slack-edge.com/84f9021/marketing/img/homepage/true-prospects/hero-revamp/logos/logo-stripe-small.png"
+          />
+          <img
+            src="https://a.slack-edge.com/84f9021/marketing/img/homepage/true-prospects/hero-revamp/logos/logo-ibm-small.png"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace-showcase">
+      <div class="workspace-container">
+        <video
+          src="https://a.slack-edge.com/ee043bc/marketing/img/homepage/revamped-25/hero/video-3p-app-orchestration.IN@2x.webm"
+          muted
+          autoplay
+        ></video>
+      </div>
+
+      <div class="chips">
+        <button>Ask Slackbot 🤖</button>
+        <button>Plan launches 🚀</button>
+        <button>Run projects 📋</button>
+        <button class="active">Chat with clients 💬</button>
+        <button>Automate tasks ⚡</button>
+      </div>
+    </section>
+    <section class="ai-section">
+      <div class="container">
+        <h2>
+          Reimagine what's possible
+          <br />
+          with AI and agents.
+        </h2>
+
+        <p class="subtitle">
+          AI in Slack doesn't make you think, it helps you do. It summarises and
+          searches based on actual conversations.
+        </p>
+
+        <div class="ai-content">
+          <div class="feature-list">
+            <div class="feature-item">Update deals just by asking Slackbot</div>
+
+            <div class="feature-item">Summarise a conversation you missed</div>
+
+            <div class="feature-item">Get fast answers with Claude</div>
+
+            <div class="feature-item">Turn on AI note-taking in huddles</div>
+
+            <div class="feature-item active">
+              Review code with GitHub Copilot
+            </div>
+
+            <div class="feature-item">Look up customer data in Agentforce</div>
+          </div>
+
+          <div class="ai-image">
+            <video
+              src="https://a.slack-edge.com/55e8901/marketing/img/homepage/revamped-25/hero/hp-channels.IN@2x.webm"
+              muted
+              autoplay
+            ></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="updates">
+      <div class="updates-header">
+        <div>
+          <h2>What's new in Slack</h2>
+          <a href="#">See all updates →</a>
+        </div>
+
+        <div class="slider-controls">
+          <button id="prev">←</button>
+          <button id="next">→</button>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <img
+            src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/slackbot-skills.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> NEW FEATURE </span>
+
+            <h3>Slackbot Skills</h3>
+
+            <p>
+              Slackbot can do the work for you, and you don't need to tell it
+              twice.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/slackbot-email-calendar.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> FEATURE ENHANCEMENT </span>
+
+            <h3>Slackbot Email and Calendar Actions</h3>
+
+            <p>Leave Slack less.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/slackbot-scheduled-automation.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> FEATURE ENHANCEMENT </span>
+
+            <h3>Slackbot Scheduled Tasks</h3>
+
+            <p>Set it and forget it - and let Slackbot handle it.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/generate-ai-response.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> FEATURE ENHANCEMENT </span>
+
+            <h3>Generate AI Response Step in Workflow Builder</h3>
+
+            <p>
+              Generative AI just became a native step in every Slack workflow.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/slack-agent-developer-kit.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> NEW FEATURE </span>
+
+            <h3>Slack Developer Kit for Agents</h3>
+
+            <p>Building AI agents for Slack just got a whole lot faster.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://a.slack-edge.com/6dfe43d/marketing/img/homepage/revamped-25/placeholders/img-whats-new-placeholder.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> FEATURE ENHANCEMENT </span>
+
+            <h3>Slackbot Slack Actions</h3>
+
+            <p>
+              Slackbot can now act inside Slack, not just answer questions about
+              it.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://a.slack-edge.com/6dfe43d/marketing/img/homepage/revamped-25/placeholders/img-whats-new-placeholder.png"
+            alt=""
+          />
+
+          <div class="card-content">
+            <span class="badge"> FEATURE ENHANCEMENT </span>
+
+            <h3>Slackbot In-Slack Awareness</h3>
+
+            <p>
+              Slackbot has something no other AI tool has: full, native context
+              of where you are and what you're working on.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="sticky-tabs">
+      <a href="#" class="active">Knowledge</a>
+      <a href="#">People</a>
+      <a href="#">Process</a>
+      <a href="#">Platform</a>
+    </div>
+    <section class="instant-context">
+      <div class="context-container">
+        <div class="context-heading">
+          <h2>Give everyone instant context.</h2>
+
+          <p>
+            Get access to every file, decision and conversation, so you can
+            build on past work instead of recreating it.
+          </p>
+        </div>
+
+        <div class="context-content">
+          <div class="context-left">
+            <div class="feature">
+              <h3>Meet Slackbot: Your personal agent for work.</h3>
+            </div>
+
+            <div class="feature">
+              <h3>One search to rule them all.</h3>
+            </div>
+
+            <div class="feature active">
+              <h3>Bring CRM data to the conversation.</h3>
+
+              <p>
+                Customer insights now live alongside conversations, so deals
+                keep moving forward.
+              </p>
+
+              <a href="#"> Learn about Salesforce in Slack → </a>
+            </div>
+
+            <div class="stats">
+              <h2>97 mins</h2>
+
+              <p>
+                Average time that users can save weekly with AI in Slack<sup
+                  >1</sup
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="context-right">
+            <img
+              src="https://a.slack-edge.com/55e8901/marketing/img/homepage/revamped-25/carousels/img-knowledge-1.IN.png"
+              alt="Slack Context Demo"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instant-context people-section">
+      <div class="context-container">
+        <div class="context-heading">
+          <h2>Let your <span>people connect like people.</span></h2>
+
+          <p>
+            Slack's conversational UI makes collaborating more approachable,
+            whether you're working with a colleague or an agent.
+          </p>
+        </div>
+
+        <div class="context-content">
+          <div class="context-left">
+            <div class="feature">
+              <h3>It all starts with a channel.</h3>
+            </div>
+
+            <div class="feature">
+              <h3>When talking is easier than typing...</h3>
+            </div>
+
+            <div class="feature active">
+              <h3>Bring conversations out of the Inbox.</h3>
+
+              <p>
+                Slack Connect lets you chat with clients and vendors in real
+                time, directly from Slack. Email can't compare.
+              </p>
+
+              <a href="#"> Learn about Slack Connect → </a>
+            </div>
+
+            <div class="stats quote-box">
+              <h4>ANTHROPIC</h4>
+
+              <p>
+                Slack has been essential to our growth, our speed and our
+                ability to stay aligned as we scale.
+              </p>
+
+              <span> Kate Jensen, Head of America, Anthropic </span>
+            </div>
+          </div>
+
+          <div class="context-right">
+            <img
+              src="https://a.slack-edge.com/55e8901/marketing/img/homepage/revamped-25/carousels/img-people-1.IN.png"
+              alt="Slack Connect"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instant-context process-section">
+      <div class="context-container">
+        <div class="context-heading">
+          <h2>Manage all your <span>work from one place.</span></h2>
+
+          <p>
+            Automate daily stand-up meetings, project updates and approvals so
+            your team can focus on growth instead of guesswork.
+          </p>
+        </div>
+
+        <div class="context-content">
+          <div class="context-left">
+            <div class="feature">
+              <h3>Anyone can automate in Slack.</h3>
+            </div>
+
+            <div class="feature active">
+              <h3>Manage projects and tasks.</h3>
+
+              <p>
+                Track Approvals. Mark as complete. All without leaving the
+                conversation.
+              </p>
+
+              <a href="#"> Learn about lists → </a>
+            </div>
+
+            <div class="feature">
+              <h3>A simpler way to get started.</h3>
+            </div>
+
+            <div class="stats">
+              <h2>35%</h2>
+
+              <p>
+                increase in time saved due to automations for Slack users<sup
+                  >2</sup
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="context-right">
+            <img
+              src="https://a.slack-edge.com/55e8901/marketing/img/homepage/revamped-25/carousels/img-process-3.IN.png"
+              alt="Slack Lists"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instant-context platform-section">
+      <div class="context-container">
+        <div class="context-heading">
+          <h2>Secure. Scalable. <span>Silo-free.</span></h2>
+
+          <p>
+            Our flexible, open platform is purpose-built for bringing the best
+            agents and AI to every business, and can be tailored to fit however
+            your teams work best.
+          </p>
+        </div>
+
+        <div class="context-content">
+          <div class="context-left">
+            <div class="feature">
+              <h3>From Atlassian to Zoom.</h3>
+            </div>
+
+            <div class="feature active">
+              <h3>Customise Slack to fit your needs.</h3>
+
+              <p>
+                Our platform is flexible so that you can build solutions
+                specific to your business.
+              </p>
+
+              <a href="#"> Learn about dev tools → </a>
+            </div>
+
+            <div class="feature">
+              <h3>Work without worry.</h3>
+            </div>
+
+            <div class="stats quote-box">
+              <h4>▲ Vercel</h4>
+
+              <p>
+                Work starts in conversations. That's why we use Slack as the
+                natural place to build our systems.
+              </p>
+
+              <span> Guillermo Rauch, CEO, Vercel </span>
+            </div>
+          </div>
+
+          <div class="context-right">
+            <img
+              src="https://a.slack-edge.com/55e8901/marketing/img/homepage/revamped-25/carousels/img-platform-1.IN.png"
+              alt="Slack Platform"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stories">
+      <h2>The most innovative companies run their business in Slack.</h2>
+
+      <div class="story-cards">
+        <div class="story-card active">
+          <video muted loop>
+            <source
+              src="https://a.slack-edge.com/b518216/marketing/img/features/slackbot/mr-beast-slackbot-teaser@2x.webm"
+              type="video/mp4"
+            />
+          </video>
+
+          <div class="overlay">
+            <h3>slackbot helps Airsecret to create viral videos.</h3>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <video muted loop>
+            <source
+              src="https://a.slack-edge.com/66e1519/marketing/img/homepage/revamped-24/customer-videos/preview-clips/box-web-trailer@2x.webm"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+
+        <div class="story-card">
+          <video muted loop>
+            <source
+              src="https://a.slack-edge.com/66e1519/marketing/img/homepage/revamped-24/customer-videos/preview-clips/caraway-web-trailer@2x.webm"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+
+        <div class="story-card">
+          <video muted loop>
+            <source
+              src="https://a.slack-edge.com/66e1519/marketing/img/homepage/revamped-24/customer-videos/preview-clips/rivian-web-trailer@2x.webm"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
+      <div class="story-actions">
+        <a href="#" class="btn purple-btn">GET STARTED</a>
+        <a href="#" class="btn outline-btn">REQUEST A DEMO</a>
+      </div>
+    </section>
+
+    <section class="growth-section">
+      <div class="growth-container">
+        <h2>We're in the business of growing businesses.</h2>
+
+        <div class="growth-stats">
+          <div class="stat-card">
+            <h3>90%</h3>
+            <p>
+              of users say that Slack helps them to stay more connected<sup
+                >1</sup
+              >
+            </p>
+          </div>
+
+          <div class="stat-card">
+            <h3>88%</h3>
+            <p>of users say that Slack improves communication<sup>5</sup></p>
+          </div>
+
+          <div class="stat-card">
+            <h3>36%</h3>
+            <p>increase in employee engagement<sup>5</sup></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slack-love">
+      <div class="container">
+        <h2 class="section-title">Millions of people love to work in Slack.</h2>
+
+        <div class="love-content">
+          <!-- Left Stats -->
+          <div class="love-stats">
+            <div class="stat">
+              <h3>700M</h3>
+              <p>messages sent daily<sup>1</sup></p>
+            </div>
+
+            <div class="stat">
+              <h3>1.7M</h3>
+              <p>apps actively used each week<sup>1</sup></p>
+            </div>
+
+            <div class="stat">
+              <h3>4M</h3>
+              <p>
+                Slack Connect users working directly with external teams each
+                week<sup>1</sup>
+              </p>
+            </div>
+
+            <div class="stat">
+              <h3>3M</h3>
+              <p>daily workflows<sup>1</sup></p>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider"></div>
+
+          <!-- Right Content -->
+          <div class="love-awards">
+            <h3>Don't just take our word for it.</h3>
+
+            <p>Slack is a leader in over 303 G2 market reports.<sup>6</sup></p>
+
+            <div class="badges">
+              <img
+                src="https://a.slack-edge.com/2e87281/marketing/img/homepage/revamped-25/badges/G2_Best_Results_spring_2026.png"
+                alt="Best Results"
+              />
+
+              <img
+                src="https://a.slack-edge.com/2e87281/marketing/img/homepage/revamped-25/badges/G2_Highest_user_adoption_spring_2026.png"
+                alt="Highest User Adoption"
+              />
+
+              <img
+                src="https://a.slack-edge.com/2e87281/marketing/img/homepage/revamped-25/badges/G2_Leader_small_business_spring_2026.png"
+                alt="Leader Small Business"
+              />
+
+              <img
+                src="https://a.slack-edge.com/2e87281/marketing/img/homepage/revamped-25/badges/G2_Leader_enterprise_spring_2026.png"
+                alt="Leader Enterprise"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deep-dive">
+      <div class="container">
+        <h2 class="deep-dive-title">Your Slack deep dive starts here.</h2>
+
+        <div class="deep-dive-cards">
+          <article class="dive-card">
+            <img
+              src="https://a.slack-edge.com/b37cac3/marketing/img/promos/promo-card-dreamforce-2023.png"
+              alt="Reacts for the future of AI in Slack"
+            />
+
+            <span class="card-type">Event</span>
+
+            <h3>Reacts for the future of AI in Slack?</h3>
+
+            <a href="#">
+              WATCH ON DEMAND
+              <span>→</span>
+            </a>
+          </article>
+
+          <article class="dive-card">
+            <img
+              src="https://a.slack-edge.com/6b9d9e8/marketing/img/promos/wtny-resource-tile.jpg"
+              alt="Big things are happening"
+            />
+
+            <span class="card-type">On demand</span>
+
+            <h3>
+              Big things are happening. Relive the highlights of World Tour New
+              York!
+            </h3>
+
+            <a href="#">
+              READ MORE
+              <span>→</span>
+            </a>
+          </article>
+
+          <article class="dive-card">
+            <img
+              src="https://a.slack-edge.com/5903307/marketing/img/thought-leadership/slack-vs-teams/compete-teams-promo.png"
+              alt="AI era"
+            />
+
+            <span class="card-type">Future of work</span>
+
+            <h3>The cost of business as usual in the AI era.</h3>
+
+            <a href="#">
+              LEARN MORE
+              <span>→</span>
+            </a>
+          </article>
+
+          <article class="dive-card">
+            <img
+              src="https://a.slack-edge.com/426ed86/marketing/img/promos/promo-boost-productivity.jpg"
+              alt="Productivity webinar"
+            />
+
+            <span class="card-type">Webinar</span>
+
+            <h3>Top 5 tips to boost productivity</h3>
+
+            <a href="#">
+              WATCH NOW
+              <span>→</span>
+            </a>
+          </article>
+        </div>
+
+        <div class="sources">
+          <button>Sources <i class="ri-arrow-down-s-line"></i></button>
+
+          <p>¹FY25 Slack internal data, product usage analysis.</p>
+
+          <p>
+            ²FY23 Slack Customer Tracking Survey. Internal survey of weekly
+            active Slack users in the US, UK, CA and AU. Total n = 1,456.
+          </p>
+
+          <p>
+            ³FY24 Customer Success Metrics. Base: Total n = 247–1,696, Slack
+            internal data.
+          </p>
+
+          <p>
+            ⁴Based on an internal analysis during the pilot of AI in Slack
+            features (channel recaps, thread summaries and AI search answers).
+          </p>
+
+          <p>
+            ⁵FY25 Slack Customer Tracking Survey. Internal survey of weekly
+            active Slack users in the US, UK, CA and AU. Total n = 2,410.
+          </p>
+
+          <p>
+            ⁶G2 spring 2026 market reports for work management, workflow
+            management, project collaboration software, enterprise search,
+            knowledge base, employee Q&A, audio conferencing, business instant
+            messaging, unified workspaces and more.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>See all that you can accomplish with Slack</h2>
+
+        <div class="cta-buttons">
+          <a href="#" class="btn-primary">GET STARTED</a>
+          <a href="#" class="btn-secondary">REQUEST A DEMO</a>
+        </div>
+      </div>
+      <svg
+        class="bottom-curve"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,0 C360,80 1080,80 1440,0 L1440,120 L0,120 Z"
+          fill="#f4f4f4"
+        />
+      </svg>
+    </section>
+
+  <footer class="footer">
+  <div class="footer-top">
+    <div class="region">
+      <i class="ri-global-line"></i>
+      <span>Change region</span>
+      <i class="ri-arrow-down-s-line"></i>
+    </div>
+
+    <div class="socials">
+      <a href="#"><i class="ri-linkedin-fill"></i></a>
+      <a href="#"><i class="ri-instagram-line"></i></a>
+      <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+      <a href="#"><i class="ri-twitter-x-line"></i></a>
+      <a href="#"><i class="ri-youtube-fill"></i></a>
+      <a href="#"><i class="ri-tiktok-fill"></i></a>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-black.png" alt="Slack Logo" />
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4>PRODUCT</h4>
+        <a href="#">Watch demo</a>
+        <a href="#">Pricing</a>
+        <a href="#">Paid vs Free</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Featured releases</a>
+        <a href="#">Change log</a>
+        <a href="#">Status</a>
+
+        <h4 class="mt">WHY SLACK?</h4>
+        <a href="#">Slack vs Email</a>
+        <a href="#">Slack vs Teams</a>
+        <a href="#">Enterprise</a>
+        <a href="#">Small business</a>
+        <a href="#">Productivity</a>
+        <a href="#">Task management</a>
+        <a href="#">Scale</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>FEATURES</h4>
+        <a href="#">Channels</a>
+        <a href="#">Slack Connect</a>
+        <a href="#">Workflow Builder</a>
+        <a href="#">Messaging</a>
+        <a href="#">Huddles</a>
+        <a href="#">Canvas</a>
+        <a href="#">Lists</a>
+        <a href="#">Clips</a>
+        <a href="#">Apps & Integrations</a>
+        <a href="#">File sharing</a>
+        <a href="#">Slack AI</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>SOLUTIONS</h4>
+        <a href="#">Engineering</a>
+        <a href="#">IT</a>
+        <a href="#">Customer service</a>
+        <a href="#">Sales</a>
+        <a href="#">Project management</a>
+        <a href="#">Marketing</a>
+        <a href="#">Security</a>
+        <a href="#">Technology</a>
+        <a href="#">Media</a>
+        <a href="#">Financial services</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>RESOURCES</h4>
+        <a href="#">Help Centre</a>
+        <a href="#">What's new</a>
+        <a href="#">Resources library</a>
+        <a href="#">Slack blog</a>
+        <a href="#">Community</a>
+        <a href="#">Customer stories</a>
+        <a href="#">Events</a>
+        <a href="#">Developers</a>
+        <a href="#">Partner programme</a>
+        <a href="#">Partner offers</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="#">About us</a>
+        <a href="#">News</a>
+        <a href="#">Media kit</a>
+        <a href="#">Brand centre</a>
+        <a href="#">Careers</a>
+        <a href="#">Slack shop</a>
+        <a href="#">Engineering blog</a>
+        <a href="#">Design blog</a>
+        <a href="#">Contact us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    <script src="script.js"></script>
+  </body>
+</html>

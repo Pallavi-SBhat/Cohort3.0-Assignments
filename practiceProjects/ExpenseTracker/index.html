@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="login-page">
+        <h1>Welcome Back</h1>
+        <p>Login to FinTrack Pro</p>
+        <form id="login-form" action="">
+          <div class="input-card">
+            <label for="username">Username</label>
+            <input name="username" type="text" />
+          </div>
+          <div class="input-card">
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+          </div>
+          <button id="login-btn">Login</button>
+          <p class="goto">
+            Don't have an account? <span id="gotoRegister">Register here</span>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="register-card">
+      <div class="register-page">
+        <h1>Create Account</h1>
+        <p>Register to FinTrack Pro</p>
+
+        <form id="register-form" action="">
+          <div class="input-card">
+            <label for="username">Username</label>
+            <input name="username" type="text" />
+          </div>
+
+          <div class="input-card">
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+          </div>
+
+          <button id="register-btn">Register</button>
+
+          <p class="goto">
+            Already have an account? <span id="gotoLogin">Login here</span>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div id="dashboard-view">
+      <div class="main">
+        <div class="sidebar">
+          <div class="up">
+            <div class="logo">
+              <i class="ri-stack-fill"></i>
+              <div class="title">
+                <h1>FinTrack Pro</h1>
+                <p>Enterprise Finance</p>
+              </div>
+            </div>
+            <div class="sidebar-btns">
+              <button name="dashboard" id="dashboard-btn" class="side-btn active">
+                <i class="ri-dashboard-line"></i> Dashboard
+              </button>
+              <button name="setting" id="setting-btn" class="side-btn">
+                <i class="ri-settings-2-fill"></i>Setting
+              </button>
+            </div>
+          </div>
+          <button id="transaction-btn">
+            <i class="ri-add-fill"></i>Add Transaction
+          </button>
+        </div>
+        <div class="hero">
+          <div class="nav">
+            <div></div>
+            <div class="right">
+              <div class="divider"></div>
+              <p>pallavi</p>
+              <button id="logout" onclick="logout()">
+                <i class="ri-logout-box-r-line"></i>
+                Logout
+              </button>
+            </div>
+          </div>
+          <div class="dashboard-page">
+            <div class="heading">
+              <h1>Financial Overview</h1>
+              <p>Real-time tracking application</p>
+            </div>
+            <div class="stat-cards">
+              <div class="card">
+                <div class="icon blue">
+                  <i class="ri-bank-fill"></i>
+                </div>
+                <p>Current Balance</p>
+                <h1>₹0.00</h1>
+              </div>
+              <div class="card income">
+                <div class="icon green">
+                  <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+                <p>Total Income</p>
+                <h1>₹0.00</h1>
+              </div>
+              <div class="card expense">
+                <div class="icon red">
+                  <i class="fa-solid fa-arrow-trend-down"></i>
+                </div>
+                <p>Total Expense</p>
+                <h1>₹0.00</h1>
+              </div>
+              <div class="card">
+                <div class="icon blue">
+                  <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+                <p>Total Transactions</p>
+                <h1>0</h1>
+              </div>
+            </div>
+          </div>
+          <div class="main-columns">
+            <div class="left-column">
+              <div class="cashFlowChart">
+                <h1>Cash Flow Analysis</h1>
+                <canvas id="cashflow"></canvas>
+              </div>
+              <div class="transaction-details">
+                <h1>All Transactions</h1>
+                <div class="search">
+                  <div class="left">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" />
+                  </div>
+                  <div class="right">
+                    <select name="" id="transaction-selection">
+                      <option value="All Types">All Types</option>
+                      <option value="Income  Only">Income Only</option>
+                      <option value="Expense Only">Expense Only</option>
+                    </select>
+                  </div>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>DATE</th>
+                      <th>DESCRIPTION</th>
+                      <th>CATEGORY</th>
+                      <th>AMOUNT</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>2026-06-28</td>
+                    <td>10000</td>
+                    <td>Recharge and bills</td>
+                    <td>AMOUNT</td>
+                    <td>
+                      <i class="fa-solid fa-pencil"></i
+                      ><i class="fa-solid fa-trash"></i>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="right-column">
+              <div class="preferences">
+                <h1>Preferences</h1>
+                <div class="mode">
+                  <h3>Dark Mode</h3>
+                  <span class="toggle">
+                    <span class="round"></span>
+                  </span>
+                </div>
+                <div class="divider"></div>
+                <button class="reset-btn">
+                  <i class="fa-solid fa-trash"></i> Reset All Data
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="setting-page">
+            <div class="heading">
+              <h1>Settings</h1>
+              <p>Manage your account profile and app formatting.</p>
+            </div>
+            <div class="setting-container">
+              <h1>Profile Details</h1>
+              <div class="profile-form">
+                <div class="input">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" placeholder="Enter your name" />
+                </div>
+                <div class="input">
+                  <label for="currency">Primary Currency</label>
+                  <select id="currency">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="INR" selected>INR (₹)</option>
+                    <option value="JPY">JPY (¥)</option>
+                  </select>
+                </div>
+              </div>
+              <button id="save">Save Changes</button>
+            </div>
+          </div>
+        </div>
+        <div class="transaction-modal">
+          <div class="transaction-form">
+            <div class="form-header">
+              <h2>Add Transaction</h2>
+              <i id="close-btn" class="ri-close-line close-btn"></i>
+            </div>
+            <form id="add-transaction">
+              <div class="input">
+                <label>Type</label>
+                <select>
+                  <option>Income</option>
+                  <option>Expense</option>
+                </select>
+              </div>
+              <div class="input">
+                <label>Description</label>
+                <input type="text" placeholder="e.g. Amazon, Salary, Coffee" />
+              </div>
+              <div class="row">
+                <div class="input">
+                  <label>Amount</label>
+                  <input type="number" />
+                </div>
+                <div class="input">
+                  <label>Date</label>
+                  <input type="date" />
+                </div>
+              </div>
+              <div class="input">
+                <label>Category</label>
+                <select>
+                  <option>Select a category</option>
+                  <option>Food & Dining</option>
+                  <option>Shopping</option>
+                  <option>Recharge & Bills</option>
+                  <option>Petrol & Auto</option>
+                  <option>Utilities</option>
+                  <option>Salary</option>
+                  <option>Entertainment</option>
+                  <option>Others</option>
+                </select>
+              </div>
+              <button id="save-transaction">Save Transaction</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

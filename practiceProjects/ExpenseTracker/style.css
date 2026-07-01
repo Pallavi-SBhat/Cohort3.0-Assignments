@@ -13,7 +13,7 @@ body {
   background-color: #f4f7f6;
 }
 
-/* ================= AUTH PAGES ================= */
+/* Auth Pages */
 .login-card,
 .register-card {
   height: 100%;
@@ -104,7 +104,7 @@ body {
 #dashboard-view{
   display: none;
 }
-/* ================= LAYOUT & SIDEBAR ================= */
+/* Layout and sidebar */
 .main {
   display: flex;
   height: 100vh;
@@ -184,7 +184,7 @@ body {
   transform: scale(0.97);
 }
 
-/* ================= BLACK ACTION BUTTONS ================= */
+/* Black action buttons */
 #transaction-btn,
 #save,
 #save-transaction {
@@ -217,7 +217,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* ================= MAIN CONTENT & NAVBAR ================= */
+/* Main content and navbar */
 .main .hero {
   flex: 1;
   margin-left: 250px;
@@ -241,23 +241,23 @@ body {
   z-index: 10;
 }
 
-.main .hero .nav .right {
+.main .hero .nav .right-nav {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.main .hero .nav .right .divider {
+.main .hero .nav .right-nav .divider {
   width: 1px;
   height: 24px;
   background: #d1d5db;
 }
-.main .hero .nav .right p {
+.main .hero .nav .right-nav p {
   font-size: 1rem;
   font-weight: 600;
   color: #111827;
 }
 
-.main .hero .nav .right #logout {
+.main .hero .nav .right-nav #logout {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -271,17 +271,17 @@ body {
   cursor: pointer;
   transition: 0.2s ease;
 }
-.main .hero .nav .right #logout:hover {
+.main .hero .nav .right-nav #logout:hover {
   background: #f3f4f6;
 }
-.main .hero .nav .right #logout i {
+.main .hero .nav .right-nav #logout i {
   font-size: 1rem;
 }
 
-/* ================= DASHBOARD & SETTINGS HEADERS ================= */
+/* Dashboard and settings headers */
 .dashboard-page,
 .setting-page {
-  padding: 3rem 2rem;
+  padding: 3rem 0 0;
   margin-top: 3rem;
 }
 .setting-page {
@@ -293,7 +293,7 @@ body {
 }
 .dashboard-page .heading h1,
 .setting-page .heading h1 {
-  font-size: 2.2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #111827;
   margin-bottom: 0.3rem;
@@ -301,13 +301,13 @@ body {
 .dashboard-page .heading p,
 .setting-page .heading p {
   color: #6b7280;
-  font-size: 0.95rem;
+  font-size: 0.87rem;
 }
 
 .setting-page{
   display: none;
 }
-/* ================= CARDS & CONTAINERS ================= */
+/* Cards and containers */
 .stat-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -348,7 +348,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 .blue,
 .green {
@@ -366,11 +366,11 @@ body {
 }
 
 .card p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #6b7280;
 }
 .card h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #111827;
 }
@@ -385,7 +385,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 0;
   align-items: start;
 }
 .left-column,
@@ -399,7 +399,7 @@ body {
 .transaction-details h1,
 .preferences h1,
 .setting-container h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1.5rem;
@@ -408,11 +408,11 @@ body {
   color: #111827;
 }
 .cashFlowChart {
-  height: 470px;
+  height: 400px;
 }
 .cashFlowChart canvas {
   width: 100% !important;
-  height: 350px !important;
+  height: 300px !important;
 }
 
 .preferences .divider{
@@ -436,7 +436,7 @@ body {
  
 }
 
-/* ================= FORMS & INPUTS ================= */
+/* forms and inputs */
 .profile-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -470,7 +470,7 @@ body {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* ================= SEARCH & TABLES ================= */
+/* search and tables */
 .search {
   display: flex;
   justify-content: space-between;
@@ -510,7 +510,7 @@ table {
 th {
   text-align: left;
   color: #6b7280;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 1rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -518,6 +518,7 @@ td {
   padding: 1rem 0;
   border-bottom: 1px solid #f3f4f6;
   color: #374151;
+  font-size: 0.8rem;
 }
 td i {
   cursor: pointer;
@@ -530,8 +531,14 @@ td i {
 .fa-trash {
   color: #dc2626;
 }
+table .income{
+  color: #277243
+}
+table .expense{
+  color: #b91c1c;
+}
 
-/* ================= MODAL & TOGGLES ================= */
+/*  MODAL & TOGGLES */
 .transaction-modal {
   position: fixed;
   inset: 0;
@@ -613,7 +620,7 @@ td i {
   right: 1px;
 }
 
-/* ================= DARK MODE ================= */
+/* DARK MODE */
 body.dark,
 body.dark .hero,
 body.dark .search .left,
@@ -656,7 +663,7 @@ body.dark .setting-container h1,
 body.dark .input label,
 body.dark .form-header h2,
 body.dark .setting-page h1,
-body.dark .main .hero .nav .right p {
+body.dark .main .hero .nav .right-nav p {
   color: #f9fafb !important;
 }
 
@@ -689,12 +696,12 @@ body.dark .side-btn.active {
   background: #475264;
   color: #458ffa !important;
 }
-body.dark .main .hero .nav .right #logout {
+body.dark .main .hero .nav .right-nav #logout {
   background: transparent !important;
   color: #fff !important;
   border: 1px solid #4b5563 !important;
 }
-body.dark .main .hero .nav .right #logout:hover {
+body.dark .main .hero .nav .right-nav #logout:hover {
   background: #374151 !important;
 }
 
@@ -702,6 +709,12 @@ body.dark .income h1 {
   color: #22c55e;
 }
 body.dark .expense h1 {
+  color: #ef4444;
+}
+body.dark table  .income  {
+  color: #22c55e;
+}
+body.dark table .expense  {
   color: #ef4444;
 }
 body.dark th {

@@ -192,6 +192,7 @@ dashboardBtn.addEventListener("click", () => {
   settingPage.style.display = "none";
 });
 
+
 mode.addEventListener("click", () => {
   theme = theme === "dark" ? "light" : "dark";
   localStorage.setItem("theme", theme);

@@ -77,7 +77,11 @@
               </div>
             </div>
             <div class="sidebar-btns">
-              <button name="dashboard" id="dashboard-btn" class="side-btn active">
+              <button
+                name="dashboard"
+                id="dashboard-btn"
+                class="side-btn active"
+              >
                 <i class="ri-dashboard-line"></i> Dashboard
               </button>
               <button name="setting" id="setting-btn" class="side-btn">
@@ -92,9 +96,9 @@
         <div class="hero">
           <div class="nav">
             <div></div>
-            <div class="right">
+            <div class="right-nav">
               <div class="divider"></div>
-              <p>pallavi</p>
+              <p>user</p>
               <button id="logout" onclick="logout()">
                 <i class="ri-logout-box-r-line"></i>
                 Logout
@@ -147,14 +151,14 @@
                 <h1>All Transactions</h1>
                 <div class="search">
                   <div class="left">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" />
+                    <i  class="fa-solid fa-magnifying-glass"></i>
+                    <input class="search-input" name="search" placeholder="Search transaction..." type="text" />
                   </div>
                   <div class="right">
-                    <select name="" id="transaction-selection">
-                      <option value="All Types">All Types</option>
-                      <option value="Income  Only">Income Only</option>
-                      <option value="Expense Only">Expense Only</option>
+                    <select class="options" name="options" id="transaction-selection">
+                      <option value="allTypes">All Types</option>
+                      <option value="income">Income Only</option>
+                      <option value="expense">Expense Only</option>
                     </select>
                   </div>
                 </div>
@@ -168,16 +172,7 @@
                       <th>ACTIONS</th>
                     </tr>
                   </thead>
-                  <tr>
-                    <td>2026-06-28</td>
-                    <td>10000</td>
-                    <td>Recharge and bills</td>
-                    <td>AMOUNT</td>
-                    <td>
-                      <i class="fa-solid fa-pencil"></i
-                      ><i class="fa-solid fa-trash"></i>
-                    </td>
-                  </tr>
+                  <tbody id="transaction-body"></tbody>
                 </table>
               </div>
             </div>
@@ -191,7 +186,7 @@
                   </span>
                 </div>
                 <div class="divider"></div>
-                <button class="reset-btn">
+                <button onclick="resetTransaction()" class="reset-btn">
                   <i class="fa-solid fa-trash"></i> Reset All Data
                 </button>
               </div>
@@ -204,22 +199,22 @@
             </div>
             <div class="setting-container">
               <h1>Profile Details</h1>
-              <div class="profile-form">
+              <form class="profile-form">
                 <div class="input">
                   <label for="name">Full Name</label>
-                  <input type="text" id="name" placeholder="Enter your name" />
+                  <input name="username" type="text" id="name" placeholder="Enter your name" />
                 </div>
                 <div class="input">
                   <label for="currency">Primary Currency</label>
-                  <select id="currency">
-                    <option value="USD">USD ($)</option>
-                    <option value="EUR">EUR (€)</option>
-                    <option value="GBP">GBP (£)</option>
-                    <option value="INR" selected>INR (₹)</option>
-                    <option value="JPY">JPY (¥)</option>
+                  <select name="currency" id="currency">
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                    <option value="£">GBP (£)</option>
+                    <option value="₹">INR (₹)</option>
+                    <option value="¥">JPY (¥)</option>
                   </select>
                 </div>
-              </div>
+              </form>
               <button id="save">Save Changes</button>
             </div>
           </div>
@@ -233,29 +228,38 @@
             <form id="add-transaction">
               <div class="input">
                 <label>Type</label>
-                <select>
+                <select name="type" required>
                   <option>Income</option>
                   <option>Expense</option>
                 </select>
               </div>
+
               <div class="input">
                 <label>Description</label>
-                <input type="text" placeholder="e.g. Amazon, Salary, Coffee" />
+                <input
+                  name="description"
+                  type="text"
+                  placeholder="e.g. Amazon, Salary, Coffee"
+                  required
+                />
               </div>
+
               <div class="row">
                 <div class="input">
                   <label>Amount</label>
-                  <input type="number" />
+                  <input name="amount" type="number" required />
                 </div>
+
                 <div class="input">
                   <label>Date</label>
-                  <input type="date" />
+                  <input name="date" type="date" />
                 </div>
               </div>
+
               <div class="input">
                 <label>Category</label>
-                <select>
-                  <option>Select a category</option>
+                <select name="category" required>
+                  <option value="">Select a category</option>
                   <option>Food & Dining</option>
                   <option>Shopping</option>
                   <option>Recharge & Bills</option>
@@ -266,6 +270,7 @@
                   <option>Others</option>
                 </select>
               </div>
+
               <button id="save-transaction">Save Transaction</button>
             </form>
           </div>

@@ -1,563 +1,625 @@
+/* =====================================================================
+   DAYBASE — app logic
+   Sections: Navigation · Clock/Background · Theme · Todo · Planner ·
+             Goals · Pomodoro · Quote · Weather
+===================================================================== */
 
-const Nav = (() => {
-  const dashboard   = document.getElementById('dashboard');
-  const featureView = document.getElementById('feature-view');
-  const panels      = document.querySelectorAll('.feature-panel');
+document.addEventListener('DOMContentLoaded', () => {
+  initNavigation();
+  initTheme();
+  initClockAndBackground();
+  initTodo();
+  initPlanner();
+  initGoals();
+  initPomodoro();
+  initQuote();
+  initWeather();
+});
 
-  let activeFeature = null;  
-  let isSwitching   = false; 
+/* =====================================================================
+   NAVIGATION — dashboard <-> feature views
+===================================================================== */
+function initNavigation(){
+  const dashboard = document.getElementById('dashboardView');
+  const features = Array.from(document.querySelectorAll('.feature'));
+  let switching = false; // guards rapid double-clicks
 
-  function openFeature(name) {
-
-    if (isSwitching) return;
-  
-    if (activeFeature === name) return;
-
-    const targetPanel = document.querySelector(`.feature-panel[data-panel="${name}"]`);
-    if (!targetPanel) return; // unknown feature name, nothing to do
-
-    isSwitching = true;
-
-    panels.forEach(p => p.classList.remove('is-active'));
-    targetPanel.classList.add('is-active');
-
-    dashboard.classList.remove('is-active');
-    featureView.classList.add('is-active');
-
-    activeFeature = name;
-
-    window.setTimeout(() => { isSwitching = false; }, 220);
-
- 
-    document.dispatchEvent(new CustomEvent('feature:open', { detail: { name } }));
+  function showDashboard(){
+    features.forEach(f => f.hidden = true);
+    dashboard.hidden = false;
   }
 
-  function goBack() {
-    if (isSwitching) return;
-    if (activeFeature === null) return;
-
-    isSwitching = true;
-
-    featureView.classList.remove('is-active');
-    dashboard.classList.add('is-active');
-    activeFeature = null;
-
-    window.setTimeout(() => { isSwitching = false; }, 220);
+  function openView(name){
+    if (switching) return;
+    switching = true;
+    const target = document.getElementById(`view-${name}`);
+    if (!target) { switching = false; return; }
+    features.forEach(f => f.hidden = (f !== target));
+    dashboard.hidden = true;
+    target.querySelector('input, textarea')?.focus({ preventScroll: true });
+    document.dispatchEvent(new CustomEvent('view:opened', { detail: { name } }));
+    setTimeout(() => { switching = false; }, 150);
   }
 
-  function init() {
-    document.querySelectorAll('.card[data-feature]').forEach(card => {
-      card.addEventListener('click', () => openFeature(card.dataset.feature));
-    });
-    document.querySelectorAll('[data-action="back"]').forEach(btn => {
-      btn.addEventListener('click', goBack);
-    });
+  document.querySelectorAll('[data-open]').forEach(card => {
+    card.addEventListener('click', () => openView(card.dataset.open));
+  });
+  document.querySelectorAll('[data-back]').forEach(btn => {
+    btn.addEventListener('click', showDashboard);
+  });
+
+  showDashboard();
+}
+
+/* =====================================================================
+   THEME SWITCH
+===================================================================== */
+function initTheme(){
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('daybook-theme', theme);
+    toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+    icon.textContent = theme === 'dark' ? '☾' : '☀';
   }
 
-  return { init, openFeature, goBack };
-})();
+  // Theme was already applied pre-paint in <head>; just sync the control.
+  const current = root.getAttribute('data-theme') || 'dark';
+  apply(current);
 
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+  });
+}
 
-const ClockWidget = (() => {
-  const timeEl = document.getElementById('clock-time');
-  const dateEl = document.getElementById('clock-date');
+/* =====================================================================
+   CLOCK, DATE, DYNAMIC BACKGROUND
+===================================================================== */
+function initClockAndBackground(){
+  const timeEl = document.getElementById('clockTime');
+  const dateEl = document.getElementById('clockDate');
 
-  function tick() {
-    const now = new Date();
-    timeEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    dateEl.textContent = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
-  }
-
-  function init() {
-    tick();
-    setInterval(tick, 1000);
-  }
-  return { init };
-})();
-
-const WeatherWidget = (() => {
-  const tempEl  = document.getElementById('weather-temp');
-  const placeEl = document.getElementById('weather-place');
-
-  const codeLabel = (code) => {
-    if (code === 0) return 'Clear';
-    if ([1, 2, 3].includes(code)) return 'Cloudy';
-    if ([45, 48].includes(code)) return 'Foggy';
-    if (code >= 51 && code <= 67) return 'Rainy';
-    if (code >= 71 && code <= 77) return 'Snowy';
-    if (code >= 80 && code <= 82) return 'Showers';
-    if (code >= 95) return 'Stormy';
-    return 'Mild';
-  };
-
-  async function fetchWeather(lat, lon) {
-    try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`;
-      const res = await fetch(url);
-      const data = await res.json();
-      const c = data.current;
-      tempEl.textContent = `${Math.round(c.temperature_2m)}°C`;
-      placeEl.textContent = codeLabel(c.weather_code);
-    } catch (err) {
-      tempEl.textContent = '—';
-      placeEl.textContent = 'unavailable';
-    }
-  }
-
-  function init() {
-    if (!('geolocation' in navigator)) {
-      tempEl.textContent = '—';
-      placeEl.textContent = 'no location access';
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => fetchWeather(pos.coords.latitude, pos.coords.longitude),
-      () => {
-        tempEl.textContent = '—';
-        placeEl.textContent = 'location denied';
-      },
-      { timeout: 6000 }
-    );
-  }
-  return { init };
-})();
-
-const Store = {
-  load(key, fallback) {
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
-    } catch {
-      return fallback;
-    }
-  },
-  save(key, value) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch {
-    }
-  }
-};
-
-
-const TodoFeature = (() => {
-  const KEY = 'daybase.todos';
-  let todos = Store.load(KEY, []);
-
-  const form   = document.getElementById('todo-form');
-  const input  = document.getElementById('todo-input');
-  const list   = document.getElementById('todo-list');
-  const empty  = document.getElementById('todo-empty');
-  const count  = document.getElementById('todo-count');
-
-  function render() {
-    list.innerHTML = '';
-    todos.forEach(t => {
-      const li = document.createElement('li');
-      li.className = 'item' + (t.done ? ' is-done' : '');
-      li.innerHTML = `
-        <button class="item__check" data-id="${t.id}" aria-label="Toggle complete"></button>
-        <span class="item__text">${escapeHtml(t.text)}</span>
-        <button class="item__del" data-id="${t.id}" aria-label="Delete task">✕</button>
-      `;
-      list.appendChild(li);
-    });
-    const openCount = todos.filter(t => !t.done).length;
-    count.textContent = `${openCount} open`;
-    empty.classList.toggle('is-visible', todos.length === 0);
-  }
-
-  function addTodo(text) {
-    todos.push({ id: crypto.randomUUID(), text, done: false });
-    Store.save(KEY, todos);
-    render();
-  }
-
-  function toggleTodo(id) {
-    const t = todos.find(t => t.id === id);
-    if (t) { t.done = !t.done; Store.save(KEY, todos); render(); }
-  }
-
-  function deleteTodo(id) {
-    todos = todos.filter(t => t.id !== id);
-    Store.save(KEY, todos);
-    render();
-  }
-
-  function init() {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = input.value.trim();
-      if (!text) return;
-      addTodo(text);
-      input.value = '';
-      input.focus();
-    });
-
-    list.addEventListener('click', (e) => {
-      const checkBtn = e.target.closest('.item__check');
-      const delBtn   = e.target.closest('.item__del');
-      if (checkBtn) toggleTodo(checkBtn.dataset.id);
-      if (delBtn) deleteTodo(delBtn.dataset.id);
-    });
-
-    render();
-  }
-  return { init };
-})();
-
-
-const PlannerFeature = (() => {
-  const KEY = 'daybase.planner';
-  let blocks = Store.load(KEY, []); // [{id, time, text}]
-
-  const form    = document.getElementById('planner-form');
-  const timeIn  = document.getElementById('planner-time');
-  const textIn  = document.getElementById('planner-input');
-  const list    = document.getElementById('planner-list');
-  const empty   = document.getElementById('planner-empty');
-  const dateEl  = document.getElementById('planner-date');
-
-  function render() {
-    const sorted = [...blocks].sort((a, b) => a.time.localeCompare(b.time));
-    list.innerHTML = '';
-    sorted.forEach(b => {
-      const li = document.createElement('li');
-      li.className = 'item';
-      li.innerHTML = `
-        <span class="item__time">${b.time}</span>
-        <span class="item__text">${escapeHtml(b.text)}</span>
-        <button class="item__del" data-id="${b.id}" aria-label="Remove block">✕</button>
-      `;
-      list.appendChild(li);
-    });
-    empty.classList.toggle('is-visible', blocks.length === 0);
-    dateEl.textContent = new Date().toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
-  }
-
-  function addBlock(time, text) {
-    blocks.push({ id: crypto.randomUUID(), time, text });
-    Store.save(KEY, blocks);
-    render();
-  }
-
-  function deleteBlock(id) {
-    blocks = blocks.filter(b => b.id !== id);
-    Store.save(KEY, blocks);
-    render();
-  }
-
-  function init() {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!timeIn.value || !textIn.value.trim()) return;
-      addBlock(timeIn.value, textIn.value.trim());
-      textIn.value = '';
-      textIn.focus();
-    });
-
-    list.addEventListener('click', (e) => {
-      const delBtn = e.target.closest('.item__del');
-      if (delBtn) deleteBlock(delBtn.dataset.id);
-    });
-
-    render();
-  }
-  return { init, render };
-})();
-
-const MotivationFeature = (() => {
-  const FAV_KEY = 'daybase.favorites';
-  let favorites = Store.load(FAV_KEY, []); // [{id, text}]
-
-  const sparks = [
-    "Small steps, repeated daily, outrun big plans made once.",
-    "You don't need to feel ready. You need to begin.",
-    "Discipline is just a promise you keep to yourself.",
-    "Progress hides inside the boring middle part.",
-    "The task shrinks the moment you start it.",
-    "Done today beats perfect someday.",
-    "Momentum is built, one finished thing at a time.",
-    "Your focus is a resource — spend it on purpose.",
-    "Rest is part of the work, not a break from it.",
-    "Every expert was once a beginner who didn't quit.",
-    "Clarity comes from action, not from more thinking.",
-    "Consistency turns effort into identity."
+  const parts = [
+    { key: 'night', start: 0,  end: 5,  color: '--tint-night' },
+    { key: 'dawn',  start: 5,  end: 8,  color: '--tint-dawn'  },
+    { key: 'day',   start: 8,  end: 17, color: '--tint-day'   },
+    { key: 'dusk',  start: 17, end: 20, color: '--tint-dusk'  },
+    { key: 'night2',start: 20, end: 24, color: '--tint-night' },
   ];
 
-  let currentText = '';
-
-  const textEl = document.getElementById('quote-text');
-  const nextBtn = document.getElementById('quote-next');
-  const favBtn  = document.getElementById('quote-fav');
-  const favList = document.getElementById('favs-list');
-  const favEmpty = document.getElementById('favs-empty');
-
-  function pickNew() {
-    let candidate = currentText;
-    while (candidate === currentText && sparks.length > 1) {
-      candidate = sparks[Math.floor(Math.random() * sparks.length)];
-    }
-    currentText = candidate;
-    textEl.textContent = `"${currentText}"`;
-    favBtn.setAttribute('aria-pressed', String(favorites.some(f => f.text === currentText)));
+  function partFor(hour){
+    return parts.find(p => hour >= p.start && hour < p.end) || parts[0];
   }
 
-  function toggleFavorite() {
-    const already = favorites.find(f => f.text === currentText);
-    if (already) {
-      favorites = favorites.filter(f => f.text !== currentText);
+  function tick(){
+    const now = new Date();
+
+    // Time — 24hr with leading zeros
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    timeEl.textContent = `${hh}:${mm}:${ss}`;
+
+    // Date — e.g. "Thursday 9 Jul"
+    const weekday = now.toLocaleDateString(undefined, { weekday: 'long' });
+    const month = now.toLocaleDateString(undefined, { month: 'short' });
+    dateEl.textContent = `${weekday} ${now.getDate()} ${month}`;
+
+    // Dynamic background tint, changes automatically by time of day
+    const part = partFor(now.getHours());
+    document.documentElement.setAttribute('data-daypart', part.key);
+    const hex = getComputedStyle(document.documentElement).getPropertyValue(part.color).trim();
+    document.body.style.setProperty('--tint', hexToRgba(hex, 0.35));
+  }
+
+  tick();
+  setInterval(tick, 1000); // single interval; function only ever called once
+}
+
+function hexToRgba(hex, alpha){
+  const h = hex.replace('#', '');
+  const bigint = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+  const r = (bigint >> 16) & 255, g = (bigint >> 8) & 255, b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/* =====================================================================
+   SHARED HELPERS
+===================================================================== */
+function loadJSON(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function saveJSON(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){ /* storage unavailable */ }
+}
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function escapeHTML(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+/* =====================================================================
+   TODO LIST
+===================================================================== */
+function initTodo(){
+  const STORE_KEY = 'daybook-todos';
+  const listEl = document.getElementById('todoList');
+  const emptyEl = document.getElementById('todoEmpty');
+  const form = document.getElementById('todoForm');
+  const input = document.getElementById('todoInput');
+  const summaryEl = document.getElementById('todoSummary');
+
+  let todos = loadJSON(STORE_KEY, []);
+
+  function render(){
+    listEl.innerHTML = todos.map(t => `
+      <li class="list-item ${t.completed ? 'completed' : ''} ${t.important ? 'important' : ''}" data-id="${t.id}">
+        <button class="list-item__btn ${t.completed ? 'active' : ''}" data-action="complete" title="Mark complete">${t.completed ? '☑' : '☐'}</button>
+        <span class="list-item__text">${escapeHTML(t.text)}</span>
+        <button class="list-item__btn ${t.important ? 'active' : ''}" data-action="important" title="Mark important">★</button>
+        <button class="list-item__btn danger" data-action="delete" title="Delete">✕</button>
+      </li>
+    `).join('');
+
+    emptyEl.classList.toggle('show', todos.length === 0);
+
+    if (todos.length === 0){
+      summaryEl.textContent = "Today's tasks";
     } else {
-      favorites.push({ id: crypto.randomUUID(), text: currentText });
+      const openCount = todos.filter(t => !t.completed).length;
+      summaryEl.textContent = `${openCount} open · ${todos.length - openCount} done`;
     }
-    Store.save(FAV_KEY, favorites);
-    favBtn.setAttribute('aria-pressed', String(!already));
-    renderFavorites();
   }
 
-  function renderFavorites() {
-    favList.innerHTML = '';
-    favorites.forEach(f => {
-      const li = document.createElement('li');
-      li.className = 'item';
-      li.innerHTML = `
-        <span class="item__text">"${escapeHtml(f.text)}"</span>
-        <button class="item__del" data-id="${f.id}" aria-label="Remove favorite">✕</button>
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    todos.unshift({ id: uid(), text, completed: false, important: false });
+    saveJSON(STORE_KEY, todos);
+    render();
+    input.value = '';
+    input.focus();
+  });
+
+  // Event delegation for complete / important / delete
+  listEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const li = btn.closest('.list-item');
+    const id = li.dataset.id;
+    const action = btn.dataset.action;
+
+    if (action === 'delete'){
+      todos = todos.filter(t => t.id !== id);
+    } else {
+      todos = todos.map(t => {
+        if (t.id !== id) return t;
+        if (action === 'complete') return { ...t, completed: !t.completed };
+        if (action === 'important') return { ...t, important: !t.important };
+        return t;
+      });
+    }
+    saveJSON(STORE_KEY, todos);
+    render();
+  });
+
+  render();
+}
+
+/* =====================================================================
+   DAILY PLANNER — custom time + task entries (add / edit / delete)
+===================================================================== */
+function initPlanner(){
+  const STORE_KEY = 'daybook-planner-entries';
+  const listEl = document.getElementById('plannerList');
+  const emptyEl = document.getElementById('plannerEmpty');
+  const form = document.getElementById('plannerForm');
+  const timeInput = document.getElementById('plannerTimeInput');
+  const taskInput = document.getElementById('plannerTaskInput');
+  const summaryEl = document.getElementById('plannerSummary');
+
+  let entries = loadJSON(STORE_KEY, []);
+  let editingId = null;
+
+  function currentHHMM(){
+    const now = new Date();
+    return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  }
+
+  function formatTime(hhmm){
+    const [h, m] = hhmm.split(':').map(Number);
+    const period = h >= 12 ? 'PM' : 'AM';
+    let hour12 = h % 12;
+    if (hour12 === 0) hour12 = 12;
+    return `${hour12}:${String(m).padStart(2,'0')} ${period}`;
+  }
+
+  function sorted(){
+    return [...entries].sort((a, b) => a.time.localeCompare(b.time));
+  }
+
+  function render(){
+    const nowHH = currentHHMM().slice(0, 2); // highlight entries within the current hour
+    const list = sorted();
+
+    listEl.innerHTML = list.map(entry => {
+      if (entry.id === editingId){
+        return `
+          <li class="list-item is-editing" data-id="${entry.id}">
+            <input type="time" class="planner-edit-time" value="${entry.time}" />
+            <input type="text" class="planner-edit-task" maxlength="140" value="${escapeHTML(entry.task)}" />
+            <button class="list-item__btn" data-action="save" title="Save">✓</button>
+            <button class="list-item__btn danger" data-action="cancel" title="Cancel">✕</button>
+          </li>
+        `;
+      }
+      const isNow = entry.time.slice(0, 2) === nowHH;
+      return `
+        <li class="list-item ${isNow ? 'is-now' : ''}" data-id="${entry.id}">
+          <span class="planner-item__time">${formatTime(entry.time)}</span>
+          <span class="list-item__text">${escapeHTML(entry.task)}</span>
+          <button class="list-item__btn" data-action="edit" title="Edit">✎</button>
+          <button class="list-item__btn danger" data-action="delete" title="Delete">✕</button>
+        </li>
       `;
-      favList.appendChild(li);
-    });
-    favEmpty.classList.toggle('is-visible', favorites.length === 0);
+    }).join('');
+
+    emptyEl.classList.toggle('show', entries.length === 0);
+    summaryEl.textContent = entries.length === 0
+      ? 'Block your day'
+      : `${entries.length} task${entries.length === 1 ? '' : 's'} planned`;
   }
 
-  function init() {
-    nextBtn.addEventListener('click', pickNew);
-    favBtn.addEventListener('click', toggleFavorite);
-    favList.addEventListener('click', (e) => {
-      const delBtn = e.target.closest('.item__del');
-      if (!delBtn) return;
-      favorites = favorites.filter(f => f.id !== delBtn.dataset.id);
-      Store.save(FAV_KEY, favorites);
-      favBtn.setAttribute('aria-pressed', String(favorites.some(f => f.text === currentText)));
-      renderFavorites();
-    });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const time = timeInput.value;
+    const task = taskInput.value.trim();
+    if (!time || !task) return;
 
-    pickNew();
-    renderFavorites();
+    entries.push({ id: uid(), time, task });
+    saveJSON(STORE_KEY, entries);
+    render();
+    taskInput.value = '';
+    timeInput.value = '';
+    timeInput.focus();
+  });
+
+  listEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const li = btn.closest('.list-item');
+    const id = li.dataset.id;
+    const action = btn.dataset.action;
+
+    if (action === 'delete'){
+      entries = entries.filter(en => en.id !== id);
+      saveJSON(STORE_KEY, entries);
+      render();
+    } else if (action === 'edit'){
+      editingId = id;
+      render();
+    } else if (action === 'cancel'){
+      editingId = null;
+      render();
+    } else if (action === 'save'){
+      const newTime = li.querySelector('.planner-edit-time').value;
+      const newTask = li.querySelector('.planner-edit-task').value.trim();
+      if (!newTime || !newTask) return; // keep editing until valid
+      entries = entries.map(en => en.id === id ? { ...en, time: newTime, task: newTask } : en);
+      editingId = null;
+      saveJSON(STORE_KEY, entries);
+      render();
+    }
+  });
+
+  // Re-check the "current hour" highlight periodically
+  setInterval(render, 60000);
+
+  render();
+}
+
+/* =====================================================================
+   DAILY GOALS
+===================================================================== */
+function initGoals(){
+  const STORE_KEY = 'daybook-goals';
+  const listEl = document.getElementById('goalList');
+  const emptyEl = document.getElementById('goalEmpty');
+  const form = document.getElementById('goalForm');
+  const input = document.getElementById('goalInput');
+  const cardSummary = document.getElementById('goalsSummary');
+  const progressFill = document.getElementById('goalProgressFill');
+  const progressLabel = document.getElementById('goalProgressLabel');
+
+  let goals = loadJSON(STORE_KEY, []);
+
+  function render(){
+    listEl.innerHTML = goals.map(g => `
+      <li class="list-item ${g.completed ? 'completed' : ''}" data-id="${g.id}">
+        <button class="list-item__btn ${g.completed ? 'active' : ''}" data-action="complete" title="Mark done">${g.completed ? '☑' : '☐'}</button>
+        <span class="list-item__text">${escapeHTML(g.text)}</span>
+        <button class="list-item__btn danger" data-action="delete" title="Delete">✕</button>
+      </li>
+    `).join('');
+
+    emptyEl.classList.toggle('show', goals.length === 0);
+
+    const done = goals.filter(g => g.completed).length;
+    const total = goals.length;
+    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+    progressFill.style.width = `${pct}%`;
+    progressLabel.textContent = `${done} of ${total} completed`;
+    cardSummary.textContent = total === 0 ? 'Track the long game' : `${done} of ${total} complete`;
   }
-  return { init };
-})();
 
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    goals.push({ id: uid(), text, completed: false });
+    saveJSON(STORE_KEY, goals);
+    render();
+    input.value = '';
+    input.focus();
+  });
 
-const PomodoroFeature = (() => {
-  const SESSIONS_KEY = 'daybase.pomo.sessions';
-  const RING_CIRCUMFERENCE = 2 * Math.PI * 88; 
+  listEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = btn.closest('.list-item').dataset.id;
 
-  let workMinutes  = 25;
-  let breakMinutes = 5;
-  let remaining    = workMinutes * 60;
-  let mode         = 'Focus';         
-  let timerId      = null;             
-  let todaySessions = loadTodaySessions();
+    if (btn.dataset.action === 'delete'){
+      goals = goals.filter(g => g.id !== id);
+    } else {
+      goals = goals.map(g => g.id === id ? { ...g, completed: !g.completed } : g);
+    }
+    saveJSON(STORE_KEY, goals);
+    render();
+  });
 
-  const timeEl     = document.getElementById('pomo-time');
-  const modeEl     = document.getElementById('pomo-mode');
-  const startBtn   = document.getElementById('pomo-start');
-  const resetBtn   = document.getElementById('pomo-reset');
-  const progressEl = document.getElementById('pomo-progress');
-  const sessionsEl = document.getElementById('pomo-sessions');
-  const workInput  = document.getElementById('pomo-work');
-  const breakInput = document.getElementById('pomo-break');
+  render();
+}
 
-  function loadTodaySessions() {
-    const rec = Store.load(SESSIONS_KEY, { date: '', count: 0 });
-    const today = new Date().toDateString();
-    if (rec.date !== today) return 0; 
-    return rec.count;
-  }
+/* =====================================================================
+   POMODORO TIMER
+===================================================================== */
+function initPomodoro(){
+  const WORK_SECONDS = 25 * 60;
+  const BREAK_SECONDS = 5 * 60;
 
-  function saveTodaySessions() {
-    Store.save(SESSIONS_KEY, { date: new Date().toDateString(), count: todaySessions });
-  }
+  const timeEl = document.getElementById('pomodoroTime');
+  const sessionEl = document.getElementById('pomodoroSession');
+  const summaryEl = document.getElementById('pomodoroSummary');
+  const startBtn = document.getElementById('pomodoroStart');
+  const pauseBtn = document.getElementById('pomodoroPause');
+  const resetBtn = document.getElementById('pomodoroReset');
 
-  function format(sec) {
-    const m = Math.floor(sec / 60).toString().padStart(2, '0');
-    const s = Math.floor(sec % 60).toString().padStart(2, '0');
+  let session = 'work';        // 'work' | 'break'
+  let remaining = WORK_SECONDS;
+  let intervalId = null;
+
+  function format(total){
+    const m = String(Math.floor(total / 60)).padStart(2, '0');
+    const s = String(total % 60).padStart(2, '0');
     return `${m}:${s}`;
   }
 
-  function renderTime() {
+  function updateDisplay(){
     timeEl.textContent = format(remaining);
-    modeEl.textContent = mode;
-    const total = (mode === 'Focus' ? workMinutes : breakMinutes) * 60;
-    const fraction = total > 0 ? remaining / total : 0;
-    progressEl.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - fraction);
-    progressEl.style.stroke = mode === 'Focus' ? 'var(--accent)' : 'var(--mint)';
-    sessionsEl.textContent = `${todaySessions} session${todaySessions === 1 ? '' : 's'} today`;
+    sessionEl.textContent = session === 'work' ? 'Work Session' : 'Break';
+    summaryEl.textContent = intervalId
+      ? `${format(remaining)} · ${session === 'work' ? 'Work session' : 'Break'}`
+      : 'Work in sprints';
   }
 
-  function switchPhase() {
-    if (mode === 'Focus') {
-      todaySessions += 1;
-      saveTodaySessions();
-      mode = 'Break';
-      remaining = breakMinutes * 60;
-    } else {
-      mode = 'Focus';
-      remaining = workMinutes * 60;
-    }
-    renderTime();
-  }
-
-  function tick() {
+  function tick(){
     remaining -= 1;
-    if (remaining <= 0) {
-      switchPhase();
-    } else {
-      renderTime();
+    if (remaining <= 0){
+      clearInterval(intervalId);
+      intervalId = null;
+      // Switch session type; wait for the user to press Start again.
+      session = session === 'work' ? 'break' : 'work';
+      remaining = session === 'work' ? WORK_SECONDS : BREAK_SECONDS;
+      updateDisplay();
+      notifySessionEnd(session);
+      return;
     }
+    updateDisplay();
   }
 
-  function start() {
-    if (timerId) return; 
-    timerId = setInterval(tick, 1000);
-    startBtn.textContent = 'Pause';
+  function start(){
+    if (intervalId) return; // never allow two intervals at once
+    intervalId = setInterval(tick, 1000);
+    updateDisplay();
+  }
+  function pause(){
+    clearInterval(intervalId);
+    intervalId = null;
+    updateDisplay();
+  }
+  function reset(){
+    clearInterval(intervalId);
+    intervalId = null;
+    session = 'work';
+    remaining = WORK_SECONDS;
+    updateDisplay();
   }
 
-  function pause() {
-    clearInterval(timerId);
-    timerId = null;
-    startBtn.textContent = 'Start';
+  function notifySessionEnd(nextSession){
+    const msg = nextSession === 'break'
+      ? 'Work session complete — time for a break.'
+      : 'Break is over — ready for another work session.';
+    beep();
+    sessionEl.textContent = msg;
+    setTimeout(updateDisplay, 2500);
   }
 
-  function reset() {
-    pause();
-    mode = 'Focus';
-    workMinutes  = Math.min(90, Math.max(1, Number(workInput.value) || 25));
-    breakMinutes = Math.min(30, Math.max(1, Number(breakInput.value) || 5));
-    remaining = workMinutes * 60;
-    renderTime();
+  function beep(){
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 660;
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+    }catch(e){ /* audio unavailable */ }
   }
 
-  function init() {
-    progressEl.style.strokeDasharray = RING_CIRCUMFERENCE;
+  startBtn.addEventListener('click', start);
+  pauseBtn.addEventListener('click', pause);
+  resetBtn.addEventListener('click', reset);
 
-    startBtn.addEventListener('click', () => (timerId ? pause() : start()));
-    resetBtn.addEventListener('click', reset);
-    workInput.addEventListener('change', () => { if (!timerId) reset(); });
-    breakInput.addEventListener('change', () => { if (!timerId) reset(); });
-
-    renderTime();
-  }
-  return { init };
-})();
-
-const GoalsFeature = (() => {
-  const KEY = 'daybase.goals';
-  let goals = Store.load(KEY, []); 
-
-  const form  = document.getElementById('goals-form');
-  const input = document.getElementById('goals-input');
-  const list  = document.getElementById('goals-list');
-  const empty = document.getElementById('goals-empty');
-  const count = document.getElementById('goals-count');
-
-  function render() {
-    list.innerHTML = '';
-    goals.forEach(g => {
-      const li = document.createElement('li');
-      li.className = 'goal-item' + (g.done ? ' is-done' : '');
-      li.innerHTML = `
-        <div class="goal-item__top">
-          <span class="goal-item__name">${escapeHtml(g.text)}</span>
-          <span class="goal-item__pct">${g.progress}%</span>
-        </div>
-        <input type="range" min="0" max="100" step="5" value="${g.progress}" data-id="${g.id}" ${g.done ? 'disabled' : ''}>
-        <div class="goal-item__actions">
-          <button data-action="done" data-id="${g.id}">${g.done ? 'Reopen' : 'Mark complete'}</button>
-          <button data-action="delete" data-id="${g.id}">Delete</button>
-        </div>
-      `;
-      list.appendChild(li);
-    });
-    count.textContent = `${goals.filter(g => !g.done).length} in progress`;
-    empty.classList.toggle('is-visible', goals.length === 0);
-  }
-
-  function addGoal(text) {
-    goals.push({ id: crypto.randomUUID(), text, progress: 0, done: false });
-    Store.save(KEY, goals);
-    render();
-  }
-
-  function updateProgress(id, value) {
-    const g = goals.find(g => g.id === id);
-    if (!g) return;
-    g.progress = Number(value);
-    if (g.progress >= 100) g.done = true;
-    Store.save(KEY, goals);
-    render();
-  }
-
-  function toggleDone(id) {
-    const g = goals.find(g => g.id === id);
-    if (!g) return;
-    g.done = !g.done;
-    if (g.done) g.progress = 100;
-    Store.save(KEY, goals);
-    render();
-  }
-
-  function deleteGoal(id) {
-    goals = goals.filter(g => g.id !== id);
-    Store.save(KEY, goals);
-    render();
-  }
-
-  function init() {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = input.value.trim();
-      if (!text) return;
-      addGoal(text);
-      input.value = '';
-      input.focus();
-    });
-
-    list.addEventListener('input', (e) => {
-      if (e.target.matches('input[type="range"]')) {
-        updateProgress(e.target.dataset.id, e.target.value);
-      }
-    });
-
-    list.addEventListener('click', (e) => {
-      const btn = e.target.closest('button[data-action]');
-      if (!btn) return;
-      if (btn.dataset.action === 'done') toggleDone(btn.dataset.id);
-      if (btn.dataset.action === 'delete') deleteGoal(btn.dataset.id);
-    });
-
-    render();
-  }
-  return { init };
-})();
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+  updateDisplay();
 }
 
-document.addEventListener('feature:open', (e) => {
-  if (e.detail.name === 'planner') PlannerFeature.render();
-});
+/* =====================================================================
+   MOTIVATION QUOTE — cached "quote of the day" + manual refresh
+===================================================================== */
+function initQuote(){
+  const STORE_KEY = 'daybook-daily-quote';
+  const textEl = document.getElementById('quoteText');
+  const authorEl = document.getElementById('quoteAuthor');
+  const newBtn = document.getElementById('quoteNew');
+  const card = document.querySelector('.quote-card');
 
-document.addEventListener('DOMContentLoaded', () => {
-  Nav.init();
-  ClockWidget.init();
-  WeatherWidget.init();
-  TodoFeature.init();
-  PlannerFeature.init();
-  MotivationFeature.init();
-  PomodoroFeature.init();
-  GoalsFeature.init();
-});
+  const FALLBACK_QUOTES = [
+    { text: 'Small steps, done daily, outrun big plans done never.', author: 'Daybase' },
+    { text: 'Start before you feel ready.', author: 'Daybase' },
+    { text: 'Focus is a decision you make every few minutes, not once.', author: 'Daybase' },
+  ];
+
+  function todayKey(){
+    const d = new Date();
+    return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  }
+
+  function display(text, author){
+    textEl.textContent = `“${text}”`;
+    authorEl.textContent = `— ${author}`;
+  }
+
+  async function fetchAndCache(){
+    card.classList.add('is-loading');
+    textEl.textContent = 'Fetching a line for you…';
+    authorEl.textContent = '';
+    try{
+      const res = await fetch('https://dummyjson.com/quotes/random');
+      if (!res.ok) throw new Error('Request failed');
+      const data = await res.json();
+      display(data.quote, data.author);
+      saveJSON(STORE_KEY, { date: todayKey(), text: data.quote, author: data.author });
+    }catch(err){
+      const pick = FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)];
+      display(pick.text, `${pick.author} (offline)`);
+    }finally{
+      card.classList.remove('is-loading');
+    }
+  }
+
+  function loadDailyQuote(){
+    const cached = loadJSON(STORE_KEY, null);
+    if (cached && cached.date === todayKey()){
+      display(cached.text, cached.author);
+      return;
+    }
+    fetchAndCache(); // new day (or first run) — get a fresh one and cache it
+  }
+
+  newBtn.addEventListener('click', fetchAndCache);
+  loadDailyQuote();
+}
+
+/* =====================================================================
+   WEATHER WIDGET — compact header badge
+===================================================================== */
+function initWeather(){
+  const valueEl = document.getElementById('weatherValue');
+  const subEl = document.getElementById('weatherSub');
+  const badgeEl = document.getElementById('weatherWidget');
+
+  const DEFAULT_LOCATION = { name: 'Mangaluru', lat: 12.9141, lon: 74.8560 };
+
+  const CODE_MAP = {
+    0:  { label: 'Clear sky', icon: '☀' },
+    1:  { label: 'Mostly clear', icon: '🌤' },
+    2:  { label: 'Partly cloudy', icon: '⛅' },
+    3:  { label: 'Overcast', icon: '☁' },
+    45: { label: 'Fog', icon: '🌫' },
+    48: { label: 'Fog', icon: '🌫' },
+    51: { label: 'Light drizzle', icon: '🌦' },
+    53: { label: 'Drizzle', icon: '🌦' },
+    55: { label: 'Dense drizzle', icon: '🌦' },
+    61: { label: 'Light rain', icon: '🌧' },
+    63: { label: 'Rain', icon: '🌧' },
+    65: { label: 'Heavy rain', icon: '🌧' },
+    71: { label: 'Light snow', icon: '🌨' },
+    73: { label: 'Snow', icon: '🌨' },
+    75: { label: 'Heavy snow', icon: '🌨' },
+    80: { label: 'Rain showers', icon: '🌦' },
+    81: { label: 'Rain showers', icon: '🌦' },
+    82: { label: 'Violent showers', icon: '⛈' },
+    95: { label: 'Thunderstorm', icon: '⛈' },
+  };
+
+  function describe(code){
+    return CODE_MAP[code] || { label: 'Conditions unavailable', icon: '❔' };
+  }
+
+  async function fetchWeather(lat, lon, locationLabel){
+    try{
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+                  `&current_weather=true&hourly=relativehumidity_2m,precipitation&timezone=auto`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Weather request failed');
+      const data = await res.json();
+
+      const current = data.current_weather;
+      const info = describe(current.weathercode);
+
+      valueEl.textContent = `${info.icon} ${Math.round(current.temperature)}°`;
+      subEl.textContent = locationLabel ? `${locationLabel} · ${info.label}` : info.label;
+
+      let humidity = '—', precipitation = '—';
+      if (data.hourly && data.hourly.time){
+        const idx = data.hourly.time.indexOf(current.time);
+        if (idx !== -1){
+          humidity = data.hourly.relativehumidity_2m[idx];
+          precipitation = data.hourly.precipitation[idx];
+        }
+      }
+      badgeEl.title = `Weather Widget — Precip ${precipitation} mm · Humidity ${humidity}% · Wind ${Math.round(current.windspeed)} km/h`;
+    }catch(err){
+      valueEl.textContent = '—';
+      subEl.textContent = 'Weather unavailable';
+    }
+  }
+
+  if (!('geolocation' in navigator)){
+    fetchWeather(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lon, DEFAULT_LOCATION.name);
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => fetchWeather(pos.coords.latitude, pos.coords.longitude, null),
+    (err) => {
+      // Permission denied or unavailable — briefly reflect that, then fall back to a default city
+      if (err.code === err.PERMISSION_DENIED){
+        valueEl.textContent = '—';
+        subEl.textContent = 'location denied';
+      }
+      fetchWeather(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.lon, DEFAULT_LOCATION.name);
+    },
+    { timeout: 6000 }
+  );
+}

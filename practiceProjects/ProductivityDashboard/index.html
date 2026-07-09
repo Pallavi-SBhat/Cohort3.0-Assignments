@@ -1,208 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Daybase — your desk, digitized</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  /* Apply saved theme before paint to avoid a flash of the wrong theme */
+  (function(){
+    try{
+      var t = localStorage.getItem('daybook-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    }catch(e){}
+  })();
+</script>
 </head>
 <body>
 
-<main id="dashboard" class="view is-active" data-view="dashboard">
+<div id="app">
 
-  <header class="deskstrip">
-    <div class="deskstrip__brand">
-      <span class="pin pin--brand" aria-hidden="true"></span>
-      <h1>Daybase</h1>
-      <p class="deskstrip__tag">your desk, digitized</p>
+  <!-- ============ HEADER ============ -->
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="brand__dot" aria-hidden="true"></span>
+      <div>
+        <h1 class="brand__title">Daybase</h1>
+        <p class="brand__tag">your desk, digitized</p>
+      </div>
     </div>
 
-    <div class="deskstrip__widgets">
-      <div class="widget widget--clock" id="widget-clock">
-        <span class="widget__label">Today</span>
-        <span class="widget__value" id="clock-time">--:--:--</span>
-        <span class="widget__sub" id="clock-date">—</span>
+    <div class="topbar__badges">
+      <!-- Date & Time -->
+      <div class="badge" id="clockDisplay" aria-label="Date & Time">
+        <span class="badge__eyebrow">Today</span>
+        <span class="badge__value badge__value--mono" id="clockTime">--:--:--</span>
+        <span class="badge__sub" id="clockDate">—</span>
       </div>
-      <div class="widget widget--weather" id="widget-weather">
-        <span class="widget__label">Sky</span>
-        <span class="widget__value" id="weather-temp">…</span>
-        <span class="widget__sub" id="weather-place">locating…</span>
+
+      <!-- Weather Widget -->
+      <div class="badge" id="weatherWidget" aria-label="Weather Widget" title="Weather Widget">
+        <span class="badge__eyebrow">Sky</span>
+        <span class="badge__value" id="weatherValue">—</span>
+        <span class="badge__sub" id="weatherSub">Locating…</span>
       </div>
+
+      <!-- Theme Switch -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Theme Switch — toggle light and dark theme" aria-pressed="true" title="Theme Switch">
+        <span id="themeIcon">☾</span>
+      </button>
     </div>
   </header>
 
-  <section class="board" aria-label="Feature cards">
+  <!-- ============ DASHBOARD NAVIGATION (home) ============ -->
+  <main class="board" id="dashboardView" aria-label="Dashboard Navigation">
 
-    <button class="card" data-feature="todo" style="--tilt:-2deg">
-      <span class="pin" aria-hidden="true"></span>
-      <span class="card__icon" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="6" width="32" height="36" rx="3" stroke="currentColor" stroke-width="2.5"/><path d="M16 17l3.5 3.5L26 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 27h16M16 33h11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <button class="note" data-open="todo" style="--rot:-1.2deg" aria-label="Todo List">
+      <span class="note__pin" aria-hidden="true"></span>
+      <span class="note__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M7.5 9.5h6M7.5 13.5h4"/><path d="M14.5 8.2l1.4 1.4L19 6.5"/></svg>
       </span>
-      <span class="card__title">To-do</span>
-      <span class="card__sub">Today's tasks</span>
+      <span class="note__title">To-do</span>
+      <span class="note__sub" id="todoSummary">Today's tasks</span>
     </button>
 
-    <button class="card" data-feature="planner" style="--tilt:1.5deg">
-      <span class="pin" aria-hidden="true"></span>
-      <span class="card__icon" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="9" width="34" height="30" rx="3" stroke="currentColor" stroke-width="2.5"/><path d="M7 18h34M15 6v6M33 6v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="17" cy="27" r="1.8" fill="currentColor"/><circle cx="24" cy="27" r="1.8" fill="currentColor"/><circle cx="31" cy="27" r="1.8" fill="currentColor"/></svg>
+    <button class="note" data-open="planner" style="--rot:1deg" aria-label="Daily Planner">
+      <span class="note__pin" aria-hidden="true"></span>
+      <span class="note__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M16 3v4M8 3v4M3.5 10h17"/></svg>
       </span>
-      <span class="card__title">Planner</span>
-      <span class="card__sub">Block your day</span>
+      <span class="note__title">Planner</span>
+      <span class="note__sub" id="plannerSummary">Block your day</span>
     </button>
 
-    <button class="card" data-feature="motivation" style="--tilt:-1deg">
-      <span class="pin" aria-hidden="true"></span>
-      <span class="card__icon" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none"><path d="M24 6l4.2 10.6L39 21l-10.8 4.4L24 36l-4.2-10.6L9 21l10.8-4.4L24 6z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M37 32l1.6 4L43 37.6 39 39l-1.6 4-1.6-4L32 37.6l3.4-1.6 1.6-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <button class="note" data-open="quote" style="--rot:-1.4deg" aria-label="Motivation Quote">
+      <span class="note__pin" aria-hidden="true"></span>
+      <span class="note__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.5 2.6 1.2 4.1 2.2 5.1 1 1 2.5 1.7 5.1 2.2-2.6.5-4.1 1.2-5.1 2.2-1 1-1.7 2.5-2.2 5.1-.5-2.6-1.2-4.1-2.2-5.1-1-1-2.5-1.7-5.1-2.2 2.6-.5 4.1-1.2 5.1-2.2 1-1 1.7-2.5 2.2-5.1z"/></svg>
       </span>
-      <span class="card__title">Motivation</span>
-      <span class="card__sub">A daily spark</span>
+      <span class="note__title">Motivation</span>
+      <span class="note__sub" id="quoteSummary">A daily spark</span>
     </button>
 
-    <button class="card" data-feature="pomodoro" style="--tilt:2deg">
-      <span class="pin" aria-hidden="true"></span>
-      <span class="card__icon" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="26" r="15" stroke="currentColor" stroke-width="2.5"/><path d="M24 17v9l6 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6h10M24 6v5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <button class="note" data-open="pomodoro" style="--rot:1.3deg" aria-label="Pomodoro Timer">
+      <span class="note__pin" aria-hidden="true"></span>
+      <span class="note__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l3 2M9.5 2h5"/></svg>
       </span>
-      <span class="card__title">Focus timer</span>
-      <span class="card__sub">Work in sprints</span>
+      <span class="note__title">Focus timer</span>
+      <span class="note__sub" id="pomodoroSummary">Work in sprints</span>
     </button>
 
-    <button class="card" data-feature="goals" style="--tilt:-1.5deg">
-      <span class="pin" aria-hidden="true"></span>
-      <span class="card__icon" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="9.5" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
+    <button class="note" data-open="goals" style="--rot:1.1deg" aria-label="Daily Goals">
+      <span class="note__pin" aria-hidden="true"></span>
+      <span class="note__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.3"/><circle cx="12" cy="12" r="4.7"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
       </span>
-      <span class="card__title">Goals</span>
-      <span class="card__sub">Track the long game</span>
+      <span class="note__title">Goals</span>
+      <span class="note__sub" id="goalsSummary">Track the long game</span>
     </button>
 
-  </section>
-</main>
+  </main>
 
-
-<div id="feature-view" class="view" data-view="feature">
-
-
-  <section class="feature-panel" data-panel="todo">
-    <header class="panel__head">
-      <button class="back-btn" data-action="back">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </button>
+  <!-- ============ FEATURE: TODO ============ -->
+  <section class="feature" id="view-todo" hidden aria-label="Todo List">
+    <div class="feature__head">
+      <button class="back-btn" data-back>← Dashboard</button>
       <h2>To-do</h2>
-      <span class="panel__meta" id="todo-count">0 open</span>
-    </header>
+    </div>
 
-    <form class="input-row" id="todo-form">
-      <input type="text" id="todo-input" placeholder="Add a task…" autocomplete="off" maxlength="80">
-      <button type="submit" class="btn btn--accent">Add</button>
+    <form class="row-input" id="todoForm">
+      <input type="text" id="todoInput" placeholder="What needs doing?" autocomplete="off" maxlength="140" />
+      <button type="submit">Add task</button>
     </form>
 
-    <ul class="list" id="todo-list"></ul>
-    <p class="empty-state" id="todo-empty">Nothing on the list yet. Add your first task above.</p>
+    <ul class="list" id="todoList"></ul>
+    <p class="empty-note" id="todoEmpty">Nothing here yet — add your first task above.</p>
   </section>
 
-
-  <section class="feature-panel" data-panel="planner">
-    <header class="panel__head">
-      <button class="back-btn" data-action="back">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </button>
+  <!-- ============ FEATURE: PLANNER ============ -->
+  <section class="feature" id="view-planner" hidden aria-label="Daily Planner">
+    <div class="feature__head">
+      <button class="back-btn" data-back>← Dashboard</button>
       <h2>Planner</h2>
-      <span class="panel__meta" id="planner-date"></span>
-    </header>
+    </div>
 
-    <form class="input-row input-row--planner" id="planner-form">
-      <input type="time" id="planner-time" required>
-      <input type="text" id="planner-input" placeholder="What's happening then?" autocomplete="off" maxlength="60" required>
-      <button type="submit" class="btn btn--accent">Block it</button>
+    <form class="row-input row-input--planner" id="plannerForm">
+      <input type="time" id="plannerTimeInput" required aria-label="Time" />
+      <input type="text" id="plannerTaskInput" placeholder="What are you working on?" autocomplete="off" maxlength="140" required />
+      <button type="submit">Add</button>
     </form>
 
-    <ul class="list list--timeline" id="planner-list"></ul>
-    <p class="empty-state" id="planner-empty">No time blocks yet. Plan your first slot above.</p>
+    <ul class="list" id="plannerList"></ul>
+    <p class="empty-note" id="plannerEmpty">No plans yet — set a time and a task above.</p>
   </section>
 
- 
-  <section class="feature-panel" data-panel="motivation">
-    <header class="panel__head">
-      <button class="back-btn" data-action="back">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </button>
+  <!-- ============ FEATURE: GOALS ============ -->
+  <section class="feature" id="view-goals" hidden aria-label="Daily Goals">
+    <div class="feature__head">
+      <button class="back-btn" data-back>← Dashboard</button>
+      <h2>Goals</h2>
+    </div>
+
+    <form class="row-input" id="goalForm">
+      <input type="text" id="goalInput" placeholder="Set a goal for today…" autocomplete="off" maxlength="120" />
+      <button type="submit">Add goal</button>
+    </form>
+
+    <div class="progress" id="goalProgressWrap">
+      <div class="progress__bar"><div class="progress__fill" id="goalProgressFill"></div></div>
+      <span class="progress__label" id="goalProgressLabel">0 of 0 completed</span>
+    </div>
+
+    <ul class="list" id="goalList"></ul>
+    <p class="empty-note" id="goalEmpty">No goals yet — what matters today?</p>
+  </section>
+
+  <!-- ============ FEATURE: POMODORO ============ -->
+  <section class="feature feature--center" id="view-pomodoro" hidden aria-label="Pomodoro Timer">
+    <div class="feature__head">
+      <button class="back-btn" data-back>← Dashboard</button>
+      <h2>Focus timer</h2>
+    </div>
+
+    <div class="pomodoro">
+      <span class="pomodoro__session" id="pomodoroSession">Work Session</span>
+      <span class="pomodoro__time" id="pomodoroTime">25:00</span>
+      <div class="pomodoro__controls">
+        <button id="pomodoroStart">Start</button>
+        <button id="pomodoroPause">Pause</button>
+        <button id="pomodoroReset">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE: QUOTE ============ -->
+  <section class="feature feature--center" id="view-quote" hidden aria-label="Motivation Quote">
+    <div class="feature__head">
+      <button class="back-btn" data-back>← Dashboard</button>
       <h2>Motivation</h2>
-      <span class="panel__meta">daily spark</span>
-    </header>
+    </div>
 
     <div class="quote-card">
-      <p class="quote-card__text" id="quote-text">"…"</p>
-      <div class="quote-card__actions">
-        <button class="btn btn--ghost" id="quote-next">New spark</button>
-        <button class="btn btn--star" id="quote-fav" aria-pressed="false" title="Save to favorites">★ Save</button>
-      </div>
+      <p class="quote-card__text" id="quoteText">Loading a line for you…</p>
+      <p class="quote-card__author" id="quoteAuthor"></p>
+      <button id="quoteNew">New quote</button>
     </div>
-
-    <h3 class="favs-title">Saved sparks</h3>
-    <ul class="list list--quotes" id="favs-list"></ul>
-    <p class="empty-state" id="favs-empty">Favorite a quote and it'll show up here.</p>
-  </section>
-
-  <section class="feature-panel" data-panel="pomodoro">
-    <header class="panel__head">
-      <button class="back-btn" data-action="back">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </button>
-      <h2>Focus timer</h2>
-      <span class="panel__meta" id="pomo-sessions">0 sessions today</span>
-    </header>
-
-    <div class="pomo">
-      <div class="pomo__ring-wrap">
-        <svg class="pomo__ring" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="88" class="pomo__ring-track"/>
-          <circle cx="100" cy="100" r="88" class="pomo__ring-progress" id="pomo-progress"/>
-        </svg>
-        <div class="pomo__center">
-          <span class="pomo__time" id="pomo-time">25:00</span>
-          <span class="pomo__mode" id="pomo-mode">Focus</span>
-        </div>
-      </div>
-
-      <div class="pomo__controls">
-        <button class="btn btn--accent" id="pomo-start">Start</button>
-        <button class="btn btn--ghost" id="pomo-reset">Reset</button>
-      </div>
-
-      <div class="pomo__settings">
-        <label>Focus <input type="number" id="pomo-work" min="1" max="90" value="25"> min</label>
-        <label>Break <input type="number" id="pomo-break" min="1" max="30" value="5"> min</label>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="feature-panel" data-panel="goals">
-    <header class="panel__head">
-      <button class="back-btn" data-action="back">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </button>
-      <h2>Goals</h2>
-      <span class="panel__meta" id="goals-count">0 in progress</span>
-    </header>
-
-    <form class="input-row" id="goals-form">
-      <input type="text" id="goals-input" placeholder="Name a goal…" autocomplete="off" maxlength="60">
-      <button type="submit" class="btn btn--accent">Add</button>
-    </form>
-
-    <ul class="list list--goals" id="goals-list"></ul>
-    <p class="empty-state" id="goals-empty">No goals yet. The long game starts with one line above.</p>
   </section>
 
 </div>

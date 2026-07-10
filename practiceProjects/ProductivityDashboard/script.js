@@ -47,13 +47,13 @@ const dailyGoalsList = $(".goals-list");
 let timer;
 let updateIndex = null;
 const morningImg =
-  "https://images.unsplash.com/photo-1514241516423-6c0a5e031aa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW9ybmluZ2ltYWdlfGVufDB8fDB8fHww";
+  "hthttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERoZHdMmWo4jgNRN6jO8JYfDNOBAOtURhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERoZHdMmWo4jgNRN6jO8JYfDNOBAOtUREzw99Hh1c3g&s=10Ezw99Hh1c3g&s=10tps://images.unsplash.com/photo-1514241516423-6c0a5e031aa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW9ybmluZ2ltYWdlfGVufDB8fDB8fHww";
 const afternoonImg =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN06Tvcw51X_2I_aSHP6Fif7SSF2Q6a99RTkOmIr4kYg&s=10";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlO10-WM_SxfQNYYF_UcwCGPYtBTsQMsU7b-giwsDKg&s=10";
 const eveningImg =
-  "https://images.unsplash.com/photo-1577257107590-fc448601f16a?q=80&w=874&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_g9ia2NFuiYlKQq2inJmsh46eqX9jlHT7CxiImue1Gw&s=10";
 const nightImg =
-  "https://plus.unsplash.com/premium_photo-1671336757490-1249b2ccb020?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmlnaHQlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLGLiTprJkS-HzKygyybRT2bGOqlAhueEF5kBRy31eRw&s=10";
 let currentPage = getLocalStorage("currentPage") || "";
 
 const defaultTime = 25 * 60;

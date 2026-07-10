@@ -540,19 +540,12 @@ button{
 
     align-items:center;
 
-    gap:20px;
+    gap:18px;
 
-    padding:20px 24px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.35s;
+    padding:22px 24px;
 
 }
+
 
 .task-card:hover{
 
@@ -582,27 +575,38 @@ button{
 }
 .status{
 
-    padding:8px 16px;
+    width:130px;
 
-    border-radius:30px;
+    height:46px;
 
-    font-size:.85rem;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    font-size:15px;
 
     font-weight:600;
 
     color:#fff;
 
-    min-width:90px;
-
-    text-align:center;
-
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
 }
 .important-btn{
 
-    width:120px;
+    width:130px;
 
     height:46px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     border-radius:14px;
 
@@ -612,9 +616,15 @@ button{
 
 .delete-btn{
 
-    width:110px;
+    width:130px;
 
     height:46px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     border-radius:14px;
 
@@ -844,5 +854,246 @@ button{
     margin-bottom:30px;
 
     font-weight:700;
+
+}.daily-planner-view .popup-card{
+
+    width:760px;
+
+    max-width:92%;
+
+    padding:38px;
+
+    border-radius:32px;
+
+    background:linear-gradient(145deg,#161b2f,#101624);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(28px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.daily-planner-view h2{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:30px;
+
+}
+.daily-planner-view .popup-card{
+
+    width:760px;
+
+    max-width:92%;
+
+    padding:38px;
+
+    border-radius:32px;
+
+    background:linear-gradient(145deg,#161b2f,#101624);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(28px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.daily-planner-view h2{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:30px;
+
+}
+.planner-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 140px 140px;
+
+    gap:16px;
+
+    margin-bottom:35px;
+
+}
+
+#task-name,
+#task-time{
+
+    height:56px;
+
+    padding:0 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#fff;
+
+    font-size:15px;
+
+}
+
+#task-name:focus,
+#task-time:focus{
+
+    border-color:#6C63FF;
+
+    box-shadow:0 0 15px rgba(108,99,255,.25);
+
+}
+
+#save-plan{
+
+    height:56px;
+
+    border-radius:18px;
+
+    font-weight:600;
+
+    font-size:15px;
+
+}
+.planner-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 24px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+}
+
+.planner-card:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.09);
+
+}
+.planner-details h3{
+
+    font-size:1.6rem;
+
+    color:#8B7DFF;
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+}
+.planner-details p{
+
+    font-size:1.1rem;
+
+    color:#fff;
+
+    opacity:.9;
+
+}
+.planner-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.planner-actions button{
+
+    width:100px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.planner-actions button:first-child{
+
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+
+}
+
+.planner-actions button:last-child{
+
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+
+}
+
+.planner-actions button:hover{
+
+    transform:translateY(-3px);
+
+}
+.planner-card{
+
+    position:relative;
+
+    padding-left:55px;
+
+}
+
+.planner-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:22px;
+
+    top:22px;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#8B7DFF;
+
+    box-shadow:0 0 12px #8B7DFF;
+
+}
+
+.planner-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:27px;
+
+    top:34px;
+
+    width:2px;
+
+    height:65%;
+
+    background:rgba(255,255,255,.15);
 
 }

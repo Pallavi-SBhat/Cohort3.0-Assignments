@@ -47,7 +47,7 @@ const dailyGoalsList = $(".goals-list");
 let timer;
 let updateIndex = null;
 const morningImg =
-  "hthttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERoZHdMmWo4jgNRN6jO8JYfDNOBAOtURhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERoZHdMmWo4jgNRN6jO8JYfDNOBAOtUREzw99Hh1c3g&s=10Ezw99Hh1c3g&s=10tps://images.unsplash.com/photo-1514241516423-6c0a5e031aa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW9ybmluZ2ltYWdlfGVufDB8fDB8fHww";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8haRlnyPegsFS1yH91hNbihtH_bSFRT6doPTaP_2pJA&s=10/photo-1514241516423-6c0a5e031aa2?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0";
 const afternoonImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlO10-WM_SxfQNYYF_UcwCGPYtBTsQMsU7b-giwsDKg&s=10";
 const eveningImg =
@@ -715,4 +715,3 @@ addGoalBtn.addEventListener("click", () => {
   input.value = "";
 });
 initializeApp();
-

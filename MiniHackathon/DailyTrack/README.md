@@ -29,7 +29,7 @@ Detailed project documentation is available on Notion:
 - Vite
 
 ## 📸 Screenshots
-![Login Page](MiniHackathon/DailyTrack/src/assets/login.png)
+![Login Page](MiniHackathon\DailyTrack\screenshots\dispaly.png)
 ![Dashboard](MiniHackathon\DailyTrack\src\assets\dispaly.png)
 ![AddTasks](MiniHackathon\DailyTrack\src\assets\newtask.png)
 

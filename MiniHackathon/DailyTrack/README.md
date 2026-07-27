@@ -29,7 +29,6 @@ Detailed project documentation is available on Notion:
 - Vite
 
 ## 📸 Screenshots
-## 📸 Screenshots
 
 <h3>Login Page</h3>
 <p align="center">

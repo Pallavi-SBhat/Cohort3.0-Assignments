@@ -1,16 +1,51 @@
-# React + Vite
+# 📋 DailyTrack
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A productivity and task management application built with **React** and **Redux Toolkit** that helps users organize and manage their daily tasks efficiently.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+🌐 https://dailytrack-wine.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📖 Documentation
+Detailed project documentation is available on Notion:
 
-## React Compiler
+👉 https://app.notion.com/p/redux-3aac97f7609680cfaa60d78b22715988?source=copy_link
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the Oxlint configuration
+- Add new tasks
+- Edit existing tasks
+- Delete tasks
+- Mark tasks as completed
+- Global state management using Redux Toolkit
+- Responsive UI
+- Clean and reusable components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🛠️ Tech Stack
+
+- React
+- Redux Toolkit
+- JavaScript
+- Tailwind CSS
+- Vite
+
+## 📸 Screenshots
+![Login Page](./assets/login.png)
+![Dashboard](./assets/display.png)
+![AddTasks](./assets/newtask.png)
+
+
+## 📚 What I Learned
+
+- Redux Store (`configureStore`)
+- `createSlice`
+- `useSelector`
+- `useDispatch`
+- Global State Management
+- Redux Data Flow
+- CRUD Operations using Redux Toolkit
+
+## 👩‍💻 Author
+
+**Pallavi S Bhat**
+
+GitHub: https://github.com/Pallavi-SBhat

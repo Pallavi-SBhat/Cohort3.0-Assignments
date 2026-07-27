@@ -29,9 +29,9 @@ Detailed project documentation is available on Notion:
 - Vite
 
 ## 📸 Screenshots
-![Login Page](MiniHackathon\DailyTrack\screenshots\dispaly.png)
-![Dashboard](MiniHackathon\DailyTrack\src\assets\dispaly.png)
-![AddTasks](MiniHackathon\DailyTrack\src\assets\newtask.png)
+![Login Page](./screenshots/login.png)
+![Dashboard](./screenshots/dispaly.png)
+![AddTasks](./screenshots/newtask.png)
 
 
 ## 📚 What I Learned

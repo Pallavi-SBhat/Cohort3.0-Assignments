@@ -29,15 +29,22 @@ Detailed project documentation is available on Notion:
 - Vite
 
 ## 📸 Screenshots
+## 📸 Screenshots
+
 <h3>Login Page</h3>
-<img src="./screenshots/login.png" width="800">
+<p align="center">
+  <img src="./screenshots/login.png" width="600">
+</p>
 
 <h3>Dashboard</h3>
-<img src="./screenshots/display.png" width="800">
+<p align="center">
+  <img src="./screenshots/dispaly.png" width="600">
+</p>
 
 <h3>Add Task</h3>
-<img src="./screenshots/newtask.png" width="800">
-
+<p align="center">
+  <img src="./screenshots/newtask.png" width="600">
+</p>
 
 ## 📚 What I Learned
 

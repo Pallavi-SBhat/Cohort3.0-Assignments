@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-slateDark: var(--color-bg);
+  --color-slateCard: var(--color-card);
+  --color-slateBorder: var(--color-border);
+  --color-inputBg: var(--color-input);
+  --color-textMain: var(--color-text-main);
+  --color-textMuted: var(--color-text-muted);
+  --color-brandIndigo: #6366f1;
+  --color-brandPurple: #a855f7;
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+:root {
+  --color-bg: #0f172a;
+  --color-card: #1e293b;
+  --color-border: #334155;
+  --color-input: #0f172a;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+}
+
+.light {
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-input: #f1f5f9;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+}
+
+.dark {
+  --color-bg: #0f172a;
+  --color-card: #1e293b;
+  --color-border: #334155;
+  --color-input: #0f172a;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}

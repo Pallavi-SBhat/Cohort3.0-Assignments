@@ -29,9 +29,9 @@ Detailed project documentation is available on Notion:
 - Vite
 
 ## 📸 Screenshots
-![Login Page](./assets/login.png)
-![Dashboard](./assets/display.png)
-![AddTasks](./assets/newtask.png)
+![Login Page](D:\d\pallavi\Projects\JobReadyCourse\assignments\MiniHackathon\DailyTrack\src\assets\login.png)
+![Dashboard](D:\d\pallavi\Projects\JobReadyCourse\assignments\MiniHackathon\DailyTrack\src\assets\dispaly.png)
+![AddTasks](D:\d\pallavi\Projects\JobReadyCourse\assignments\MiniHackathon\DailyTrack\src\assets\newtask.png)
 
 
 ## 📚 What I Learned

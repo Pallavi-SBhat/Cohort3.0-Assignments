@@ -7,6 +7,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -48,6 +49,13 @@ export const CartProvider = ({ children }) => {
     saveCart([]);
   };
 
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 4000);
+  };
+
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 
@@ -61,7 +69,9 @@ export const CartProvider = ({ children }) => {
       cartCount, 
       cartTotal,
       isCartOpen,
-      setIsCartOpen
+      setIsCartOpen,
+      toastMessage,
+      showToast
     }}>
       {children}
     </CartContext.Provider>

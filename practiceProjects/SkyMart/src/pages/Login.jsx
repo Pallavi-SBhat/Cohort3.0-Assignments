@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Eye, EyeOff, ShoppingBag } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, Zap, Star } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -38,40 +38,64 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-[#0d0d0d] flex">
       
-      {/* Left Pane - Branding (hidden on mobile, flex on lg) */}
-      <div className="hidden lg:flex flex-col w-1/2 bg-[#111] border-r border-white/8 p-12 relative overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 -left-20 w-64 h-64 bg-volt/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-10 w-48 h-48 bg-volt/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Left Pane - Branding */}
+      <div className="hidden lg:flex flex-col w-1/2 p-12 relative overflow-hidden justify-between border-r border-white/5">
         
         {/* Branding Logo */}
-        <div className="flex items-center gap-3 mb-auto">
-          <div className="w-10 h-10 bg-volt rounded-2xl flex items-center justify-center">
-            <ShoppingBag size={20} className="text-ink" />
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-volt rounded-full flex items-center justify-center">
+            <Zap size={16} className="text-ink fill-ink" />
           </div>
-          <h1 className="font-heading font-bold text-2xl text-white">Sky Mart</h1>
+          <h1 className="font-heading font-bold text-xl text-white">SkyMart</h1>
         </div>
         
         {/* Value Proposition */}
-        <div className="mt-auto z-10">
-          <div className="bg-white/4 border border-white/8 rounded-3xl p-8 backdrop-blur-sm max-w-md">
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">Discover the best products online</h2>
-            <p className="text-white/60 leading-relaxed">
-              Shop from thousands of items across multiple categories with guaranteed fast delivery and secure payments.
-            </p>
+        <div className="z-10 max-w-lg mt-20">
+          <div className="text-volt text-xs font-bold tracking-widest uppercase mb-4">
+            WELCOME BACK
+          </div>
+          <h2 className="font-heading font-extrabold text-5xl md:text-6xl text-white mb-2 leading-tight">
+            Shop the future.
+          </h2>
+          <h2 className="font-heading font-extrabold text-5xl md:text-6xl text-volt mb-6 leading-tight">
+            Today.
+          </h2>
+          <p className="text-white/50 text-lg leading-relaxed max-w-md">
+            Thousands of products, lightning-fast delivery, and prices that make your wallet happy.
+          </p>
+        </div>
+
+        {/* Stats Row */}
+        <div className="flex gap-4 mt-auto pt-10">
+          <div className="flex-1 bg-transparent border border-white/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+            <h3 className="text-volt font-heading font-bold text-xl mb-1">20K+</h3>
+            <p className="text-xs text-white/50">Products</p>
+          </div>
+          <div className="flex-1 bg-transparent border border-white/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+            <h3 className="text-volt font-heading font-bold text-xl mb-1">50K+</h3>
+            <p className="text-xs text-white/50">Users</p>
+          </div>
+          <div className="flex-1 bg-transparent border border-white/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+            <h3 className="text-volt font-heading font-bold text-xl mb-1 flex items-center gap-1">
+              4.9 <Star size={16} className="fill-volt" />
+            </h3>
+            <p className="text-xs text-white/50">Rating</p>
           </div>
         </div>
       </div>
 
       {/* Right Pane - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-6">
-        <div className="w-full max-w-md animate-scale-in auth-card">
+      <div className="flex-1 flex items-center justify-center p-6 bg-[#0a0a0a]">
+        <div className="w-full max-w-md animate-scale-in auth-card p-10 bg-[#111]">
           
-          <div className="text-center mb-8">
-            <div className="w-12 h-12 bg-volt rounded-xl flex items-center justify-center mx-auto mb-6 lg:hidden">
-              <ShoppingBag size={24} className="text-ink" />
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-6 lg:hidden">
+              <div className="w-8 h-8 bg-volt rounded-full flex items-center justify-center">
+                <Zap size={16} className="text-ink fill-ink" />
+              </div>
+              <h1 className="font-heading font-bold text-xl text-white">SkyMart</h1>
             </div>
-            <h2 className="font-heading font-bold text-2xl text-white mb-2">Sign in</h2>
+            <h2 className="font-heading font-bold text-3xl text-white mb-2">Sign in</h2>
             <p className="text-white/50 text-sm">Enter your credentials to continue</p>
           </div>
           
@@ -81,22 +105,26 @@ const Login = () => {
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="relative flex items-center">
+              <Mail size={16} className="absolute left-4 text-white/40" />
               <input 
                 type="email" 
-                className="field" 
+                className="field pl-11" 
                 placeholder="Email address"
+                autoComplete="username"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             
             <div className="relative flex items-center">
+              <Lock size={16} className="absolute left-4 text-white/40" />
               <input 
                 type={showPassword ? "text" : "password"} 
-                className="field pr-12" 
+                className="field pl-11 pr-12" 
                 placeholder="Password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -105,12 +133,12 @@ const Login = () => {
                 className="absolute right-4 bg-transparent text-white/40 flex items-center justify-center hover:text-white transition-colors"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
             
-            <button type="submit" className="btn-volt w-full flex items-center justify-center gap-2 py-3.5 mt-2 text-base font-heading font-bold">
-              Sign in
+            <button type="submit" className="btn-volt w-full flex items-center justify-center gap-2 py-3.5 mt-4 text-base font-heading font-bold">
+              Sign in <span className="ml-1">→</span>
             </button>
           </form>
           

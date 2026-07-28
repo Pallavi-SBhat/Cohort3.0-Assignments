@@ -1,20 +1,39 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { useCart } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
-import { Star, Truck, ShieldCheck, RefreshCw, ChevronRight } from 'lucide-react';
+import { Star, Truck, ShieldCheck, RefreshCw, ChevronRight, Loader2 } from 'lucide-react';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { cart, addToCart } = useCart();
+  const { products, isLoading, error } = useProducts();
   
   const product = products.find(p => p.id === parseInt(id));
   
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-volt gap-4 animate-fade-in">
+        <Loader2 size={48} className="animate-spin" />
+        <h2 className="text-white font-heading font-bold text-xl">Loading Product...</h2>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-red-500 gap-4 animate-fade-in">
+        <h2 className="text-white font-heading font-bold text-xl">Oops, something went wrong!</h2>
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (

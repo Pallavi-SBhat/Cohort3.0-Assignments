@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  cursor: none !important;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0B0F19] text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200;
+  }
+}
+
+.bento-card {
+  @apply bg-[#131722] border border-white/5 rounded-[2rem] shadow-xl overflow-hidden relative;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F19; 
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155; 
+}

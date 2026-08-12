@@ -1,8 +1,36 @@
 @import "tailwindcss";
 
+:root {
+  --bg-main: #ffffff;
+  --bg-panel: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-main: #0d0d0d;
+  --text-muted: #6b7280;
+  --border-subtle: rgba(0,0,0,0.1);
+  --input-bg: rgba(0,0,0,0.03);
+  --input-focus-ring: rgba(200, 244, 0, 0.4);
+}
+
+.dark {
+  --bg-main: #0d0d0d;
+  --bg-panel: #0a0a0a;
+  --bg-card: #111111;
+  --text-main: #f7f7f7;
+  --text-muted: rgba(255,255,255,0.5);
+  --border-subtle: rgba(255,255,255,0.1);
+  --input-bg: rgba(255,255,255,0.05);
+  --input-focus-ring: rgba(200, 244, 0, 0.2);
+}
+
 @theme {
-  --color-bg-dark: #0d0d0d;
-  --color-bg-card: #111111;
+  --color-bg-main: var(--bg-main);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-input-bg: var(--input-bg);
+  
   --color-volt: #c8f400;
   --color-volt-light: #e2ff66;
   --color-ink: #0d0d0d;
@@ -20,25 +48,26 @@
 
 @layer base {
   body {
-    @apply bg-[#0d0d0d] text-[#f7f7f7] font-body min-h-screen antialiased;
+    @apply bg-bg-main text-text-main font-body min-h-screen antialiased transition-colors duration-300;
   }
 }
 
 @layer components {
   .auth-card {
-    @apply rounded-[1.5rem] border border-white/10 bg-[#111] p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)];
+    @apply rounded-[1.5rem] border border-border-subtle bg-bg-card p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] transition-colors duration-300;
   }
 
   .field {
-    @apply w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-all duration-200;
+    @apply w-full rounded-2xl border border-border-subtle bg-input-bg px-4 py-3 text-sm text-text-main outline-none transition-all duration-200;
   }
   
   .field:focus {
-    @apply border-volt bg-white/10 ring-2 ring-volt/20;
+    @apply border-volt bg-bg-main ring-2;
+    ring-color: var(--input-focus-ring);
   }
 
   .field::placeholder {
-    @apply text-white/30;
+    @apply text-text-muted;
   }
 
   .btn-volt {
@@ -63,12 +92,12 @@
   height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--bg-panel);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--border-subtle);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c8f400;
+  background: var(--color-volt);
 }

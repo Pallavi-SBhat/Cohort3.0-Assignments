@@ -7,7 +7,7 @@ const projects = [
     title: "Weather Forecast",
     description: "A real-time weather application providing accurate forecasts and conditions.",
     tags: ["React", "API", "Tailwind"],
-    github: "#",
+    github: "https://github.com/Pallavi-SBhat/WeatherForecast",
     live: "https://weather-forecast-pallavii.vercel.app/",
     color: "from-blue-500/20 to-transparent"
   },
@@ -15,7 +15,7 @@ const projects = [
     title: "SkyMart E-Commerce",
     description: "A modern e-commerce storefront with a sleek user interface.",
     tags: ["React", "State Management", "Tailwind"],
-    github: "#",
+    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/SkyMart",
     live: "https://skymart-tawny.vercel.app/",
     color: "from-pink-500/20 to-transparent"
   },
@@ -23,7 +23,7 @@ const projects = [
     title: "Productivity Planner",
     description: "An elegant planner application to track tasks and boost productivity.",
     tags: ["JavaScript", "React", "Local Storage"],
-    github: "#",
+    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ProductivityDashboard",
     live: "https://productivityplanner-mu.vercel.app/",
     color: "from-emerald-500/20 to-transparent"
   },
@@ -31,7 +31,7 @@ const projects = [
     title: "Daily Track",
     description: "A comprehensive daily habit and activity tracker.",
     tags: ["React", "Tailwind", "Responsive"],
-    github: "#",
+    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/MiniHackathon/DailyTrack",
     live: "https://dailytrack-wine.vercel.app/",
     color: "from-violet-500/20 to-transparent"
   },
@@ -40,7 +40,7 @@ const projects = [
     title: "FinTrack Pro",
     description: "A robust financial tracking application for managing expenses.",
     tags: ["React", "Charts", "Tailwind"],
-    github: "#",
+    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ExpenseTracker",
     live: "https://fintrackpro-pallavii.vercel.app/",
     color: "from-cyan-500/20 to-transparent"
   }

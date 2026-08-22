@@ -117,7 +117,7 @@ export default function App() {
         <p className="text-4xl font-bold tracking-tight" style={{ color: "var(--text-color)" }}>
           Tooltip
         </p>
-        <p className="text-lg text-[var(--text-color)] dark:text-gray-400">
+        <p className="text-lg" style={{ color: "var(--text-muted)" }}>
           A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
         </p>
       </header>

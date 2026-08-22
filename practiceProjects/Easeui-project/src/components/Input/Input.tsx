@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/libs/utils";
 
 const inputVariants = cva(
-  "w-full border rounded-md focus:outline-none shadow-sm transition-all duration-150 bg-[var(--bg-color)] dark:bg-slate-800 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500",
+  "w-full border rounded-md focus:outline-none shadow-sm transition-all duration-150 placeholder:text-[var(--text-subtle)]",
   // w-full bg-transparent border-b border-gray-500 pb-2 pt-6 focus:outline-none transition-all
   {
     variants: {
@@ -14,14 +14,14 @@ const inputVariants = cva(
       },
       tone: {
         default:
-          "border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400",
+          "bg-[var(--surface)] text-[var(--text-color)] border-[var(--border-color)] focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]",
         error:
-          "border-red-400 dark:border-red-500 focus:ring-2 focus:ring-red-400 focus:border-red-400",
+          "bg-[var(--surface)] text-[var(--text-color)] border-red-400 focus:ring-2 focus:ring-red-400 focus:border-red-400",
         success:
-          "border-green-400 dark:border-green-500 focus:ring-2 focus:ring-green-400 focus:border-green-400",
+          "bg-[var(--surface)] text-[var(--text-color)] border-green-400 focus:ring-2 focus:ring-green-400 focus:border-green-400",
       },
       disabled: {
-        true: "bg-gray-100 dark:bg-slate-700 text-gray-400 cursor-not-allowed opacity-80",
+        true: "bg-[var(--bg-secondary)] text-[var(--text-subtle)] cursor-not-allowed opacity-80",
       },
     },
     defaultVariants: {

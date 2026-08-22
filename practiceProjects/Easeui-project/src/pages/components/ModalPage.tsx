@@ -84,7 +84,7 @@ export default function App() {
     <div className="max-w-4xl mx-auto p-4 space-y-12">
       <div className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">Modal</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400">
+        <p className="text-xl" style={{ color: "var(--text-muted)" }}>
           The Modal component is used to display content in an overlay.
         </p>
       </div>

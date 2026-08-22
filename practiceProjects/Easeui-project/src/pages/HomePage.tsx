@@ -69,12 +69,12 @@ const HomePage = () => {
       {/* Navbar will sit on top (assumed from global layout) */}
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 max-w-7xl mx-auto flex flex-col items-center text-center">
-        {/* Background glow effects */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[var(--accent-color)]/30 dark:bg-[var(--accent-color)]/15 blur-[120px] rounded-full -z-10" />
-        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] bg-purple-500/30 dark:bg-purple-500/15 blur-[100px] rounded-full -z-10" />
+      <section className="relative pt-20 pb-20 md:pt-32 md:pb-32 px-4 max-w-7xl mx-auto flex flex-col items-center text-center">
+        {/* Background glow effects - subtle in light, stronger in dark via CSS variable opacity */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] blur-[120px] rounded-full -z-10" style={{ background: "var(--accent-color)", opacity: 0.08 }} />
+        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] blur-[100px] rounded-full -z-10" style={{ background: "purple", opacity: 0.06 }} />
 
-        <div className="hero-text inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card-bg)] dark:bg-indigo-900/30 text-[var(--text-color)] dark:text-indigo-400 text-sm font-medium mb-8 border-[var(--border-color)] dark:border-indigo-800/50">
+        <div className="hero-text inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] text-sm font-medium mb-8" style={{ color: "var(--text-color)" }}>
           <Zap size={14} className="text-amber-500" />
           <span>v1.0 is now live!</span>
         </div>
@@ -83,7 +83,7 @@ const HomePage = () => {
           Build Beautiful UIs with <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Ease</span>
         </h1>
         
-        <p className="hero-text text-lg md:text-xl text-[var(--text-color)] dark:text-slate-400 max-w-2xl mb-10">
+        <p className="hero-text text-lg md:text-xl max-w-2xl mb-10" style={{ color: "var(--text-muted)" }}>
           A premium, animated, and fully customizable React component library. Designed for developers who care about aesthetics and developer experience.
         </p>
 
@@ -95,7 +95,7 @@ const HomePage = () => {
             </Button>
           </Link>
           <a href="https://github.com" target="_blank" rel="noreferrer" className="hero-button">
-            <Button size="xl" variant="outline" className="bg-[var(--card-bg)]/70 dark:bg-slate-900/70 backdrop-blur-sm border-[var(--border-color)] dark:border-slate-800">
+            <Button size="xl" variant="outline">
               <Code className="mr-2 inline" size={18} />
               View GitHub
             </Button>
@@ -105,13 +105,16 @@ const HomePage = () => {
 
       {/* Demo Section */}
       <section className="py-20 px-4" ref={demoRef}>
-        <div className="max-w-5xl mx-auto bg-[var(--card-bg)]/40 dark:bg-slate-900/40 backdrop-blur-xl border border-[var(--border-color)] dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden relative">
+        <div
+          className="max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden relative"
+          style={{ background: "var(--card-bg)", border: "1px solid var(--border-color)" }}
+        >
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full -z-10" />
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold">Copy, paste, animate.</h2>
-              <p className="text-[var(--text-color)] dark:text-slate-400">
+              <h2 className="text-3xl font-bold" style={{ color: "var(--text-color)" }}>Copy, paste, animate.</h2>
+              <p style={{ color: "var(--text-muted)" }}>
                 Stop wrestling with complex animation libraries and disjointed components. Ease UI provides pre-animated, carefully crafted blocks that just work.
               </p>
               
@@ -131,7 +134,6 @@ const HomePage = () => {
                   description="Hover over me to see the 3D float effect powered by GSAP."
                   variant="light"
                   hoverAnimation="float3D"
-                  className="shadow-2xl shadow-slate-200/50 dark:shadow-none"
                   footer={
                     <Button variant="outline" size="sm" className="w-full">Action</Button>
                   }
@@ -146,11 +148,11 @@ const HomePage = () => {
       <ComponentShowcase />
 
       {/* Features Grid */}
-      <section className="py-24 px-4 bg-[var(--bg-color)] dark:bg-slate-900/50" ref={featuresRef}>
+      <section className="py-24 px-4" style={{ background: "var(--bg-secondary)" }} ref={featuresRef}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Why choose Ease UI?</h2>
-            <p className="text-[var(--text-color)] dark:text-slate-400 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--text-color)" }}>Why choose Ease UI?</h2>
+            <p className="max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
               Everything you need to build modern applications, with zero compromise on quality or performance.
             </p>
           </div>
@@ -158,27 +160,34 @@ const HomePage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Layers size={24} className="text-[var(--icon-primary)]" />,
+                icon: <Layers size={24} style={{ color: "var(--icon-primary)" }} />,
                 title: "Composable",
                 description: "Built with a modular architecture. Combine components to create complex interfaces effortlessly."
               },
               {
-                icon: <Zap size={24} className="text-[var(--icon-primary)]" />,
+                icon: <Zap size={24} style={{ color: "var(--icon-primary)" }} />,
                 title: "GSAP Animated",
                 description: "Premium animations out of the box. No more clunky CSS transitions, just smooth, physics-based motion."
               },
               {
-                icon: <Shield size={24} className="text-[var(--icon-primary)]" />,
+                icon: <Shield size={24} style={{ color: "var(--icon-primary)" }} />,
                 title: "Accessible",
                 description: "Carefully designed with accessibility in mind, ensuring your application works for everyone."
               }
             ].map((feature, i) => (
-              <div key={i} className="feature-card p-6 bg-[var(--card-bg)] dark:bg-slate-900 rounded-2xl border border-[var(--border-color)] dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow z-10 relative">
-                <div className="w-12 h-12 bg-[var(--card-bg)] dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+              <div
+                key={i}
+                className="feature-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow z-10 relative"
+                style={{ background: "var(--card-bg)", border: "1px solid var(--border-color)" }}
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                  style={{ background: "var(--surface)" }}
+                >
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-[var(--text-color)] dark:text-slate-400">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--text-color)" }}>{feature.title}</h3>
+                <p style={{ color: "var(--text-muted)" }}>{feature.description}</p>
               </div>
             ))}
           </div>
@@ -186,8 +195,8 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-[var(--border-color)] dark:border-slate-800 text-center">
-        <p className="text-[var(--text-color)] dark:text-slate-400">
+      <footer className="py-12 px-4 border-t border-[var(--border-color)] text-center">
+        <p style={{ color: "var(--text-muted)" }}>
           © {new Date().getFullYear()} Ease UI. Built with React and Tailwind V4.
         </p>
       </footer>

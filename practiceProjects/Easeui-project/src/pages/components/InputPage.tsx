@@ -82,7 +82,7 @@ export default function App() {
     <div className="max-w-4xl mx-auto p-4 space-y-12">
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Input</h1>
-        <p className="text-gray-600 dark:text-gray-400 text-lg">
+        <p className="text-lg" style={{ color: "var(--text-muted)" }}>
           Input component for user forms with standard styling and easy
           customization.
         </p>

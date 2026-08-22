@@ -115,7 +115,7 @@ export default function App() {
         <p className="text-4xl font-bold tracking-tight" style={{ color: "var(--text-color)" }}>
           Carousel
         </p>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg" style={{ color: "var(--text-muted)" }}>
           A slideshow component for cycling through elements, images or slides.
         </p>
       </header>

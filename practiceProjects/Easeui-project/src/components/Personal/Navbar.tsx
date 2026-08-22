@@ -53,7 +53,7 @@ const Navbar = () => {
             className="cursor-pointer p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
             onClick={() => dispatch(toggleTheme())}
           >
-            <Moon size={20} className="text-gray-600 dark:text-gray-400" />
+            <Moon size={20} style={{ color: "var(--text-muted)" }} />
           </li>
         )}
       </ul>

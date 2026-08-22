@@ -21,15 +21,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        dark: "bg-slate-900 text-white",
-        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        dark: "bg-[var(--bg-color)] text-[var(--text-color)]",
+        primary: "bg-[var(--primary-color)] text-white hover:bg-[var(--primary-hover)]",
+        secondary: "bg-[var(--bg-secondary)] text-[var(--text-color)] hover:bg-[var(--primary-hover)]",
         destructive: "bg-red-700 text-white hover:bg-red-900",
         ok: "bg-green-500 hover:bg-green-700",
-        ghost: "bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200",
-        link: "bg-transparent hover:bg-transparent text-indigo-600",
-        outline:
-          "bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600",
+        ghost: "bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--text-color)] border border-[var(--border-color)]",
+        link: "bg-transparent hover:bg-transparent text-[var(--primary-color)]",
+        outline: "bg-transparent hover:bg-[var(--surface-hover)] text-[var(--text-color)] border border-[var(--border-color)]",
+        glass: "bg-[var(--glass-bg)] backdrop-blur-[var(--glass-blur)] border border-[var(--border-color)] text-[var(--text-color)]"
       },
       size: {
         default: "px-9 py-3",

@@ -27,7 +27,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="flex flex-col gap-1">
         {label && (
-          <label className="text-sm font-medium text-gray-700">{label}</label>
+          <label className="text-sm font-medium" style={{ color: "var(--text-color)" }}>{label}</label>
         )}
         <textarea
           ref={ref}

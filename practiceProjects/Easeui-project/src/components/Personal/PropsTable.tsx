@@ -11,31 +11,31 @@ const PropsTable = ({ data }: PropsTableProps) => {
   return (
     <div className="overflow-hidden rounded-lg border border-[var(--border-color)] dark:border-gray-700 shadow-sm">
       <table className="w-full">
-        <thead className="">
+        <thead className="bg-[var(--primary-subtle)] dark:bg-[var(--primary-subtle)]">
           <tr>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-gray-200">Prop</th>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-gray-200">Type</th>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-gray-200">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--text-color)]">Prop</th>
+            <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--text-color)]">Type</th>
+            <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--text-color)]">
               Default
             </th>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-gray-200">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--text-color)]">
               Description
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-[var(--border-color)] dark:divide-gray-700">
+        <tbody className="divide-y divide-[var(--border-color)]">
           {data.map((row, i) => (
-            <tr key={i} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-              <td className="px-4 py-3 text-sm font-mono text-blue-600 dark:text-blue-400">
+            <tr key={i} className="hover:bg-[var(--surface-hover)] transition-colors">
+              <td className="px-4 py-3 text-sm font-mono text-[var(--primary-color)]">
                 {row.prop}
               </td>
-              <td className="px-4 py-3 text-sm font-mono text-[var(--text-color)] dark:text-gray-400">
+              <td className="px-4 py-3 text-sm font-mono text-[var(--text-muted)]">
                 {row.type}
               </td>
-              <td className="px-4 py-3 text-sm font-mono text-[var(--text-color)] dark:text-gray-500">
+              <td className="px-4 py-3 text-sm font-mono text-[var(--text-muted)]">
                 {row.default}
               </td>
-              <td className="px-4 py-3 text-sm text-[var(--text-color)] dark:text-gray-300">
+              <td className="px-4 py-3 text-sm text-[var(--text-color)]">
                 {row.description}
               </td>
             </tr>

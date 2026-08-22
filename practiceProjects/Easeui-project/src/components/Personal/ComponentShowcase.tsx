@@ -27,7 +27,8 @@ const ComponentShowcase = () => {
               <Link
                 key={item.id}
                 to={`/components/${item.id}`}
-                className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 hover:border-indigo-200 dark:hover:border-indigo-500/30 hover:text-indigo-600 dark:hover:text-indigo-400"
+                className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm border hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]"
+                style={{ background: "var(--card-bg)", color: "var(--text-color)", borderColor: "var(--border-color)" }}
               >
                 {item.name}
               </Link>

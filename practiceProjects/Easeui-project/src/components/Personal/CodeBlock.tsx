@@ -27,8 +27,8 @@ const CodeBlock = ({ code, language = "tsx" }: CodeBlockProps) => {
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <pre className="bg-gray-50 dark:bg-gray-950 border border-t-0 border-gray-200 dark:border-gray-700 p-4 rounded-b-md overflow-x-auto">
-        <code className="text-sm text-gray-800 dark:text-gray-300">{code}</code>
+      <pre className="bg-[var(--surface)] border border-t-0 border-[var(--border-color)] p-4 rounded-b-md overflow-x-auto">
+        <code className="text-sm" style={{ color: "var(--text-color)" }}>{code}</code>
       </pre>
     </div>
   );

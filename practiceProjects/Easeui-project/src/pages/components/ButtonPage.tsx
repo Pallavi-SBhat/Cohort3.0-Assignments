@@ -67,7 +67,7 @@ export default function App() {
         >
           Button
         </p>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg" style={{ color: "var(--text-muted)" }}>
           Displays a button or a component that looks like a button.
         </p>
       </header>

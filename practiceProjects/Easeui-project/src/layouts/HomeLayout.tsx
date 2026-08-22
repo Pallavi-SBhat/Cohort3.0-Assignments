@@ -5,9 +5,8 @@ type Props = {};
 
 const HomeLayout = ({}: Props) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--gradient-bg)", color: "var(--text-color)" }}>
       <Navbar />
-
       <main className="flex-grow p-6">
         <Outlet />
       </main>

@@ -23,7 +23,7 @@ const ComponentLayout = ({}: Props) => {
   ];
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen" style={{ background: "var(--bg-color)", color: "var(--text-color)" }}>
       <aside
         className={`
            w-64 p-6 flex flex-col bg-[var(--card-bg)]
@@ -34,17 +34,30 @@ const ComponentLayout = ({}: Props) => {
           md:translate-x-0
         `}
       >
-        <h2 className="text-md font-bold mb-6 text-slate-900 dark:text-slate-100">Components</h2>
+        <h2 className="text-md font-bold mb-6" style={{ color: "var(--text-color)" }}>Components</h2>
         <ul className="flex flex-col gap-2">
           {components.map((item) => (
             <li
               onClick={() => navigate(item.toLowerCase())}
               key={item}
-              className={`cursor-pointer hover:text-black dark:hover:text-white text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
+              className={`cursor-pointer hover:translate-x-1 transition-all duration-200 ease-in-out text-md ${
                 location.pathname === `/components/${item.toLowerCase()}`
-                  ? "text-black dark:text-white font-semibold"
-                  : "text-slate-600 dark:text-gray-400"
+                  ? "font-semibold"
+                  : ""
               }`}
+              style={{
+                color:
+                  location.pathname === `/components/${item.toLowerCase()}`
+                    ? "var(--primary-color)"
+                    : "var(--text-muted)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-color)")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  location.pathname === `/components/${item.toLowerCase()}`
+                    ? "var(--primary-color)"
+                    : "var(--text-muted)")
+              }
             >
               {item}
             </li>
@@ -52,7 +65,7 @@ const ComponentLayout = ({}: Props) => {
         </ul>
       </aside>
 
-      <div className="flex-1 ml-10 overflow-auto h-screen p-6">
+      <div className="flex-1 ml-10 overflow-auto h-screen p-6" style={{ background: "var(--bg-color)" }}>
         <button
           className="md:hidden mb-4 text-gray-700 dark:text-gray-300"
           onClick={() => setSidebarOpen(!sidebarOpen)}

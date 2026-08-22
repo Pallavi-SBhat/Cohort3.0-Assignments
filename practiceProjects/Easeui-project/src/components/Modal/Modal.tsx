@@ -9,7 +9,7 @@ const modalVariants = cva(
     variants: {
       variant: {
         light:
-          "bg-white dark:bg-slate-800 text-[var(--text-color)] dark:text-gray-100 shadow-2xl border-[var(--border-color)] dark:border-gray-700 hover:shadow-xl",
+          "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-color)] shadow-[var(--shadow-light)]",
         dark: "bg-slate-900 text-white shadow-lg border border-slate-700 hover:shadow-xl",
         outline:
           "bg-transparent border border-[var(--border-color)] text-[var(--text-color)] dark:border-gray-600 dark:text-gray-100 backdrop-blur-md",
@@ -127,4 +127,5 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
 );
 
 Modal.displayName = "Modal";
+export default Modal;
 export { Modal, modalVariants };

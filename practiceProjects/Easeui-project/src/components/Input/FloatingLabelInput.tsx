@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 
 const wrapper = cva("relative w-full");
 const inputCls = cva(
-  "w-full bg-transparent border-b border-[var(--border-color)] pb-2 pt-6 focus:outline-none transition-all text-[var(--text-color)] dark:text-gray-100",
+  "w-full bg-transparent border-b border-[var(--border-color)] pb-2 pt-6 focus:outline-none transition-all text-[var(--text-color)]",
   {
     variants: {
       size: {
@@ -46,8 +46,9 @@ export const FloatingLabelInput = React.forwardRef<
         className={cn(inputCls({ size }), className)}
       />
       <label
+        style={{ color: "var(--text-muted)" }}
         className={cn(
-          "absolute left-0 top-2 origin-left text-gray-500 pointer-events-none transform transition-all",
+          "absolute left-0 top-2 origin-left pointer-events-none transform transition-all",
           shrink ? "-translate-y-4 scale-75" : "translate-y-0 scale-100"
         )}
       >

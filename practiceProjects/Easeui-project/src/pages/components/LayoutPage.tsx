@@ -8,7 +8,7 @@ const LayoutPage = () => {
 export default function App() {
   return (
     <Container size="full">
-      <Flex justify="between" align="center" className="mb-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+      <Flex justify="between" align="center" className="mb-8 p-4 bg-[var(--bg-color)] dark:bg-gray-800 rounded-lg">
         <div className="font-bold">Header Flex</div>
         <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
           <div>Link 1</div>
@@ -47,10 +47,10 @@ export default function App() {
           <li className="cursor-pointer hover:opacity-100">Settings</li>
         </ul>
       </div>
-      <Flex direction="col" className="flex-1 bg-gray-50 dark:bg-slate-900">
+      <Flex direction="col" className="flex-1 bg-[var(--bg-color)] dark:bg-slate-900">
         <header className="h-14 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 px-4 flex items-center justify-between">
           <div className="font-medium">Dashboard</div>
-          <div className="w-8 h-8 bg-gray-200 dark:bg-slate-800 rounded-full" />
+          <div className="w-8 h-8 bg-[var(--bg-color)] dark:bg-slate-800 rounded-full" />
         </header>
         <div className="p-4 flex-1 overflow-auto">
           <Grid cols={2} gap={4}>
@@ -121,7 +121,7 @@ export default function App() {
         <ComponentDemo code={basicUsageCode}>
           <div className="w-full">
             <Container size="full">
-              <Flex justify="between" align="center" className="mb-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <Flex justify="between" align="center" className="mb-8 p-4 bg-[var(--bg-color)] dark:bg-gray-800 rounded-lg">
                 <div className="font-bold">Header Flex</div>
                 <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
                   <div>Link 1</div>
@@ -168,8 +168,8 @@ export default function App() {
                 </header>
                 <div className="p-4 flex-1 overflow-auto">
                   <Grid cols={2} gap={4}>
-                    <div className="bg-white dark:bg-slate-950 p-4 rounded-lg shadow-sm h-32 border border-gray-200 dark:border-slate-800 flex items-center justify-center text-gray-500">Card 1</div>
-                    <div className="bg-white dark:bg-slate-950 p-4 rounded-lg shadow-sm h-32 border border-gray-200 dark:border-slate-800 flex items-center justify-center text-gray-500">Card 2</div>
+                    <div className="bg-white dark:bg-slate-950 p-4 rounded-lg shadow-sm h-32 border border-[var(--border-color)] dark:border-slate-800 flex items-center justify-center text-[var(--text-color)]">Card 1</div>
+                    <div className="bg-white dark:bg-slate-950 p-4 rounded-lg shadow-sm h-32 border border-[var(--border-color)] dark:border-slate-800 flex items-center justify-center text-[var(--text-color)]">Card 2</div>
                   </Grid>
                 </div>
               </Flex>

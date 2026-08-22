@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 
 const wrapper = cva("relative w-full");
 const inputCls = cva(
-  "w-full bg-transparent border-b border-gray-500 dark:border-gray-400 pb-2 pt-6 focus:outline-none transition-all text-gray-900 dark:text-gray-100",
+  "w-full bg-transparent border-b border-[var(--border-color)] pb-2 pt-6 focus:outline-none transition-all text-[var(--text-color)] dark:text-gray-100",
   {
     variants: {
       size: {

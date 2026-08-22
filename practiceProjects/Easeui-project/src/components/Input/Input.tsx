@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/libs/utils";
 
 const inputVariants = cva(
-  "w-full border rounded-md focus:outline-none shadow-sm transition-all duration-150 bg-white dark:bg-slate-800 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500",
+  "w-full border rounded-md focus:outline-none shadow-sm transition-all duration-150 bg-[var(--bg-color)] dark:bg-slate-800 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500",
   // w-full bg-transparent border-b border-gray-500 pb-2 pt-6 focus:outline-none transition-all
   {
     variants: {
@@ -66,7 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="text-sm font-medium text-[var(--text-color)]"
           >
             {label}
           </label>
@@ -81,7 +81,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {error ? (
           <p className="text-sm text-red-500">{error}</p>
         ) : hint ? (
-          <p className="text-sm text-gray-500 dark:text-gray-400">{hint}</p>
+          <p className="text-sm text-[var(--text-color)]">{hint}</p>
         ) : null}
       </div>
     );

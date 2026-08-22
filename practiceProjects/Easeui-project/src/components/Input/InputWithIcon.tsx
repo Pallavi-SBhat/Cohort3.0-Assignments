@@ -16,7 +16,7 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
       icon,
       iconPosition = "left",
       className,
-      iconColor = "#9ca3af",
+      iconColor = "var(--icon-color)",
       animated = true,
       ...props
     },
@@ -33,7 +33,7 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
         gsap.to(iconRef.current, {
           scale: 1.15,
           y: 0,
-          color: "#3b82f6",
+          color: "var(--primary-color)",
           duration: 0.15,
           ease: "power2.out",
         });
@@ -69,7 +69,7 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
           <div
             ref={iconRef}
             className={cn(
-              "absolute left-4 top-11 -translate-y-1/2 text-gray-400 transition-all duration-200 pointer-events-none",
+              "absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] transition-all duration-200 pointer-events-none",
               animated && "will-change-transform will-change-color"
             )}
             style={{ color: iconColor }}
@@ -82,7 +82,7 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
           ref={ref}
           {...props}
           className={cn(
-            "rounded-xl border border-gray-300 bg-white shadow-sm hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200",
+            "rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] shadow-sm hover:border-[var(--border-color)] focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200",
             paddingClass,
             className
           )}
@@ -92,7 +92,7 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
           <div
             ref={iconRef}
             className={cn(
-              "absolute right-1/2 top-1/2 -translate-y-1/2 text-gray-400 transition-all duration-200 pointer-events-none",
+              "absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] transition-all duration-200 pointer-events-none",
               animated && "will-change-transform will-change-color"
             )}
             style={{ color: iconColor }}

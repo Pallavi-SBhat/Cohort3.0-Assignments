@@ -9,10 +9,10 @@ const modalVariants = cva(
     variants: {
       variant: {
         light:
-          "bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-2xl border border-gray-200 dark:border-gray-700 hover:shadow-xl",
+          "bg-white dark:bg-slate-800 text-[var(--text-color)] dark:text-gray-100 shadow-2xl border-[var(--border-color)] dark:border-gray-700 hover:shadow-xl",
         dark: "bg-slate-900 text-white shadow-lg border border-slate-700 hover:shadow-xl",
         outline:
-          "bg-transparent border border-gray-400 text-gray-800 dark:border-gray-600 dark:text-gray-100 backdrop-blur-md",
+          "bg-transparent border border-[var(--border-color)] text-[var(--text-color)] dark:border-gray-600 dark:text-gray-100 backdrop-blur-md",
       },
       size: {
         sm: "w-[90%] max-w-sm p-4",
@@ -87,7 +87,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
             )}
 
             {description && (
-              <p className="text-gray-600 dark:text-gray-300 mb-4 text-[inherit]">
+              <p className="text-[var(--text-color)] dark:text-gray-300 mb-4 text-[inherit]">
                 {description}
               </p>
             )}

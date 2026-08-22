@@ -10,7 +10,7 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        light: "bg-white dark:bg-slate-800 text-gray-800 dark:text-gray-100 shadow-lg hover:shadow-xl",
+        light: "bg-[var(--card-bg)] dark:bg-slate-800 text-[var(--text-color)] dark:text-gray-100 shadow-[var(--shadow-light)] hover:shadow-xl",
         dark: "bg-slate-800 text-white shadow-md hover:shadow-lg",
         outline:
           "border border-gray-300 bg-transparent text-gray-800 dark:border-gray-700",
@@ -151,7 +151,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         )}
 
         {description && (
-          <p className="text-gray-500 dark:text-gray-400 mb-4 text-[inherit]">{description}</p>
+          <p className="text-[var(--text-color)] dark:text-gray-400 mb-4 text-[inherit]">{description}</p>
         )}
 
         {children}

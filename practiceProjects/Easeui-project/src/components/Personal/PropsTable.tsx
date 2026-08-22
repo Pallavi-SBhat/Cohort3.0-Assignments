@@ -9,7 +9,7 @@ interface PropsTableProps {
 
 const PropsTable = ({ data }: PropsTableProps) => {
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+    <div className="overflow-hidden rounded-lg border border-[var(--border-color)] dark:border-gray-700 shadow-sm">
       <table className="w-full">
         <thead className="">
           <tr>
@@ -23,19 +23,19 @@ const PropsTable = ({ data }: PropsTableProps) => {
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody className="divide-y divide-[var(--border-color)] dark:divide-gray-700">
           {data.map((row, i) => (
             <tr key={i} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
               <td className="px-4 py-3 text-sm font-mono text-blue-600 dark:text-blue-400">
                 {row.prop}
               </td>
-              <td className="px-4 py-3 text-sm font-mono text-gray-600 dark:text-gray-400">
+              <td className="px-4 py-3 text-sm font-mono text-[var(--text-color)] dark:text-gray-400">
                 {row.type}
               </td>
-              <td className="px-4 py-3 text-sm font-mono text-slate-500 dark:text-gray-500">
+              <td className="px-4 py-3 text-sm font-mono text-[var(--text-color)] dark:text-gray-500">
                 {row.default}
               </td>
-              <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+              <td className="px-4 py-3 text-sm text-[var(--text-color)] dark:text-gray-300">
                 {row.description}
               </td>
             </tr>

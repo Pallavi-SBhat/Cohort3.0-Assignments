@@ -55,7 +55,7 @@ export default function App() {
         position="top" 
         content={
           <div className="flex gap-2 py-1">
-            <Button variant="ghost" size="sm" className="bg-transparent dark:text-gray-900 border border-gray-600 dark:border-gray-400">Edit</Button>
+            <Button variant="ghost" size="sm" className="bg-transparent text-[var(--text-color)] border border-[var(--border-color)] dark:border-gray-400">Edit</Button>
             <Button variant="destructive" size="sm">Delete</Button>
           </div>
         }
@@ -117,7 +117,7 @@ export default function App() {
         <p className="text-4xl font-bold tracking-tight" style={{ color: "var(--text-color)" }}>
           Tooltip
         </p>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
+        <p className="text-lg text-[var(--text-color)] dark:text-gray-400">
           A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
         </p>
       </header>
@@ -173,7 +173,7 @@ export default function App() {
                   position="top" 
                   content={
                     <div className="flex gap-2 py-1">
-                      <Button variant="ghost" size="sm" className="bg-transparent dark:text-gray-900 border border-gray-600 dark:border-gray-400">Edit</Button>
+                      <Button variant="ghost" size="sm" className="bg-transparent text-[var(--text-color)] border border-[var(--border-color)] dark:border-gray-400">Edit</Button>
                       <Button variant="destructive" size="sm">Delete</Button>
                     </div>
                   }

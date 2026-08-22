@@ -1,5 +1,22 @@
-@import "tailwindcss";
-
-@theme {
-  --variant-dark: (&:where(.dark, .dark *));
+:root {
+  --color-primary: #0066ff;
+  --color-on-primary: #ffffff;
+  --color-surface: #ffffff;
+  --color-on-surface: #111111;
+  --color-success: #28a745;
+  --color-error: #dc3545;
 }
+
+.dark {
+  --color-primary: #4da6ff;
+  --color-on-primary: #111111;
+  --color-surface: #111111;
+  --color-on-surface: #eeeeee;
+}
+
+/* Example usage */
+.btn {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+

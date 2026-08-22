@@ -1,23 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+
+
+
 :root {
-  --bg-color: #fafafc;
-  --text-color: #0f172a;
-  --primary-color: #4f46e5;
-  --card-bg: #ffffff;
+  --grid-color: rgba(0, 0, 0, 0.04); /* subtle grid line color for light mode */
+  --mask-color: #000000; /* mask color for radial gradients */
+  --bg-color: #ffffff; /* pure white background for better contrast */
+  --text-color: #212529; /* very dark gray for strong readability */
+  --primary-color: #0e7490; /* deep teal primary */
+  --accent-color: #7c3aed; /* complementary accent violet */
+  --card-bg: #f8fafc; /* light card background improves separation */
+  --border-color: #ced4da; /* medium gray border */
+  --icon-color: #9ca3af; /* muted icon color */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* slightly stronger subtle shadow */
+  --opacity-low: 0.2;   /* 20% opacity */
+  --opacity-medium: 0.5;/* 50% opacity */
+  --opacity-high: 0.8;  /* 80% opacity */
+  --icon-primary: var(--primary-color); /* use primary color for icons */
+}
+.hero-gradient {
+  background: linear-gradient(to bottom, var(--bg-color) var(--opacity-medium), transparent);
 }
 
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(to bottom, var(--bg-color) var(--opacity-low), transparent);
+}
+
+
 [data-theme="dark"] {
+  --grid-color: rgba(255, 255, 255, 0.04); /* subtle grid line color for dark mode */
+  --mask-color: #000000; /* mask color remains black */
   --bg-color: #0f1117;
   --text-color: #f8fafc;
   --primary-color: #6366f1;
   --card-bg: #1e212b;
+  --border-color: #444444; /* darker border for dark mode */
 }
 
-@theme {
-  --variant-dark: (&:where(.dark, .dark *));
-}
+
 
 body {
   font-family: 'Inter', sans-serif;

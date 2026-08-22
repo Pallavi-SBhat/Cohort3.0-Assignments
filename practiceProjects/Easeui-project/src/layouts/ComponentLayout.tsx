@@ -26,8 +26,8 @@ const ComponentLayout = ({}: Props) => {
     <div className="flex min-h-screen">
       <aside
         className={`
-          w-64 p-6 flex flex-col bg-slate-50 dark:bg-[#18181b]
-          border-r border-gray-200 dark:border-gray-800
+           w-64 p-6 flex flex-col bg-[var(--card-bg)]
+           border-r border-[var(--border-color)]
           fixed md:static top-0 left-0 h-full z-20
           transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           transition-transform duration-300 ease-in-out

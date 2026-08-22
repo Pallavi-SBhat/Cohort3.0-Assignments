@@ -93,7 +93,7 @@ const HomePage = () => {
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform inline" size={18} />
             </Button>
           </Link>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="hero-button">
+          <a href="https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/1334519dc4b0a29ab8161828199f2fa2ea3a751a/practiceProjects/Easeui-project" target="_blank" rel="noreferrer" className="hero-button">
             <Button size="xl" variant="outline">
               <Code className="mr-2 inline" size={18} />
               View GitHub

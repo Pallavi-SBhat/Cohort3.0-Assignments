@@ -59,11 +59,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen text-[var(--text-color)] overflow-hidden relative" ref={heroRef}>
+    <div className="min-h-screen text-(--text-color) overflow-hidden relative" ref={heroRef}>
       {/* Premium Background Grid & Gradient */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--grid-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-color)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,var(--mask-color)_70%,transparent_100%)]"></div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full hero-gradient"></div>
+<div className="absolute inset-0 bg-[linear-gradient(to_right,var(--grid-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-color)_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,var(--mask-color)_70%,transparent_100%)]"></div>        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full hero-gradient"></div>
       </div>
       
       {/* Navbar will sit on top (assumed from global layout) */}
@@ -71,16 +70,16 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative pt-20 pb-20 md:pt-32 md:pb-32 px-4 max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Background glow effects - subtle in light, stronger in dark via CSS variable opacity */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] blur-[120px] rounded-full -z-10" style={{ background: "var(--accent-color)", opacity: 0.08 }} />
-        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] blur-[100px] rounded-full -z-10" style={{ background: "purple", opacity: 0.06 }} />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl h-400px blur-[120px] rounded-full -z-10" style={{ background: "var(--accent-color)", opacity: 0.08 }} />
+        <div className="absolute top-40 left-1/4 w-300px h-300px blur-[100px] rounded-full -z-10" style={{ background: "purple", opacity: 0.06 }} />
 
-        <div className="hero-text inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] text-sm font-medium mb-8" style={{ color: "var(--text-color)" }}>
+        <div className="hero-text inline-flex items-center gap-2 px-3 py-1 rounded-full bg-(--card-bg) border border-(--border-color) text-sm font-medium mb-8" style={{ color: "var(--text-color)" }}>
           <Zap size={14} className="text-amber-500" />
           <span>v1.0 is now live!</span>
         </div>
 
         <h1 className="hero-text text-5xl md:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl">
-          Build Beautiful UIs with <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Ease</span>
+          Build Beautiful UIs with <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-500 to-purple-600">Ease</span>
         </h1>
         
         <p className="hero-text text-lg md:text-xl max-w-2xl mb-10" style={{ color: "var(--text-muted)" }}>
@@ -195,7 +194,7 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-[var(--border-color)] text-center">
+      <footer className="py-12 px-4 border-t border-(--border-color) text-center">
         <p style={{ color: "var(--text-muted)" }}>
           © {new Date().getFullYear()} Ease UI. Built with React and Tailwind V4.
         </p>

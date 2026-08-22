@@ -75,7 +75,6 @@ const HomePage = () => {
 
         <div className="hero-text inline-flex items-center gap-2 px-3 py-1 rounded-full bg-(--card-bg) border border-(--border-color) text-sm font-medium mb-8" style={{ color: "var(--text-color)" }}>
           <Zap size={14} className="text-amber-500" />
-          <span>v1.0 is now live!</span>
         </div>
 
         <h1 className="hero-text text-5xl md:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl">

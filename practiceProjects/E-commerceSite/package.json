@@ -1,0 +1,12 @@
+{
+  "name": "ecommerce-auth-product-crud",
+  "version": "1.0.0",
+  "description": "Fullstack E-Commerce REST API & React Frontend with JWT Access + Refresh Tokens, Express Validator, and Product CRUD",
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm run start",
+    "frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  }
+}

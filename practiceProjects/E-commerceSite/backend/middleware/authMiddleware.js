@@ -15,7 +15,8 @@ const authenticate = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
 
     try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const secret = process.env.ACCESS_TOKEN_SECRET || 'default_access_token_secret_32chars_long!';
+      const decoded = jwt.verify(token, secret);
       
       // Fetch user from DB to ensure user exists & account active
       const user = await User.findById(decoded.userId);

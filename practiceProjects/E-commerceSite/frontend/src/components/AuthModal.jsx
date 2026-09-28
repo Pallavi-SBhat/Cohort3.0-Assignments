@@ -172,6 +172,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login', onAuthSuccess, show
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
                   className={`form-input ${fieldErrors.name ? 'is-invalid' : ''}`}
+                  autoComplete="name"
                   required
                 />
               </div>
@@ -193,6 +194,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login', onAuthSuccess, show
               onChange={handleChange}
               placeholder="e.g. user@example.com"
               className={`form-input ${fieldErrors.email ? 'is-invalid' : ''}`}
+              autoComplete="email"
               required
             />
             {fieldErrors.email && (
@@ -212,6 +214,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login', onAuthSuccess, show
               onChange={handleChange}
               placeholder="Min. 6 characters"
               className={`form-input ${fieldErrors.password ? 'is-invalid' : ''}`}
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
               required
             />
             {fieldErrors.password && (
@@ -232,6 +235,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login', onAuthSuccess, show
                 onChange={handleChange}
                 placeholder="Re-enter password"
                 className={`form-input ${fieldErrors.confirmPassword ? 'is-invalid' : ''}`}
+                autoComplete="new-password"
                 required
               />
               {fieldErrors.confirmPassword && (

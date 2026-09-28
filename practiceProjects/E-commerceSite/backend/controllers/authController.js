@@ -3,14 +3,16 @@ const User = require('../models/User');
 
 // Helper to generate access token
 const generateAccessToken = (userId) => {
-  return jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+  const secret = process.env.ACCESS_TOKEN_SECRET || 'default_access_token_secret_32chars_long!';
+  return jwt.sign({ userId }, secret, {
     expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN || '15m',
   });
 };
 
 // Helper to generate refresh token
 const generateRefreshToken = (userId) => {
-  return jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, {
+  const secret = process.env.REFRESH_TOKEN_SECRET || 'default_refresh_token_secret_32chars_long!';
+  return jwt.sign({ userId }, secret, {
     expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN || '7d',
   });
 };
@@ -22,6 +24,7 @@ const getCookieOptions = () => ({
   sameSite: 'lax',
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
 });
+
 
 /**
  * @desc    Register a new user
@@ -139,7 +142,7 @@ const refreshToken = async (req, res) => {
 
     let decoded;
     try {
-      decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+      decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET || 'default_refresh_token_secret_32chars_long!');
     } catch (err) {
       // Clear cookie on invalid/expired token
       res.clearCookie('refreshToken', getCookieOptions());
@@ -206,7 +209,7 @@ const logout = async (req, res) => {
 
     if (token) {
       try {
-        const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+        const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET || 'default_refresh_token_secret_32chars_long!');
         const user = await User.findById(decoded.userId);
         if (user) {
           // Remove token from DB

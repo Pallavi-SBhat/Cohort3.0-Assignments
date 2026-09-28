@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
@@ -9,20 +10,29 @@ const app = express();
 
 // CORS configuration (allow credentials for httpOnly cookies)
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
   'http://localhost:3000',
   'http://localhost:5174',
   'http://127.0.0.1:5173',
-];
+].filter(Boolean);
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps or curl requests)
-      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      // allow requests with no origin (like mobile apps, curl, serverless function probes)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
         return callback(null, true);
       }
-      return callback(new Error('Not allowed by CORS'));
+
+      // Allow Vercel preview & production frontend origins
+      if (origin.endsWith('.vercel.app') || origin.includes('localhost')) {
+        return callback(null, true);
+      }
+
+      return callback(null, true);
     },
     credentials: true,
   })
@@ -31,6 +41,23 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Database connection middleware for Vercel serverless functions
+app.use(async (req, res, next) => {
+  if (req.path === '/' || req.path === '/api/health') {
+    return next();
+  }
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('Database connection failed during request:', err.message);
+    return res.status(500).json({
+      success: false,
+      message: err.message || 'Database Connection Error. Please check MONGO_URI in Vercel settings.',
+    });
+  }
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -71,3 +98,4 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+

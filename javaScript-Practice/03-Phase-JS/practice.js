@@ -5,8 +5,8 @@ function add(a, b) {
 console.log("Q1 Output:", add(10, 20));
 
 // Q2. Create a function that returns the square of a number.
-function square(n) {
-  return n ** 2;
+function square(num) {
+  return num ** 2;
 }
 console.log("Q2 Output:", square(5));
 

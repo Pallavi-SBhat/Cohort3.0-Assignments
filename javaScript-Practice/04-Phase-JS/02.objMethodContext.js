@@ -1,5 +1,5 @@
 const user = {
-  name: "Anubhav",
+  name: "Anubhavi",
   greet:function() {
     console.log(`Hello ${this.name}`);
   },

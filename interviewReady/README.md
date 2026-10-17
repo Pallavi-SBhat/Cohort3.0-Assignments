@@ -95,6 +95,4 @@ Ensure you have [Node.js](https://nodejs.org/) (v18 or higher recommended) and `
 
 ---
 
-## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).

@@ -1,127 +1,113 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { Briefcase, GraduationCap } from 'lucide-react';
+import React from 'react';
+import { MapPin } from 'lucide-react';
+
+const experiences = [
+  {
+    index: '01',
+    category: 'Industry Internship',
+    role: 'AI-ML & Software Development Intern',
+    organization: 'CodeLab Systems',
+    location: 'Mangaluru, Karnataka',
+    period: 'Sep 2025 – Dec 2025',
+    bullets: [
+      'Trained, evaluated, and benchmarked supervised machine learning models (Random Forest, Logistic Regression) for customer churn analysis and stroke risk classification.',
+      'Developed an interactive Expense Tracker web application with real-time category budget calculations, visual charts, and local data persistence.',
+      'Conducted data preprocessing, exploratory data analysis (EDA), missing value imputation, and feature scaling using Scikit-Learn and Pandas.'
+    ],
+    tags: ['Python', 'Scikit-Learn', 'Pandas', 'Machine Learning', 'Web Development']
+  },
+  {
+    index: '02',
+    category: 'Postgraduate Degree',
+    role: 'Master of Computer Applications (MCA)',
+    organization: 'Mangalore Institute of Technology and Engineering (MITE)',
+    location: 'Mangaluru, Karnataka',
+    period: '2024 – 2026 (Expected)',
+    bullets: [
+      'Specializing in Artificial Intelligence and Modern Web Engineering, maintaining an A+ Grade record.',
+      'Architecting component-driven web applications leveraging React, modern JavaScript (ES6+), and REST API integrations.',
+      'Participated in departmental hackathons, agile project collaboration, and hands-on software development.'
+    ],
+    tags: ['A+ Grade', 'React.js', 'Python', 'Full-Stack Web', 'DBMS']
+  },
+  {
+    index: '03',
+    category: 'Undergraduate Degree',
+    role: 'Bachelor of Computer Applications (BCA)',
+    organization: 'Vijaya College',
+    location: 'Karnataka, India',
+    period: '2022 – 2024',
+    bullets: [
+      'Graduated with highest academic distinction: O+ Grade in Computer Science & Applications.',
+      'Built rigorous foundations in Data Structures, Object-Oriented Programming (Java/C++), and Relational Database Systems (SQL).',
+      'Completed practical programming laboratory coursework and algorithmic problem-solving assignments.'
+    ],
+    tags: ['O+ Distinction', 'Data Structures', 'Java', 'C', 'Relational DBMS', 'SQL']
+  }
+];
 
 const Experience = () => {
-  const sectionRef = useRef(null);
-  const itemsRef = useRef([]);
-
-  useEffect(() => {
-    // Animate the main timeline line growing downwards
-    gsap.fromTo('.timeline-line', 
-      { height: 0 },
-      {
-        height: '100%',
-        duration: 2,
-        ease: 'power3.inOut',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-        }
-      }
-    );
-
-    itemsRef.current.forEach((item, index) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-        }
-      });
-
-      // Card slides in with 3D rotation and bounce
-      tl.fromTo(item.querySelector('.bento-card'),
-        { opacity: 0, x: -50, scale: 0.9, rotationY: 15 },
-        { opacity: 1, x: 0, scale: 1, rotationY: 0, duration: 0.8, ease: 'back.out(1.5)' }
-      );
-
-      // Icon pops in with a spin
-      tl.fromTo(item.querySelector('.timeline-icon'),
-        { opacity: 0, scale: 0, rotation: -180 },
-        { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2)' },
-        "-=0.5"
-      );
-    });
-  }, []);
-
-  const experiences = [
-    {
-      role: "Bachelor of Computer Applications, CS",
-      company: "VIJAYA COLLEGE",
-      period: "Sep 2022 - Aug 2024",
-      icon: <GraduationCap size={20} className="text-pink-400" />,
-      responsibilities: [
-        "Graduated with an O+ Grade.",
-        "Prepared to contribute effectively in professional environments.",
-        "Continuously enhanced technical and analytical capabilities using Python and Git."
-      ]
-    },
-    {
-      role: "Master of Computer Applications, AI",
-      company: "MITE",
-      period: "Sep 2024 - Aug 2026",
-      icon: <GraduationCap size={20} className="text-blue-400" />,
-      responsibilities: [
-        "Currently pursuing specialization in Artificial Intelligence & Machine Learning.",
-        "Achieved an A+ Grade.",
-        "Developing advanced skills in Python and the MERN Stack."
-      ]
-    },
-    {
-      role: "AI-ML Intern",
-      company: "CODELAB SYSTEMS",
-      period: "Sep 2025 - Dec 2025",
-      icon: <Briefcase size={20} className="text-emerald-400" />,
-      responsibilities: [
-        "Completed an on-site internship based in Mangaluru.",
-        "Worked on Supervised Learning algorithms and models.",
-        "Utilized Python and other technical skills for AI/ML development."
-      ]
-    }
-  ];
-
   return (
-    <section id="experience" className="pt-10" ref={sectionRef}>
-      <div className="mb-12">
-        <p className="text-slate-400 text-base md:text-lg max-w-sm leading-relaxed">
-          A timeline of my professional experience and academic journey.
-        </p>
+    <section id="trajectory" className="section-rail pt-20 pb-8">
+      {/* Header */}
+      <div className="border-b border-[rgba(173,186,205,0.12)] pb-4 mb-10">
+        <p className="eyebrow mb-1">04 / The trajectory</p>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#E8EAED]">
+          From fundamentals to production<span className="text-[#3DDC97]">.</span>
+        </h2>
       </div>
 
-      {/* The main vertical line that grows down */}
-      <div className="relative border-l-0 ml-6 md:ml-8 space-y-12">
-        <div className="timeline-line absolute left-0 top-0 w-px bg-gradient-to-b from-blue-500/50 via-emerald-500/50 to-transparent"></div>
-        
-        {experiences.map((exp, index) => (
-          <div 
-            key={index} 
-            className="relative pl-8 md:pl-12 group"
-            ref={el => itemsRef.current[index] = el}
+      {/* Experience List */}
+      <div className="space-y-6">
+        {experiences.map((item) => (
+          <div
+            key={item.index}
+            className="border border-[rgba(173,186,205,0.15)] rounded-md p-6 bg-[#141b28]/70 hover:border-[#3DDC97]/40 transition-all"
           >
-            {/* Timeline Node */}
-            <div className="timeline-icon absolute -left-6 md:-left-7 top-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0B0F19] border border-white/10 flex items-center justify-center z-10 group-hover:border-blue-400/50 transition-colors duration-500 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#131722] flex items-center justify-center shadow-inner group-hover:bg-blue-900/20 transition-colors duration-500">
-                {exp.icon}
+            {/* Top Meta Row */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-[#858e9c] mb-3">
+              <span className="text-[#3DDC97] uppercase tracking-wider flex items-center gap-2">
+                <span>{item.index}</span>
+                <span>/</span>
+                <span>{item.category}</span>
+              </span>
+              <span className="text-[#5B6472]">{item.period}</span>
+            </div>
+
+            {/* Title & Organization */}
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-[#E8EAED]">
+                {item.role}
+              </h3>
+              <div className="flex items-center gap-2 text-xs font-mono text-[#a2a9b4]">
+                <span className="text-white font-medium">{item.organization}</span>
+                <span>•</span>
+                <span className="flex items-center gap-1 text-[#5B6472]">
+                  <MapPin size={11} /> {item.location}
+                </span>
               </div>
             </div>
 
-            {/* Experience Card */}
-            <div className="bento-card p-6 md:p-8 group-hover:-translate-y-1 group-hover:border-white/20 transition-all duration-500 shadow-xl shadow-black/20">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{exp.role}</h3>
-              <div className="flex flex-wrap items-center gap-3 text-xs font-bold tracking-wider mb-6">
-                <span className="text-blue-400 uppercase">{exp.company}</span>
-                <span className="text-slate-600 hidden sm:inline">•</span>
-                <span className="text-slate-500 uppercase">{exp.period}</span>
-              </div>
-              
-              <ul className="space-y-3">
-                {exp.responsibilities.map((resp, i) => (
-                  <li key={i} className="text-slate-400 text-sm flex items-start gap-3">
-                    <span className="text-slate-600 mt-1.5 text-xs">●</span>
-                    <span className="leading-relaxed">{resp}</span>
-                  </li>
-                ))}
-              </ul>
+            {/* Bullets */}
+            <ul className="space-y-2 mb-6">
+              {item.bullets.map((bullet, idx) => (
+                <li key={idx} className="text-xs sm:text-sm text-[#a2a9b4] flex items-start gap-2.5 leading-relaxed">
+                  <span className="text-[#3DDC97] font-mono select-none mt-0.5">›</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Tags Strip */}
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[rgba(173,186,205,0.08)] font-mono text-[10px]">
+              {item.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-0.5 rounded bg-[#0b101a] border border-[rgba(173,186,205,0.1)] text-[#a2a9b4]"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         ))}

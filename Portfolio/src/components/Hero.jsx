@@ -1,106 +1,108 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { User, Clock, Code2, Coffee, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './Icons';
 
 const Hero = () => {
-  const containerRef = useRef(null);
-  const elementsRef = useRef([]);
-
-  useEffect(() => {
-    // Staggered pop-in animation for all bento cards
-    gsap.fromTo(elementsRef.current,
-      { opacity: 0, y: 50, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'back.out(1.2)',
-        delay: 0.2
-      }
-    );
-
-    // Continuous floating animation for the avatar
-    gsap.to(".avatar-container", {
-      y: -15,
-      duration: 2.5,
-      yoyo: true,
-      repeat: -1,
-      ease: "sine.inOut"
-    });
-  }, []);
-
   return (
-    <section id="hero" className="pt-10 flex flex-col items-center" ref={containerRef}>
-      {/* Hero Header Side-by-Side Layout */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full mb-20 gap-10 md:gap-8" ref={el => elementsRef.current[0] = el}>
-        
-        {/* Text Content */}
-        <div className="flex-1 text-center md:text-left">
-           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-sm mb-6">
-             <span className="relative flex h-2 w-2">
-               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-             </span>
-             Available for work
-           </div>
-           
-           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-             Hi, I'm Pallavi S Bhat.<br/>
-             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400">
-               Software Engineer.
-             </span>
-           </h1>
-           
-           <p className="text-slate-400 text-lg md:text-xl max-w-lg mx-auto md:mx-0 leading-relaxed mb-8">
-             Crafting immersive digital experiences through elegant code, artificial intelligence, and refined aesthetics.
-           </p>
-           
-           <div className="flex items-center justify-center md:justify-start gap-4">
-             <a href="#projects" className="px-8 py-3.5 bg-white text-[#0B0F19] font-bold rounded-xl hover:bg-slate-200 transition-colors shadow-lg shadow-white/10">
-               View Work
-             </a>
-             <a href="#contact" className="px-8 py-3.5 bg-white/5 text-white font-bold rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-               Contact Me
-             </a>
-           </div>
+    <section id="hero" className="relative min-h-[82vh] md:min-h-[88vh] flex flex-col justify-between pt-28 pb-12 overflow-hidden border-b border-[rgba(173,186,205,0.12)]">
+      {/* Blueprint Grid / Ambient Backdrop */}
+      <div className="absolute inset-0 project-art-grid opacity-60 pointer-events-none"></div>
+
+      {/* Hero Architectural Frame Borders */}
+      <div className="absolute inset-x-4 inset-y-24 sm:inset-x-8 sm:inset-y-20 border border-[rgba(232,234,237,0.06)] pointer-events-none hidden md:block">
+        <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#3DDC97]/60"></span>
+        <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#3DDC97]/60"></span>
+        <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#3DDC97]/60"></span>
+        <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#3DDC97]/60"></span>
+      </div>
+
+      {/* Top Mono Caption */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-[#858e9c] uppercase tracking-wider mb-8">
+        <span className="flex items-center gap-2">
+          <span className="status-dot"></span>
+          <span>Building in the open</span>
+        </span>
+        <span className="hidden sm:inline text-[#5B6472]">
+          Frontend / Systems / MCA Candidate
+        </span>
+      </div>
+
+      {/* Center Hero Content */}
+      <div className="relative z-10 max-w-3xl mx-auto text-center my-auto py-6">
+        <div className="flex items-center justify-center gap-3 mb-5">
+          <div className="w-12 h-12 rounded-full overflow-hidden border border-[#3DDC97]/40 p-0.5 shadow-lg bg-[#141b28]">
+            <img src="/profile.jpg" alt="Pallavi" className="w-full h-full object-cover rounded-full" />
+          </div>
+          <p className="eyebrow text-[#3DDC97]">Software Engineer & Curious Builder</p>
         </div>
 
-        {/* Avatar Content */}
-        <div className="avatar-container relative w-56 h-56 md:w-80 md:h-80 flex-shrink-0 group mt-10 md:mt-0">
-          {/* Abstract background shapes and glow */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-emerald-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-          
-          {/* Decorative orbiting rings */}
-          <div className="absolute -inset-4 md:-inset-8 border border-white/10 rounded-full animate-[spin_10s_linear_infinite] pointer-events-none"></div>
-          <div className="absolute -inset-8 md:-inset-16 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse] pointer-events-none"></div>
-          
-          <div className="w-full h-full rounded-full border-4 border-[#131722] overflow-hidden relative z-10 bg-[#0B0F19] shadow-2xl">
-            <img src="/profile.jpg" alt="Pallavi" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
-          </div>
+        <h1 className="text-5xl sm:text-7xl md:text-8xl font-serif tracking-tight text-[#E8EAED] leading-none mb-6">
+          PALLAVI<br />
+          <span className="text-[#E8EAED]">
+            BHAT<span className="text-[#3DDC97]">.</span>
+          </span>
+        </h1>
+
+        <p className="text-base sm:text-lg md:text-xl text-[#a2a9b4] max-w-xl mx-auto leading-relaxed mb-8">
+          I build responsive frontend applications, explore data-driven models, and engineer web interfaces that are fast, accessible, and clean.
+        </p>
+
+        {/* Hero Actions */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#3DDC97] text-[#0F1420] font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#34c888] transition-all shadow-md shadow-[#3DDC97]/10"
+          >
+            <span>Explore my work</span>
+            <ArrowUpRight size={15} />
+          </a>
+          <a
+            href="#approach"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[rgba(232,234,237,0.2)] bg-[#0F1420]/60 hover:bg-white/[0.05] text-[#E8EAED] font-mono text-xs uppercase tracking-wider transition-all"
+          >
+            <span>The approach</span>
+            <ArrowUpRight size={15} />
+          </a>
         </div>
       </div>
 
-      {/* Bento Grid */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4">
-        {/* About Me Card */}
-        <div 
-          className="bento-card col-span-2 md:col-span-4 p-6 hover:border-white/20 transition-colors"
-          ref={el => elementsRef.current[1] = el}
-        >
-          <div className="flex items-center gap-2 text-white font-bold mb-3">
-            <User size={18} className="text-blue-400" />
-            About Me
-          </div>
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-4">
-            Currently pursuing a Master of Computer Applications (MCA) at Mangalore Institute of Technology and Engineering, with an expected completion in December 2026. I recently completed an internship at CodeLab Systems in Mangalore, where I worked on projects including customer churn prediction, stroke prediction and an expense tracker application, gaining hands-on experience in data analysis, preprocessing and application development. My core interest lies in web development and design, with a strong passion for building responsive, user-friendly web applications and continuously enhancing my technical and creative skills.
-          </p>
+      {/* Bottom Sidebars / Quick Stats */}
+      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 mt-6 border-t border-[rgba(173,186,205,0.08)] text-xs">
+        {/* Left Side: Connect */}
+        <div className="flex items-center gap-4 text-xs font-mono">
+          <span className="eyebrow text-[#5B6472]">Connect:</span>
+          <a
+            href="https://github.com/Pallavi-SBhat"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#a2a9b4] hover:text-[#E8EAED] transition-colors"
+          >
+            <GithubIcon size={13} />
+            <span>GitHub</span>
+            <ArrowUpRight size={12} className="text-[#5B6472]" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/pallavisbhat"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#a2a9b4] hover:text-[#E8EAED] transition-colors"
+          >
+            <LinkedinIcon size={13} />
+            <span>LinkedIn</span>
+            <ArrowUpRight size={12} className="text-[#5B6472]" />
+          </a>
         </div>
 
-
-
-
+        {/* Right Side: Currently Into */}
+        <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono text-[#858e9c]">
+          <span className="eyebrow text-[#5B6472]">Focus:</span>
+          <span className="px-2.5 py-1 rounded border border-[rgba(173,186,205,0.12)] bg-[#141b28]/60 text-[#a2a9b4]">
+            React 19 & Component Architecture
+          </span>
+          <span className="px-2.5 py-1 rounded border border-[rgba(173,186,205,0.12)] bg-[#141b28]/60 text-[#a2a9b4]">
+            Python & ML
+          </span>
+        </div>
       </div>
     </section>
   );

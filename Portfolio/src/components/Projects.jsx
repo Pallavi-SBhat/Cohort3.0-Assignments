@@ -1,124 +1,221 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ExternalLink, Code } from 'lucide-react';
+import React, { useState } from 'react';
+import { 
+  ArrowUpRight, 
+  Code, 
+  CloudSun, 
+  ShoppingCart, 
+  TrendingUp, 
+  CheckSquare, 
+  Calendar, 
+  Brain 
+} from 'lucide-react';
 
 const projects = [
   {
-    title: "Weather Forecast",
-    description: "A real-time weather application providing accurate forecasts and conditions.",
-    tags: ["React", "API", "Tailwind"],
-    github: "https://github.com/Pallavi-SBhat/WeatherForecast",
-    live: "https://weather-forecast-pallavii.vercel.app/",
-    color: "from-blue-500/20 to-transparent"
+    id: 'weather',
+    number: '01',
+    type: 'Web App',
+    name: 'weather-forecast',
+    caption: 'Forecast. Track. Decide.',
+    description: 'A real-time weather intelligence web application featuring global city search, atmospheric condition indicators, 5-day predictive forecasts, and temperature unit switching.',
+    language: 'React 19',
+    tags: ['React', 'OpenWeather API', 'Tailwind CSS', 'Vite'],
+    live: 'https://weather-forecast-pallavii.vercel.app/',
+    github: 'https://github.com/Pallavi-SBhat/WeatherForecast',
+    icon: CloudSun
   },
   {
-    title: "SkyMart E-Commerce",
-    description: "A modern e-commerce storefront with a sleek user interface.",
-    tags: ["React", "State Management", "Tailwind"],
-    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/SkyMart",
-    live: "https://skymart-tawny.vercel.app/",
-    color: "from-pink-500/20 to-transparent"
+    id: 'skymart',
+    number: '02',
+    type: 'E-Commerce',
+    name: 'skymart-storefront',
+    caption: 'Catalog. Cart. Checkout.',
+    description: 'A responsive e-commerce web application featuring real-time category filtering, sliding shopping cart state management, and an interactive checkout summary workflow.',
+    language: 'React',
+    tags: ['React', 'Context API', 'Tailwind CSS', 'JavaScript'],
+    live: 'https://skymart-tawny.vercel.app/',
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/SkyMart',
+    icon: ShoppingCart
   },
   {
-    title: "Productivity Planner",
-    description: "An elegant planner application to track tasks and boost productivity.",
-    tags: ["JavaScript", "React", "Local Storage"],
-    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ProductivityDashboard",
-    live: "https://productivityplanner-mu.vercel.app/",
-    color: "from-emerald-500/20 to-transparent"
+    id: 'fintrack',
+    number: '03',
+    type: 'FinTech',
+    name: 'fintrack-pro',
+    caption: 'Log. Budget. Analyze.',
+    description: 'A personal expense management dashboard to log daily transactions, calculate monthly cash flow, set category budget limits, and store financial records privately in local storage.',
+    language: 'React / Chart.js',
+    tags: ['React', 'Chart.js', 'LocalStorage', 'Tailwind CSS'],
+    live: 'https://fintrackpro-pallavii.vercel.app/',
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ExpenseTracker',
+    icon: TrendingUp
   },
   {
-    title: "Daily Track",
-    description: "A comprehensive daily habit and activity tracker.",
-    tags: ["React", "Tailwind", "Responsive"],
-    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/MiniHackathon/DailyTrack",
-    live: "https://dailytrack-wine.vercel.app/",
-    color: "from-violet-500/20 to-transparent"
+    id: 'planner',
+    number: '04',
+    type: 'Productivity',
+    name: 'productivity-planner',
+    caption: 'Prioritize. Schedule. Complete.',
+    description: 'A workflow and daily planning application featuring priority tagging (High, Medium, Low), task status toggles, and persistent state restoration across browser sessions.',
+    language: 'JavaScript',
+    tags: ['JavaScript', 'React', 'LocalStorage', 'Tailwind CSS'],
+    live: 'https://productivityplanner-mu.vercel.app/',
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ProductivityDashboard',
+    icon: CheckSquare
   },
-
   {
-    title: "FinTrack Pro",
-    description: "A robust financial tracking application for managing expenses.",
-    tags: ["React", "Charts", "Tailwind"],
-    github: "https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ExpenseTracker",
-    live: "https://fintrackpro-pallavii.vercel.app/",
-    color: "from-cyan-500/20 to-transparent"
+    id: 'dailytrack',
+    number: '05',
+    type: 'Productivity',
+    name: 'daily-track',
+    caption: 'Habit. Streak. Repeat.',
+    description: 'A daily habit tracking application built during a mini-hackathon to help users track recurring goals, calculate consistency streaks, and build disciplined routines.',
+    language: 'React',
+    tags: ['React', 'Tailwind CSS', 'LocalStorage'],
+    live: 'https://dailytrack-wine.vercel.app/',
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/MiniHackathon/DailyTrack',
+    icon: Calendar
+  },
+  {
+    id: 'codelab-ml',
+    number: '06',
+    type: 'Machine Learning',
+    name: 'churn-stroke-prediction',
+    caption: 'Predict. Evaluate. Classify.',
+    description: 'Supervised machine learning classification models trained during an industry internship at CodeLab Systems to predict customer churn probability and evaluate stroke risk factors.',
+    language: 'Python',
+    tags: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy'],
+    live: null,
+    github: 'https://github.com/Pallavi-SBhat',
+    icon: Brain
   }
 ];
 
-const Projects = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+const categories = ['All', 'Web App', 'FinTech', 'Productivity', 'Machine Learning'];
 
-  useEffect(() => {
-    cardsRef.current.forEach((card, index) => {
-      gsap.fromTo(card,
-        { opacity: 0, y: 50, scale: 0.9, rotationX: 15 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          rotationX: 0,
-          duration: 0.8,
-          delay: index * 0.15,
-          ease: 'back.out(1.5)',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-          }
-        }
-      );
-    });
-  }, []);
+const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filtered = activeCategory === 'All'
+    ? projects
+    : projects.filter(p => p.type.toLowerCase().includes(activeCategory.toLowerCase()));
 
   return (
-    <section id="projects" className="pt-10" ref={sectionRef}>
-      <div className="mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-          Selected <span className="text-gradient">Works</span>
-        </h2>
+    <section id="projects" className="section-rail pt-20 pb-8">
+      {/* Header Row */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(173,186,205,0.12)] pb-4 mb-10 gap-4">
+        <div>
+          <p className="eyebrow mb-1">02 / Built in the open</p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#E8EAED]">
+            Less talk. More commits<span className="text-[#3DDC97]">.</span>
+          </h2>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1 font-mono text-[11px]">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-3 py-1 rounded transition-colors cursor-pointer ${
+                activeCategory === cat
+                  ? 'bg-[#3DDC97] text-[#0F1420] font-semibold'
+                  : 'text-[#858e9c] hover:text-[#E8EAED] hover:bg-white/[0.04]'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {projects.map((project, index) => (
-          <div 
-            key={index}
-            ref={el => cardsRef.current[index] = el}
-            className="bento-card group flex flex-col hover:border-white/20 transition-colors overflow-hidden"
-          >
-            <div className={`h-48 bg-gradient-to-b ${project.color} border-b border-white/5 relative overflow-hidden flex items-center justify-center`}>
-              {/* Dynamic Live Screenshot via Microlink */}
-              <img 
-                src={`https://api.microlink.io/?url=${project.live}&screenshot=true&meta=false&embed=screenshot.url`} 
-                alt={`${project.title} Preview`}
-                className="w-full h-full object-cover object-top opacity-60 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
-            </div>
-            
-            <div className="p-6 flex-1 flex flex-col z-10 relative bg-[#0B0F19]">
-              <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
-              <p className="text-slate-400 text-sm mb-6 flex-1">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag, i) => (
-                  <span key={i} className="text-[10px] font-bold px-2 py-1 rounded bg-[#1e293b] text-slate-300 border border-white/5">
-                    {tag}
+
+      {/* 2-Column Project Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {filtered.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="group border border-[rgba(173,186,205,0.15)] rounded-md overflow-hidden bg-[#141b28]/70 hover:border-[#3DDC97]/40 transition-all flex flex-col justify-between"
+            >
+              {/* Top Art Frame */}
+              <div className="h-52 bg-[#111c25] relative flex items-center justify-center text-[#3DDC97] overflow-hidden border-b border-[rgba(173,186,205,0.12)]">
+                <div className="project-art-grid"></div>
+
+                <div className="relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                  <Icon size={64} className="stroke-[1.1]" />
+                </div>
+
+                {/* Bottom Left Art Caption */}
+                <span className="absolute bottom-3 left-4 font-mono text-[11px] text-[#858e9c] tracking-wide">
+                  {item.caption}
+                </span>
+
+                {/* Top Right Corner Tag */}
+                <span className="absolute top-3 right-4 font-mono text-[11px] text-[#5B6472] uppercase tracking-wider">
+                  {item.number} / {item.type}
+                </span>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-mono text-base font-semibold text-[#E8EAED] group-hover:text-[#3DDC97] transition-colors">
+                      {item.name}<span className="text-[#3DDC97]">_</span>
+                    </h3>
+                    {item.live && (
+                      <a 
+                        href={item.live} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="text-[#858e9c] hover:text-[#3DDC97] transition-colors"
+                        aria-label={`Open ${item.name} live`}
+                      >
+                        <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
+
+                  <p className="text-sm text-[#a2a9b4] leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Bottom Meta */}
+                <div className="pt-4 border-t border-[rgba(173,186,205,0.12)] flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-[#E8EAED]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3DDC97]"></span>
+                    <span>{item.language}</span>
                   </span>
-                ))}
-              </div>
-              
-              <div className="flex items-center gap-2 pt-4 border-t border-white/5">
-                <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors bg-blue-500/10 px-3 py-1.5 rounded">
-                  <ExternalLink size={14} /> Live
-                </a>
-                <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-slate-300 transition-colors bg-white/5 px-3 py-1.5 rounded">
-                  <Code size={14} /> Code
-                </a>
+
+                  <div className="flex items-center gap-3">
+                    {item.live && (
+                      <a
+                        href={item.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[#3DDC97] hover:underline uppercase text-[11px]"
+                      >
+                        <span>Live</span>
+                        <ArrowUpRight size={12} />
+                      </a>
+                    )}
+                    <a
+                      href={item.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[#858e9c] hover:text-[#E8EAED] uppercase text-[11px]"
+                    >
+                      <Code size={12} />
+                      <span>Code</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

@@ -1,29 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 
 const BackToTop = () => {
-  const buttonRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Hide initially
-    gsap.set(buttonRef.current, { opacity: 0, scale: 0, y: 20 });
-
-    const showAnim = gsap.to(buttonRef.current, { 
-      opacity: 1, 
-      scale: 1, 
-      y: 0, 
-      duration: 0.3, 
-      paused: true,
-      ease: 'back.out(1.5)'
-    });
-
     const handleScroll = () => {
-      if (window.scrollY > 500) {
-        showAnim.play();
-      } else {
-        showAnim.reverse();
-      }
+      setVisible(window.scrollY > 400);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -37,14 +20,15 @@ const BackToTop = () => {
     });
   };
 
+  if (!visible) return null;
+
   return (
     <button
-      ref={buttonRef}
       onClick={scrollToTop}
-      className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-40 w-12 h-12 bg-blue-500/20 backdrop-blur-md border border-blue-400/30 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-500/40 hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)] cursor-pointer"
+      className="fixed bottom-6 right-6 z-40 w-9 h-9 bg-[#141b28] border border-[rgba(173,186,205,0.18)] hover:border-[#3DDC97] rounded flex items-center justify-center text-[#858e9c] hover:text-[#3DDC97] transition-all cursor-pointer shadow-xl"
       aria-label="Back to top"
     >
-      <ArrowUp size={24} />
+      <ArrowUp size={14} />
     </button>
   );
 };

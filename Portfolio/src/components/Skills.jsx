@@ -1,137 +1,92 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React from 'react';
+import { Layout, Database, Terminal, Wrench } from 'lucide-react';
+
+const categories = [
+  {
+    index: '01',
+    title: 'Frontend Architecture',
+    icon: Layout,
+    caption: 'Component-driven user interfaces',
+    skills: ['React.js', 'JavaScript (ES6+)', 'Tailwind CSS', 'HTML5 & CSS3', 'Redux', 'Vite']
+  },
+  {
+    index: '02',
+    title: 'Backend & Data',
+    icon: Database,
+    caption: 'Persistence, schemas & API consumption',
+    skills: ['PostgreSQL', 'MongoDB', 'Supabase', 'Relational DBMS', 'REST APIs', 'SQL']
+  },
+  {
+    index: '03',
+    title: 'Programming Core',
+    icon: Terminal,
+    caption: 'Algorithmic foundations & OOP',
+    skills: ['Python', 'Java', 'C', 'JavaScript', 'SQL']
+  },
+  {
+    index: '04',
+    title: 'Workflow & Tools',
+    icon: Wrench,
+    caption: 'Dev environments & deployment',
+    skills: ['Git', 'GitHub', 'VS Code', 'Vercel', 'Postman', 'Linux Basics']
+  }
+];
 
 const Skills = () => {
-  const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const bubblesRef = useRef([]);
-
-  const skills = [
-    { name: "JavaScript", color: "from-yellow-400 to-yellow-600", shadow: "shadow-yellow-500/20" },
-    { name: "HTML5", color: "from-orange-400 to-orange-600", shadow: "shadow-orange-500/20" },
-    { name: "CSS3", color: "from-blue-400 to-blue-600", shadow: "shadow-blue-500/20" },
-    { name: "Python", color: "from-green-400 to-green-600", shadow: "shadow-green-500/20" },
-    { name: "Java", color: "from-orange-500 to-red-600", shadow: "shadow-orange-500/20" },
-    { name: "C", color: "from-blue-500 to-blue-700", shadow: "shadow-blue-500/20" },
-    { name: "DBMS", color: "from-slate-500 to-slate-700", shadow: "shadow-slate-500/20" },
-    { name: "PostgreSQL", color: "from-sky-500 to-sky-700", shadow: "shadow-sky-500/20" },
-    { name: "MongoDB", color: "from-emerald-500 to-emerald-700", shadow: "shadow-emerald-500/20" },
-    { name: "Supabase", color: "from-green-500 to-emerald-600", shadow: "shadow-green-500/20" },
-    { name: "React.js", color: "from-cyan-400 to-cyan-600", shadow: "shadow-cyan-500/20" },
-    { name: "Redux", color: "from-purple-500 to-purple-700", shadow: "shadow-purple-500/20" },
-    { name: "Tailwind CSS", color: "from-teal-400 to-teal-600", shadow: "shadow-teal-500/20" },
-    { name: "GSAP", color: "from-lime-400 to-lime-600", shadow: "shadow-lime-500/20" },
-    { name: "Git", color: "from-red-400 to-red-600", shadow: "shadow-red-500/20" },
-    { name: "GitHub", color: "from-gray-600 to-gray-800", shadow: "shadow-gray-500/20" },
-    { name: "Vercel", color: "from-slate-800 to-black", shadow: "shadow-slate-500/20" },
-    { name: "VS Code", color: "from-blue-500 to-indigo-600", shadow: "shadow-indigo-500/20" }
-  ];
-
-  useEffect(() => {
-    // Initial entrance animation
-    gsap.fromTo(containerRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        }
-      }
-    );
-
-    // Free-floating continuous animation for each bubble
-    bubblesRef.current.forEach((bubble, index) => {
-      if (!bubble) return;
-      
-      // Assign each bubble its own dedicated "zone" in a 6x3 grid to prevent overlapping
-      const col = index % 6;
-      const row = Math.floor(index / 6);
-      
-      const animateBubble = () => {
-        // Calculate safe boundaries for this specific bubble
-        // 100% width / 6 cols = ~16.6% per column
-        const minLeft = (col * 16.6) + 2; 
-        const maxLeft = minLeft + 10;
-        
-        // 100% height / 3 rows = 33.3% per row
-        const minTop = (row * 33.3) + 5;
-        const maxTop = minTop + 15;
-        
-        gsap.to(bubble, {
-          left: `${Math.random() * (maxLeft - minLeft) + minLeft}%`,
-          top: `${Math.random() * (maxTop - minTop) + minTop}%`,
-          rotation: (Math.random() - 0.5) * 20,
-          duration: Math.random() * 2 + 1.5, // Faster movement (1.5s to 3.5s)
-          ease: "sine.inOut",
-          onComplete: animateBubble
-        });
-      };
-      
-      // Add a small staggered start
-      setTimeout(animateBubble, Math.random() * 1000);
-    });
-  }, []);
-
   return (
-    // Break out of the max-w-3xl container to use the full viewport width
-    <section id="skills" className="pt-20 pb-10 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-[#0a0d14]" ref={sectionRef}>
-      
-      <div className="mb-12 text-center max-w-3xl mx-auto px-4 relative z-20">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-          Technical <span className="text-gradient">Arsenal</span>
+    <section id="skills" className="section-rail pt-20 pb-8">
+      {/* Header */}
+      <div className="border-b border-[rgba(173,186,205,0.12)] pb-4 mb-10">
+        <p className="eyebrow mb-1">03 / Technical toolkit</p>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#E8EAED]">
+          Crafted with intention<span className="text-[#3DDC97]">.</span>
         </h2>
-        <p className="text-slate-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
-          The languages and tools I use to bring ideas to life.
-        </p>
       </div>
 
-      <div 
-        ref={containerRef}
-        className="relative w-full"
-        style={{ height: '600px' }}
-      >
-        {/* Decorative background blur to make the full-width section pop */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* 4-Panel Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {categories.map((cat) => {
+          const Icon = cat.icon;
+          return (
+            <div
+              key={cat.title}
+              className="border border-[rgba(173,186,205,0.15)] rounded-md p-5 bg-[#141b28]/70 hover:border-[#3DDC97]/40 transition-colors flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between font-mono text-[11px] text-[#5B6472] mb-3">
+                  <span className="flex items-center gap-1.5 text-[#3DDC97]">
+                    <Icon size={14} />
+                    <span>{cat.index}</span>
+                  </span>
+                  <span className="uppercase tracking-wider">Domain</span>
+                </div>
 
-        <div className="absolute inset-0 z-10 w-full h-full">
-          {skills.map((skill, index) => {
-            // Give each bubble an initial position inside its dedicated zone
-            const col = index % 6;
-            const row = Math.floor(index / 6);
-            
-            const minLeft = (col * 16.6) + 2; 
-            const maxLeft = minLeft + 10;
-            const minTop = (row * 33.3) + 5;
-            const maxTop = minTop + 15;
-            
-            const randomLeft = `${Math.random() * (maxLeft - minLeft) + minLeft}%`;
-            const randomTop = `${Math.random() * (maxTop - minTop) + minTop}%`;
-            
-            return (
-              <div
-                key={index}
-                ref={el => bubblesRef.current[index] = el}
-                style={{ 
-                  left: randomLeft, 
-                  top: randomTop,
-                  transform: 'translate(-50%, -50%)' // Center exactly on the coordinate
-                }}
-                className={`
-                  absolute px-8 py-5 rounded-2xl bg-gradient-to-br ${skill.color} 
-                  text-white font-bold text-base md:text-lg tracking-wide
-                  shadow-2xl ${skill.shadow} border border-white/20
-                  flex items-center justify-center cursor-default
-                  hover:scale-125 transition-transform duration-300 hover:z-50
-                `}
-              >
-                {skill.name}
+                <h3 className="text-base font-semibold text-[#E8EAED] mb-1">
+                  {cat.title}
+                </h3>
+                <p className="text-xs text-[#858e9c] mb-5">
+                  {cat.caption}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="font-mono text-[11px] px-2 py-1 rounded bg-[#0b101a] border border-[rgba(173,186,205,0.1)] text-[#a2a9b4]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            );
-          })}
-        </div>
+
+              <div className="mt-5 pt-3 border-t border-[rgba(173,186,205,0.08)] font-mono text-[10px] text-[#5B6472] flex items-center justify-between">
+                <span>Status:</span>
+                <span className="text-[#3DDC97]">Active & Practiced</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

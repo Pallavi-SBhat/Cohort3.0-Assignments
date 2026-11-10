@@ -14,13 +14,13 @@ const ParticleBackground = () => {
     canvas.height = height;
 
     const particles = [];
-    const particleCount = Math.min(Math.floor(window.innerWidth / 15), 100); // Responsive particle count
-    const maxDistance = 150;
+    const particleCount = Math.min(Math.floor(window.innerWidth / 35), 45); // Calm, non-intrusive ambient count
+    const maxDistance = 130;
     
     let mouse = {
       x: null,
       y: null,
-      radius: 200
+      radius: 160
     };
 
     const handleMouseMove = (e) => {
@@ -40,10 +40,10 @@ const ParticleBackground = () => {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5;
-        this.radius = Math.random() * 2 + 1;
-        this.color = 'rgba(96, 165, 250, 0.5)'; // Tailwind blue-400 with opacity
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.radius = Math.random() * 1.5 + 0.8;
+        this.color = 'rgba(96, 165, 250, 0.25)'; // Soft, calm blue
       }
 
       draw() {

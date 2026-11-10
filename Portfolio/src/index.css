@@ -2,34 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  cursor: none !important;
+:root {
+  --midnight: #0F1420;
+  --terminal: #3DDC97;
+  --white: #E8EAED;
+  --slate: #5B6472;
+  --copy: #a2a9b4;
+  --quiet: #858e9c;
+  --line: rgba(173, 186, 205, 0.15);
+  --panel: #141b28;
+  --display-font: "Instrument Serif", Georgia, serif;
+  --body-font: "Manrope", system-ui, -apple-system, sans-serif;
+  --mono-font: "IBM Plex Mono", monospace;
 }
 
 @layer base {
+  html {
+    font-family: var(--body-font);
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+  
   body {
-    @apply bg-[#0B0F19] text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200;
+    background-color: var(--midnight);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--display-font);
+  }
+
+  code, pre, .mono, .font-mono {
+    font-family: var(--mono-font);
   }
 }
 
-.bento-card {
-  @apply bg-[#131722] border border-white/5 rounded-[2rem] shadow-xl overflow-hidden relative;
+/* Template Helper Utilities */
+.wordmark {
+  font-family: var(--mono-font);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  color: var(--white);
 }
 
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400;
+.wordmark span {
+  color: var(--terminal);
 }
 
-/* Custom scrollbar for dark theme */
+.eyebrow {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--quiet);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--terminal);
+  box-shadow: 0 0 10px rgba(61, 220, 151, 0.6);
+}
+
+.section-rail {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Subtle Technical Blueprint Grid for Project Cards */
+.project-art-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(173, 186, 205, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(173, 186, 205, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0F19; 
+  background: var(--midnight); 
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b; 
-  border-radius: 4px;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #334155; 

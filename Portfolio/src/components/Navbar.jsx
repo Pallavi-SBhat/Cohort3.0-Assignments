@@ -1,66 +1,93 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useState } from 'react';
+import { Terminal, GitBranch, Briefcase, Mail, Cpu, User, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
-  const navRef = useRef(null);
-  const progressRef = useRef(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    // Initial navbar animation
-    gsap.fromTo(navRef.current, 
-      { y: -50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-      }
-    );
-
-    // Scroll progress bar
-    gsap.to(progressRef.current, {
-      width: '100%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.3
-      }
-    });
-  }, []);
+  const links = [
+    { name: 'Intro', href: '#hero', icon: Terminal },
+    { name: 'Approach', href: '#approach', icon: User },
+    { name: 'Projects', href: '#projects', icon: GitBranch },
+    { name: 'Skills', href: '#skills', icon: Cpu },
+    { name: 'Trajectory', href: '#trajectory', icon: Briefcase },
+    { name: 'Contact', href: '#contact', icon: Mail },
+  ];
 
   return (
-    <nav ref={navRef} className="fixed top-0 w-full z-50 px-6 py-4 backdrop-blur-md bg-[#0B0F19]/80 border-b border-white/5">
-      <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between md:px-10 lg:px-16">
-        <div className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold text-lg group-hover:scale-105 transition-transform overflow-hidden shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-            <img src="/profile.jpg" alt="Avatar" className="w-full h-full object-cover" />
-          </div>
-          <span className="font-bold text-xl tracking-tight text-white group-hover:text-blue-400 transition-colors">Pallavi S Bhat</span>
-        </div>
-        
-        {/* Navigation Links (Hidden on Mobile) */}
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#skills" className="text-sm font-bold text-slate-300 hover:text-blue-400 transition-colors">Skills</a>
-          <a href="#experience" className="text-sm font-bold text-slate-300 hover:text-blue-400 transition-colors">Experience</a>
-          <a href="#projects" className="text-sm font-bold text-slate-300 hover:text-blue-400 transition-colors">Projects</a>
-          <a href="#contact" className="text-sm font-bold text-slate-300 hover:text-blue-400 transition-colors">Contact</a>
-        </div>
-
-        <a href="#contact" className="px-5 py-2 rounded-full bg-[#93C5FD] text-[#0B0F19] font-semibold text-sm hover:bg-blue-300 transition-colors shadow-[0_0_20px_rgba(147,197,253,0.3)] hover:shadow-[0_0_25px_rgba(147,197,253,0.6)]">
-          Hire Me
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-5 transition-all">
+      <div className="max-w-[1140px] mx-auto flex items-center justify-between">
+        {/* Wordmark */}
+        <a href="#hero" className="wordmark flex items-center gap-0.5 group">
+          <span>pb</span><span className="text-[#3DDC97] animate-pulse">_</span>
         </a>
+
+        {/* Floating Desktop Navigation Dock */}
+        <nav className="hidden md:flex items-center p-1.5 gap-1 border border-[rgba(173,186,205,0.15)] rounded-full bg-[#0b101af5] backdrop-blur-md shadow-2xl">
+          {links.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-wider text-[#858e9c] hover:text-[#E8EAED] hover:bg-white/[0.05] transition-all"
+              >
+                <Icon size={12} className="stroke-[1.8]" />
+                <span>{link.name}</span>
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Status Pill & Mobile Menu Toggle */}
+        <div className="flex items-center gap-3">
+          <a 
+            href="#contact" 
+            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full font-mono text-[11px] text-[#a2a9b4] border border-[rgba(173,186,205,0.15)] bg-[#0b101a]/80 hover:border-[#3DDC97]/40 hover:text-[#E8EAED] transition-all"
+          >
+            <span className="status-dot"></span>
+            <span>Open to roles</span>
+          </a>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 rounded-lg text-[#858e9c] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
-      {/* Scroll Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white/5">
-        <div 
-          ref={progressRef}
-          className="h-full bg-gradient-to-r from-blue-400 to-emerald-400 w-0 shadow-[0_0_10px_rgba(59,130,246,0.8)]"
-        ></div>
-      </div>
-    </nav>
+      {/* Mobile Menu Drawer */}
+      {mobileOpen && (
+        <div className="md:hidden mt-3 max-w-[1140px] mx-auto p-4 rounded-2xl border border-[rgba(173,186,205,0.15)] bg-[#0b101af5] backdrop-blur-xl space-y-2 shadow-2xl">
+          {links.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2.5 px-3 py-2 rounded-lg font-mono text-xs uppercase tracking-wider text-[#a2a9b4] hover:text-white hover:bg-white/5 transition-colors"
+              >
+                <Icon size={14} className="text-[#3DDC97]" />
+                <span>{link.name}</span>
+              </a>
+            );
+          })}
+          <div className="pt-2 border-t border-[rgba(173,186,205,0.12)]">
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#3DDC97] text-[#0F1420] font-mono text-xs font-semibold uppercase tracking-wider"
+            >
+              <span className="status-dot !bg-[#0F1420]"></span>
+              <span>Get in touch</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

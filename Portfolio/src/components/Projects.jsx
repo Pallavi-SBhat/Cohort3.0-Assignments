@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { 
   ArrowUpRight, 
   Code, 
-  CloudSun, 
-  ShoppingCart, 
-  TrendingUp, 
-  CheckSquare, 
-  Calendar, 
-  Brain 
+  Maximize2,
+  X
 } from 'lucide-react';
 
 const projects = [
@@ -20,9 +16,9 @@ const projects = [
     description: 'A real-time weather intelligence web application featuring global city search, atmospheric condition indicators, 5-day predictive forecasts, and temperature unit switching.',
     language: 'React 19',
     tags: ['React', 'OpenWeather API', 'Tailwind CSS', 'Vite'],
+    image: '/projects/weather.png',
     live: 'https://weather-forecast-pallavii.vercel.app/',
-    github: 'https://github.com/Pallavi-SBhat/WeatherForecast',
-    icon: CloudSun
+    github: 'https://github.com/Pallavi-SBhat/WeatherForecast'
   },
   {
     id: 'skymart',
@@ -33,9 +29,9 @@ const projects = [
     description: 'A responsive e-commerce web application featuring real-time category filtering, sliding shopping cart state management, and an interactive checkout summary workflow.',
     language: 'React',
     tags: ['React', 'Context API', 'Tailwind CSS', 'JavaScript'],
+    image: '/projects/skymart.png',
     live: 'https://skymart-tawny.vercel.app/',
-    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/SkyMart',
-    icon: ShoppingCart
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/SkyMart'
   },
   {
     id: 'fintrack',
@@ -46,9 +42,9 @@ const projects = [
     description: 'A personal expense management dashboard to log daily transactions, calculate monthly cash flow, set category budget limits, and store financial records privately in local storage.',
     language: 'React / Chart.js',
     tags: ['React', 'Chart.js', 'LocalStorage', 'Tailwind CSS'],
+    image: '/projects/fintrack.png',
     live: 'https://fintrackpro-pallavii.vercel.app/',
-    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ExpenseTracker',
-    icon: TrendingUp
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ExpenseTracker'
   },
   {
     id: 'planner',
@@ -59,9 +55,9 @@ const projects = [
     description: 'A workflow and daily planning application featuring priority tagging (High, Medium, Low), task status toggles, and persistent state restoration across browser sessions.',
     language: 'JavaScript',
     tags: ['JavaScript', 'React', 'LocalStorage', 'Tailwind CSS'],
+    image: '/projects/planner.png',
     live: 'https://productivityplanner-mu.vercel.app/',
-    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ProductivityDashboard',
-    icon: CheckSquare
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/practiceProjects/ProductivityDashboard'
   },
   {
     id: 'dailytrack',
@@ -72,9 +68,9 @@ const projects = [
     description: 'A daily habit tracking application built during a mini-hackathon to help users track recurring goals, calculate consistency streaks, and build disciplined routines.',
     language: 'React',
     tags: ['React', 'Tailwind CSS', 'LocalStorage'],
+    image: '/projects/dailytrack.png',
     live: 'https://dailytrack-wine.vercel.app/',
-    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/MiniHackathon/DailyTrack',
-    icon: Calendar
+    github: 'https://github.com/Pallavi-SBhat/Cohort3.0-Assignments/tree/4c7eb52e79c1d94552419ba9bfb0acea3599f85b/MiniHackathon/DailyTrack'
   },
   {
     id: 'codelab-ml',
@@ -85,9 +81,9 @@ const projects = [
     description: 'Supervised machine learning classification models trained during an industry internship at CodeLab Systems to predict customer churn probability and evaluate stroke risk factors.',
     language: 'Python',
     tags: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy'],
+    image: '/projects/churn-ml.svg',
     live: null,
-    github: 'https://github.com/Pallavi-SBhat',
-    icon: Brain
+    github: 'https://github.com/Pallavi-SBhat'
   }
 ];
 
@@ -95,6 +91,7 @@ const categories = ['All', 'Web App', 'FinTech', 'Productivity', 'Machine Learni
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [activeModalProject, setActiveModalProject] = useState(null);
 
   const filtered = activeCategory === 'All'
     ? projects
@@ -132,27 +129,42 @@ const Projects = () => {
       {/* 2-Column Project Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filtered.map((item) => {
-          const Icon = item.icon;
           return (
             <div
               key={item.id}
               className="group border border-[rgba(173,186,205,0.15)] rounded-md overflow-hidden bg-[#141b28]/70 hover:border-[#3DDC97]/40 transition-all flex flex-col justify-between"
             >
-              {/* Top Art Frame */}
-              <div className="h-52 bg-[#111c25] relative flex items-center justify-center text-[#3DDC97] overflow-hidden border-b border-[rgba(173,186,205,0.12)]">
-                <div className="project-art-grid"></div>
+              {/* Project Visual / Image Frame */}
+              <div 
+                className="h-56 sm:h-64 bg-[#0d121d] relative overflow-hidden border-b border-[rgba(173,186,205,0.12)] cursor-pointer"
+                onClick={() => setActiveModalProject(item)}
+              >
+                {/* Real Project Image */}
+                <img 
+                  src={item.image} 
+                  alt={`${item.name} screenshot`}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                />
 
-                <div className="relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-                  <Icon size={64} className="stroke-[1.1]" />
+                {/* Subtle vignette / overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141b28] via-[#141b28]/25 to-transparent opacity-85 group-hover:opacity-40 transition-opacity duration-300"></div>
+
+                {/* Quick Expand Button on Hover */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#0b101af0] border border-[#3DDC97]/50 text-[#3DDC97] font-mono text-xs flex items-center gap-1.5 shadow-xl backdrop-blur-md">
+                    <Maximize2 size={13} />
+                    <span>View Full Preview</span>
+                  </span>
                 </div>
 
                 {/* Bottom Left Art Caption */}
-                <span className="absolute bottom-3 left-4 font-mono text-[11px] text-[#858e9c] tracking-wide">
+                <span className="absolute bottom-3 left-4 font-mono text-[11px] text-[#E8EAED] drop-shadow-md tracking-wide z-10 bg-[#0B101A]/80 px-2.5 py-0.5 rounded border border-white/5 backdrop-blur-sm">
                   {item.caption}
                 </span>
 
                 {/* Top Right Corner Tag */}
-                <span className="absolute top-3 right-4 font-mono text-[11px] text-[#5B6472] uppercase tracking-wider">
+                <span className="absolute top-3 right-4 font-mono text-[11px] text-[#3DDC97] uppercase tracking-wider z-10 bg-[#0B101A]/85 px-2.5 py-0.5 rounded border border-[#3DDC97]/30 backdrop-blur-sm">
                   {item.number} / {item.type}
                 </span>
               </div>
@@ -197,7 +209,7 @@ const Projects = () => {
                         rel="noreferrer"
                         className="inline-flex items-center gap-1 text-[#3DDC97] hover:underline uppercase text-[11px]"
                       >
-                        <span>Live</span>
+                        <span>Live Demo</span>
                         <ArrowUpRight size={12} />
                       </a>
                     )}
@@ -217,6 +229,73 @@ const Projects = () => {
           );
         })}
       </div>
+
+      {/* Lightbox Preview Modal */}
+      {activeModalProject && (
+        <div 
+          className="fixed inset-0 z-50 bg-[#0B101A]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setActiveModalProject(null)}
+        >
+          <div 
+            className="relative max-w-4xl w-full bg-[#141b28] border border-[rgba(173,186,205,0.2)] rounded-lg overflow-hidden shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[rgba(173,186,205,0.15)] bg-[#0B101A]">
+              <div className="flex items-center gap-2 font-mono text-xs text-[#E8EAED]">
+                <span className="text-[#3DDC97]">{activeModalProject.number}</span>
+                <span>/</span>
+                <span className="font-semibold">{activeModalProject.name}</span>
+                <span className="text-[#5B6472]">({activeModalProject.type})</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                {activeModalProject.live && (
+                  <a
+                    href={activeModalProject.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#3DDC97] text-[#0F1420] font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#34c888] transition-colors"
+                  >
+                    <span>Visit Live Site</span>
+                    <ArrowUpRight size={12} />
+                  </a>
+                )}
+                <button
+                  onClick={() => setActiveModalProject(null)}
+                  className="p-1 rounded text-[#858e9c] hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Image View */}
+            <div className="max-h-[75vh] overflow-y-auto bg-[#0d121d] flex items-center justify-center p-2">
+              <img 
+                src={activeModalProject.image} 
+                alt={`${activeModalProject.name} Full Preview`}
+                className="w-full h-auto object-contain rounded"
+              />
+            </div>
+
+            {/* Modal Footer Description */}
+            <div className="p-4 bg-[#141b28] border-t border-[rgba(173,186,205,0.12)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#a2a9b4]">
+              <p className="max-w-xl font-sans">
+                {activeModalProject.description}
+              </p>
+              <div className="flex items-center gap-2 font-mono">
+                {activeModalProject.tags.map(t => (
+                  <span key={t} className="px-2 py-0.5 rounded bg-[#0b101a] border border-white/5 text-[#E8EAED] text-[11px]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
